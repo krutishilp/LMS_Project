@@ -23,5 +23,4 @@ The code is totally written in PHP for Backend and HTML/CSS/JavaScript for the f
 
 # Being open-sourced I wish you to contribute to this project and make it big to help provide education even at problematic times.
 
-# Copyright 2020, Nishad Raisinghani, All rights reserved.
 
