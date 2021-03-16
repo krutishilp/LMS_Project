@@ -11,7 +11,7 @@
       <a class="navbar-brand mx-auto" href="#">E-Learning</a>
     </nav>
     <div class="container-fluid pad2">
-    <h2>Prathamesh</h2>
+    <h2>Krutishil</h2>
       <div class="row pad">
         <div class="col-lg-6 offset-lg-3 sm-auto md-auto">
           <div class="row">
