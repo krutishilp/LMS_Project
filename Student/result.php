@@ -1,8 +1,8 @@
 <?php session_start()?>
 <?php
-$email=$_SESSION['user_email'];
-$name=$_SESSION['user_name'];
-$pass=$_SESSION['user_pass'];
+$email=$_SESSION['student_user_email'];
+$name=$_SESSION['student_user_name'];
+$pass=$_SESSION['student_user_pass'];
 $exam_id=$_SESSION['eid'];
 ?>
 

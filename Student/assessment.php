@@ -5,9 +5,9 @@ $aid=$_GET['qno'];
 $sub=$_GET['qsub'];
 $duration=$_GET['duration'];
 $_SESSION['eid']=$eid;
-$email=$_SESSION['user_email'];
-$name=$_SESSION['user_name'];
-$pass=$_SESSION['user_pass'];
+$email=$_SESSION['student_user_email'];
+$name=$_SESSION['student_user_name'];
+$pass=$_SESSION['student_user_pass'];
 include '../connection.php';
 $getinfo="SELECT * FROM assessment_records WHERE email='$email' and exam_id='$eid' and status=1";
 if($rungtinfo=mysqli_query($conn,$getinfo))
