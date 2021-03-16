@@ -21,6 +21,14 @@
                   <input type="text" name="name"  placeholder="Full-Name" required><br><br>
                   <input type="email" name="email" placeholder="Email" required><br><br>
                   <input type="password" name="password" placeholder="Password" required><br><br>
+                  <select name="dept" id="dept">
+                    <option value="">Select Department</option>
+                    <option value="mech">Mechanical</option>
+                    <option value="comp">Computer</option>
+                    <option value="it">IT</option>
+                  </select>
+                  <input type="text" name="year"  placeholder="Full-Name" required><br><br>
+                  <input type="text" name="prn"  placeholder="Full-Name" required><br><br>
                   <input type="submit" name="su" value="Sign-Up">
                </form>
              </div>
@@ -79,9 +87,9 @@ if(isset($_POST['su']))
 	$uname=$_POST['name'];
 	$email=$_POST['email'];
 	$password=$_POST['password'];
-//	$dept=$_POST['dept'];
-//	$year=$_POST['year'];
-//	$prn=$_POST['prn'];
+	$dept=$_POST['dept'];
+	$year=$_POST['year'];
+	$prn=$_POST['prn'];
 //	$mname=$_POST['mname'];
   
 	$signup="INSERT INTO user (name, email, pass) VALUES ('$uname','$email','$password')";
