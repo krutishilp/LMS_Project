@@ -155,7 +155,7 @@ include 'studentPlay.php';
 <?php
 if (isset($_POST['lgt'])) 
  {
-  session_destroy();
+  unset($_SESSION["student_user_email"]);
   echo "<script type='text/javascript'>location.replace('../index.php')</script>";
  }
 ?>

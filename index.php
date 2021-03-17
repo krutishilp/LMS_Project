@@ -13,7 +13,6 @@
     <a class="navbar-brand mx-auto" href="#">E-Learning</a>
   </nav>
   <div class="container-fluid pad2">
-    <h2>Krutishil Purkar</h2>
     <div class="row pad">
       <div class="col-lg-6 offset-lg-3 sm-auto md-auto">
         <div class="row">
@@ -121,25 +120,25 @@ if (isset($_POST['su'])) {
 
 //------------------------------------------------------------------------------------------------------
 if (isset($_POST['lg'])) {
-
+  
   $email = $_POST['uemail'];
   $password = $_POST['upassword'];
   $role = $_POST['role'];
 
   $login = "";
   if ($role == "admin") {
-    $login = "SELECT * FROM admin WHERE (email='$email' AND password='$password')";
-  } elseif ($role == "teacher") {
-    $login = "SELECT * FROM teacher WHERE (email='$email' AND password='$password')";
+    $login = "SELECT * FROM admin WHERE email='$email' AND password='$password'";
+  } elseif ($role == "teachers") {
+    $login = "SELECT * FROM teachers WHERE email='$email' AND password='$password'";
   } else {
-    $login = "SELECT * FROM student WHERE (email='$email' AND password='$password')";
+    $login = "SELECT * FROM student WHERE email='$email' AND password='$password'";
   }
 
   if ($run2 = mysqli_query($conn, $login)) {
     $num = mysqli_num_rows($run2);
     if ($num == 1) {
       $row = mysqli_fetch_assoc($run2);
-      if ($role== 'teacher') {
+      if ($role == 'teachers') {
         $_SESSION['teacher_user_email'] = $email;
         $_SESSION['teacher_user_pass'] = $password;
         $_SESSION['teacher_user_name'] = $row['name'];

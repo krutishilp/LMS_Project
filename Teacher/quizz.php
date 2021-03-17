@@ -3,8 +3,8 @@
 $eid=$_GET['eid'];
 $aid=$_GET['qno'];
 $sub=$_GET['qsub'];
-$email=$_SESSION['user_email'];
-$name=$_SESSION['user_name'];
+$email=$_SESSION['teacher_user_email'];
+$name=$_SESSION['teacher_user_name'];
 ?>
 
 <!DOCTYPE html>

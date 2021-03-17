@@ -20,7 +20,7 @@
   	<hr>
   	<ul style="list-style-type: none">
   		<?php
-  		$getsubs="SELECT * FROM teachers WHERE email='$email'";
+  		$getsubs="SELECT subject FROM teachers WHERE email='$email'";
   		$run=mysqli_query($conn,$getsubs);
   		while($row=mysqli_fetch_assoc($run))
   		{
@@ -155,7 +155,7 @@
   </div>
   <br><br><br>
   <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="footer">
-        <a class="navbar-brand mx-auto">Made by Nishad Raisinghani</a>
+        <a class="navbar-brand mx-auto">.....</a>
       </div>
 </body>
 </html>
@@ -173,7 +173,9 @@ if(isset($_POST['publish']))
 }
 if (isset($_POST['lgt'])) 
  {
-  session_destroy();
+  unset($_SESSION["teacher_user_email"]);
+  unset($_SESSION["teacher_user_name"]);
+  unset($_SESSION["teacher_user_pass"]);
   echo "<script type='text/javascript'>location.replace('../index.php')</script>";
  }
 ?>

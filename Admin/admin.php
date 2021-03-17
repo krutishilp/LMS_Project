@@ -65,7 +65,9 @@
 <?php
 if (isset($_POST['lgt'])) 
  {
-  session_destroy();
+  unset($_SESSION["admin_user_email"]);
+  unset($_SESSION["admin_user_name"]);
+  unset($_SESSION["admin_user_pass"]);
   echo "<script type='text/javascript'>location.replace('../index.php')</script>";
  }
 

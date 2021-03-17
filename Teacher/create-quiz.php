@@ -30,7 +30,16 @@ if(isset($_POST['cq']))
   $dur=$_POST['duration'];
   $sub=$_POST['subs'];
   $status=0;
-  $ins="INSERT INTO `quizz`(`name`, `exam_id`, `duration`, `status`,subject) VALUES ('$qnm','$id','$dur','$status','$sub')";
+  $teacher_id = 0;
+  $getTeacherId="SELECT teacher_Id FROM teachers WHERE email='$email'";
+   if($rungetsub=mysqli_query($conn,$getTeacherId))
+   {
+   while ($row=mysqli_fetch_assoc($rungetsub))
+   {
+    $teacher_id = $row['teacher_Id'];
+   }
+  }
+  $ins="INSERT INTO `quizz`(`name`, `exam_id`, `duration`, `status`,`subject`,`teacher_id`) VALUES ('$qnm','$id','$dur','$status','$sub','$teacher_id')";
   if($run=mysqli_query($conn,$ins))
   {
        echo '<script type="text/javascript">alert("Done")</script>';
