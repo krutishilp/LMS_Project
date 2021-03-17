@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2021 at 06:20 PM
+-- Generation Time: Mar 17, 2021 at 01:40 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -86,7 +86,7 @@ INSERT INTO `departments` (`dept_Id`, `Name`) VALUES
 (1, 'IT'),
 (2, 'COMP'),
 (3, 'E&TC'),
-(4, 'ELECTRICAL'),
+(4, 'INSTRU'),
 (5, 'MECH'),
 (6, 'CIVIL');
 
@@ -346,6 +346,13 @@ CREATE TABLE `student` (
   `Password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`student_Id`, `name`, `email`, `prn`, `year`, `dept`, `Password`) VALUES
+(1, 'Srushti Kishor Wajge', 'srushti@gmail.com', '71611203F', 'be', 'comp', '12345');
+
 -- --------------------------------------------------------
 
 --
@@ -395,19 +402,25 @@ CREATE TABLE `student_videos` (
 --
 
 CREATE TABLE `subjects` (
+  `subject_Id` int(11) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `year` varchar(3) NOT NULL,
-  `dept` varchar(255) NOT NULL
+  `dept` varchar(255) NOT NULL,
+  `sem` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `subjects`
 --
 
-INSERT INTO `subjects` (`subject`, `year`, `dept`) VALUES
-('Python', 'TE', 'IT'),
-('DSF', 'SE', 'IT'),
-('DBMS', '', '');
+INSERT INTO `subjects` (`subject_Id`, `subject`, `year`, `dept`, `sem`) VALUES
+(1, 'Python', 'TE', 'IT', 3),
+(2, 'DSF', 'SE', 'IT', 4),
+(3, 'DBMS', 'TE', 'COMP', 5),
+(4, 'Cloud Computing', 'BE', 'COMP', 8),
+(5, 'Artificial Intelligence', 'BE', 'COMP', 8),
+(6, 'Web Technology', 'TE', 'COMP', 6),
+(7, 'TOC', 'TE', 'COMP', 5);
 
 -- --------------------------------------------------------
 
@@ -420,19 +433,16 @@ CREATE TABLE `teachers` (
   `email` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `subject` varchar(255) NOT NULL,
-  `dept_Id` int(11) NOT NULL
+  `dept_Id` int(11) NOT NULL,
+  `Password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `teachers`
 --
 
-INSERT INTO `teachers` (`teacher_Id`, `email`, `name`, `subject`, `dept_Id`) VALUES
-(1, 'nishd268@gmail.com', 'Nishad Raisinghani', 'Python', 1),
-(2, 'nishd2268@gmail.com', 'Nishad Raisinghani', 'Python', 1),
-(3, 'agdombe_it@jspmrscoe.edu.in', 'Anuja Dombe', 'Python', 2),
-(4, 'nishd268@gmai.com', 'Nishad', 'DSF', 3),
-(5, 'Srushti@g.com', 'Srushti', 'DBMS', 2);
+INSERT INTO `teachers` (`teacher_Id`, `email`, `name`, `subject`, `dept_Id`, `Password`) VALUES
+(22, 'shewale@gmail.com', 'Shewale', 'DBMS', 2, '6051f69b0b347');
 
 -- --------------------------------------------------------
 
@@ -532,6 +542,12 @@ ALTER TABLE `student`
   ADD UNIQUE KEY `student_prn` (`prn`);
 
 --
+-- Indexes for table `subjects`
+--
+ALTER TABLE `subjects`
+  ADD PRIMARY KEY (`subject_Id`);
+
+--
 -- Indexes for table `teachers`
 --
 ALTER TABLE `teachers`
@@ -557,13 +573,19 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `student_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `subjects`
+--
+ALTER TABLE `subjects`
+  MODIFY `subject_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `teacher_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `teacher_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
