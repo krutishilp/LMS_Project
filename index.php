@@ -29,9 +29,17 @@
                 <option value="mech">Mechanical</option>
                 <option value="comp">Computer</option>
                 <option value="it">IT</option>
-              </select>
-              <input type="text" name="year" placeholder="Full-Name" required><br><br>
-              <input type="text" name="prn" placeholder="Full-Name" required><br><br>
+                <option value="entc">Electronics and telecomunication</option>
+                <option value="civil">Civil</option>
+                <option value="instru">Instrumentation & Control</option>
+              </select><br><br>
+              <select name="year" id="year">
+                <option value="fe">FE</option>
+                <option value="se">SE</option>
+                <option value="te">TE</option>
+                <option value="be">BE</option>
+              </select><br><br>
+              <input type="text" name="prn" placeholder="PRN No" required><br><br>
               <input type="submit" name="su" value="Sign-Up">
             </form>
           </div>
@@ -40,13 +48,13 @@
               <h3>Login</h3>
               <hr>
               <input type="email" name="uemail" placeholder="Email"><br><br>
-              <input type="password" name="upassword" placeholder="Password"><br><br><br>
+              <input type="password" name="upassword" placeholder="Password"><br><br>
               <select name="role" id="role">
               <option value="">Select</option>
                 <option value="admin">Admin</option>
                 <option value="teachers">Teacher</option>
                 <option value="student">Student</option>
-              </select>
+              </select><br><br>
               <input type="submit" name="lg" value="Log-in"><br><br>
 
             </form>
@@ -102,7 +110,7 @@ if (isset($_POST['su'])) {
   $prn = $_POST['prn'];
   //	$mname=$_POST['mname'];
 
-  $signup = "INSERT INTO user (name, email, pass) VALUES ('$uname','$email','$password')";
+  $signup = "INSERT INTO student (name,email,prn,year,dept,Password) VALUES ('$uname','$email','$prn','$year','$dept','$password')";
   if ($run = mysqli_query($conn, $signup)) {
 
     echo '<script type="text/javascript">alert("Done. Please Login.")</script>';

@@ -7,19 +7,17 @@
                     <form method='POST' action='admin.php' class="fc">
                         <input type="text" name="name" placeholder="Name"><br><br>
                         <input type="email" name="email" placeholder="Email"><br><br>
-                        <select name='tsub'>
-                           <option value="" disabled selected>Select Subject Taught</option>
-                           <?php
-                              $getsubs="SELECT * FROM subjects";
-                              if($run3=mysqli_query($conn,$getsubs))
-                              {
-                                while ($row=mysqli_fetch_assoc($run3))
-                                 {
-                                   echo '<option value="'.$row['subject'].'">'.$row['subject'].'</option>'; 
-                                 }
-                              }
-                            ?>
-                        </select><br><br>             
+                          <select name="dept" id="dept">
+                  <option value="">Select Department</option>
+                  <option value="MECH" >Mechanical</option>
+                  <option value="COMP" >Computer</option>
+                  <option value="IT" >IT</option>
+                  <option value="E&TC" >Electronics and telecomunication</option>
+                  <option value="CIVIL" >Civil</option>
+                  <option value="INSTRU">Instrumentation & Control</option>
+                </select><br><br>
+              <div id="getsubjects"></div>
+                                    
                         <input type="submit" name="addfaculty" value="Add">&nbsp;&nbsp;&nbsp;
                      </form>
     
@@ -107,3 +105,30 @@
 <?php include 'adminAddSubject.php'?>
 <?php include 'adminDeleteSubject.php'?>
 
+
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+   
+   <script type="text/javascript"> 
+       $(function(){ 
+         $("#dept").on('change',function(){ 
+         $.ajax({ 
+           method: "GET", 
+        
+           url: "getSubject.php?dept="+ $("#dept").val(),
+         }).done(function( data ) { 
+           var result =data; 
+           var string=`<select name='tsub'>
+                           <option value="" disabled selected>Select Subject Taught</option>`;
+
+          /* from result create a string of data and append to the divsss */
+         
+         console.log(data);
+           $.each( result, function( key, value ) {
+             string += `<option value="`+value['subject']+`">`+value['subject']+`</option>`; 
+                 }); 
+                string += '</select>'; 
+             $("#getsubjects").html(string); 
+          }); 
+       }); 
+   }); 
+   </script>             

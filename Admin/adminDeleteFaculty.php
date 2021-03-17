@@ -7,7 +7,7 @@
 
 if($p==$pass)
 {
-  $signup="DELETE  FROM  user  WHERE name='$uname' AND email='$email'";
+  $signup="DELETE  FROM  teachers  WHERE name='$uname' AND email='$email'";
   if($run=mysqli_query($conn,$signup))
   {
 
