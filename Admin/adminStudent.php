@@ -40,20 +40,25 @@
 
               <div class="col adminpad">
                 <h3>Search Student</h3>
-                    <div class="fc">
+                  
+                    <form method='POST' action='' class="fc">
                         <input type="text" name="name" placeholder="Name"><br><br>
                         <input type="email" name="semail" placeholder="Email" id="sfind"><br><br>
-                        <button onclick="findString('sfind')">Search</button>
-                      </div>
-              </div>
-              <script type="text/javascript">
-                function findString(id) {
+                        <input type="submit" name="findstud" value="find">
+                    </form>
+               </div>
+              <?php 
+              if(isset($_POST['findstud'])){
+                  $email = $_POST['semail'];
                 
-                 console.log(id);
-                 window.find(document.getElementById(id).value)
-
-                 }
-              </script>
+                  $query = "SELECT * from student where email= '$email'";
+                  $run=mysqli_query($conn,$query);
+               if($row=mysqli_fetch_assoc($run))
+               {
+                // echo '"Student found '.$row['student_Id'].' 
+                // '.$row['email'].' '.$row['name'].' '.$row['prn'].' '.$row['year'].' '.$row['dept'].'"';
+             }}
+              ?>
 
               <div class="col adminpad">
                 <h3>Bulk Add Student</h3>
