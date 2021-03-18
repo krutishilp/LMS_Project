@@ -5,9 +5,11 @@ if (isset($_POST['addstud']))
   $uname=$_POST['name'];
   $email=$_POST['email'];
   $password=uniqid();
-  $position='S';
+  $prn = $_POST['prn'];
+  $year = $_POST['year'];
+  $dept = $_POST['dept'];
 
-  $signup="INSERT INTO user (name, email, pass, pos) VALUES ('$uname','$email','$password','$position')";
+  $signup="INSERT INTO student (name, email, prn, year,dept, password) VALUES ('$uname','$email','$prn','$year','$dept','$password')";
   if($run=mysqli_query($conn,$signup))
   {
 
@@ -17,7 +19,7 @@ if (isset($_POST['addstud']))
   else
   {
     echo '<script type="text/javascript">alert("Not Done. Please Try Again.")</script>';
-    echo mysql_error($conn);
+    echo mysqli_error($conn);
   }
 
  

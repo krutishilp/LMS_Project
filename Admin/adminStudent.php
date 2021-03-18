@@ -7,6 +7,23 @@
                     <form method='POST' action='admin.php' class="fc">
                         <input type="text" name="name" placeholder="Name"><br><br>
                         <input type="email" name="email" placeholder="Email"><br><br>
+                        <input type="text" name="prn" placeholder="PRN No"><br><br>
+                        <select name="year" id="year">
+                          <option value="">Select</option>
+                          <option value="fe">FE</option>
+                          <option value="se">SE</option>
+                          <option value="te">TE</option>
+                          <option value="be">BE</option>
+                        </select><br><br>
+                        <select name="dept" id="dept">
+                  <option value="">Select Department</option>
+                  <option value="MECH" >Mechanical</option>
+                  <option value="COMP" >Computer</option>
+                  <option value="IT" >IT</option>
+                  <option value="E&TC" >Electronics and telecomunication</option>
+                  <option value="CIVIL" >Civil</option>
+                  <option value="INSTRU">Instrumentation & Control</option>
+                </select><br><br>
                         <input type="submit" name="addstud" value="Add"><br>
                      </form>
     
