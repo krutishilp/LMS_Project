@@ -36,12 +36,26 @@
               <div class="col adminpad">
                 <h3>Search Faculty</h3>
                     <div class="fc" style="height: 88%;">
+                    <form method='POST' action='admin.php'>
                         <input type="text" name="name" placeholder="Name"><br><br>
                         <input type="email" name="email" placeholder="Email" id="find"><br><br><br>
                         <br><br>
-                        <button onclick="findString('find')">Search</button>
+                        <input type="submit" name="findteacher" value="find">
+                    </form>
                       </div>
               </div>
+              <?php 
+              if(isset($_POST['findteacher'])){
+                  $email = $_POST['email'];
+             
+                  $query = "SELECT * from teachers where email= '$email'";
+                  $run=mysqli_query($conn,$query);
+               if($row=mysqli_fetch_assoc($run))
+               {
+                // echo '"Faculty found '.$row['teacher_Id'].' 
+                // '.$row['email'].' '.$row['name'].' '.$row['dept_Id'].'"';
+             }}
+              ?>
               <div class="col adminpad">
                 <h3>Bulk Add Faculty</h3>
                     <form method='POST' action='admin.php' class="fc" style="height: 88%;" enctype='multipart/form-data'>

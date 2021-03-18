@@ -7,6 +7,23 @@
                     <form method='POST' action='admin.php' class="fc">
                         <input type="text" name="name" placeholder="Name"><br><br>
                         <input type="email" name="email" placeholder="Email"><br><br>
+                        <input type="text" name="prn" placeholder="PRN No"><br><br>
+                        <select name="year" id="year">
+                          <option value="">Select</option>
+                          <option value="fe">FE</option>
+                          <option value="se">SE</option>
+                          <option value="te">TE</option>
+                          <option value="be">BE</option>
+                        </select><br><br>
+                        <select name="dept" id="dept">
+                  <option value="">Select Department</option>
+                  <option value="MECH" >Mechanical</option>
+                  <option value="COMP" >Computer</option>
+                  <option value="IT" >IT</option>
+                  <option value="E&TC" >Electronics and telecomunication</option>
+                  <option value="CIVIL" >Civil</option>
+                  <option value="INSTRU">Instrumentation & Control</option>
+                </select><br><br>
                         <input type="submit" name="addstud" value="Add"><br>
                      </form>
     
@@ -23,20 +40,25 @@
 
               <div class="col adminpad">
                 <h3>Search Student</h3>
-                    <div class="fc">
+                  
+                    <form method='POST' action='' class="fc">
                         <input type="text" name="name" placeholder="Name"><br><br>
                         <input type="email" name="semail" placeholder="Email" id="sfind"><br><br>
-                        <button onclick="findString('sfind')">Search</button>
-                      </div>
-              </div>
-              <script type="text/javascript">
-                function findString(id) {
+                        <input type="submit" name="findstud" value="find">
+                    </form>
+               </div>
+              <?php 
+              if(isset($_POST['findstud'])){
+                  $email = $_POST['semail'];
                 
-                 console.log(id);
-                 window.find(document.getElementById(id).value)
-
-                 }
-              </script>
+                  $query = "SELECT * from student where email= '$email'";
+                  $run=mysqli_query($conn,$query);
+               if($row=mysqli_fetch_assoc($run))
+               {
+                // echo '"Student found '.$row['student_Id'].' 
+                // '.$row['email'].' '.$row['name'].' '.$row['prn'].' '.$row['year'].' '.$row['dept'].'"';
+             }}
+              ?>
 
               <div class="col adminpad">
                 <h3>Bulk Add Student</h3>
