@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2021 at 06:33 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.16
+-- Generation Time: Mar 25, 2021 at 11:33 AM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -52,7 +53,7 @@ CREATE TABLE `assessment_records` (
   `email` varchar(255) NOT NULL,
   `exam_id` varchar(255) NOT NULL,
   `score` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 0
+  `status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -61,7 +62,61 @@ CREATE TABLE `assessment_records` (
 
 INSERT INTO `assessment_records` (`email`, `exam_id`, `score`, `status`) VALUES
 ('srushti@gmail.com', '12345', '100', 1),
-('srushti@gmail.com', 'WEBTECH_123', '100', 1);
+('srushti@gmail.com', 'WEBTECH_123', '100', 1),
+('srushti@gmail.com', '123', '100', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assignment`
+--
+
+CREATE TABLE `assignment` (
+  `Assignment_No` int(11) NOT NULL,
+  `Description` varchar(500) NOT NULL,
+  `Subject_Name` varchar(50) NOT NULL,
+  `Unit` int(11) NOT NULL,
+  `Teacher_ID` int(11) NOT NULL,
+  `Assignment_Deadline` date NOT NULL,
+  `Assignment_Given_On` date NOT NULL,
+  `filename` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `assignment`
+--
+
+INSERT INTO `assignment` (`Assignment_No`, `Description`, `Subject_Name`, `Unit`, `Teacher_ID`, `Assignment_Deadline`, `Assignment_Given_On`, `filename`) VALUES
+(1, 'This is 1st assignment', 'Web', 1, 25, '2021-03-24', '2021-03-21', 'pdfs/PAYSLIP JUL 2020 (1).pdf'),
+(2, 'This is 1st assignment for dbms', 'DBMS', 1, 22, '2021-03-31', '2021-03-24', 'pdfs/CandidateHallTicket.pdf'),
+(3, 'This is 2nd assignment', 'DBMS', 2, 22, '2021-04-04', '2021-03-24', 'pdfs/HallTicket_REG_Student.pdf');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assignment_submission`
+--
+
+CREATE TABLE `assignment_submission` (
+  `submission_Id` int(11) NOT NULL,
+  `student_Id` int(11) NOT NULL,
+  `student_name` varchar(100) NOT NULL,
+  `subject_name` varchar(50) NOT NULL,
+  `unit` int(11) NOT NULL,
+  `submission_date` date NOT NULL,
+  `assignment_no` int(11) NOT NULL,
+  `filepath` varchar(500) NOT NULL,
+  `submitted` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `assignment_submission`
+--
+
+INSERT INTO `assignment_submission` (`submission_Id`, `student_Id`, `student_name`, `subject_name`, `unit`, `submission_date`, `assignment_no`, `filepath`, `submitted`) VALUES
+(1, 1, 'Srushti Kishor Wajge', 'DBMS', 1, '2021-03-25', 2, '../teacher/Assignment_Submitted/Resume.pdf', 'On Time'),
+(2, 1, 'Srushti Kishor Wajge', 'DBMS', 2, '2021-03-25', 3, '../teacher/Assignment_Submitted/Pd.pdf', 'On Time'),
+(3, 1, 'Srushti Kishor Wajge', 'Web', 1, '2021-03-25', 1, '../teacher/Assignment_Submitted/IJETT-V4I4P283-1 (1).pdf', 'Late');
 
 -- --------------------------------------------------------
 
@@ -178,7 +233,8 @@ CREATE TABLE `questions` (
 
 INSERT INTO `questions` (`question_id`, `exam_id`, `question`, `op1`, `op2`, `op3`, `op4`, `ans`, `subject`) VALUES
 ('2', '12345', 'What is Python ?', 'SSl', 'ASD', 'AAD', 'ER', 'op1', 'DBMS'),
-('1', 'WEBTECH_123', 'What is Web?', 'asd', 'ase', 'qwe', 'erf', 'op1', 'Web');
+('1', 'WEBTECH_123', 'What is Web?', 'asd', 'ase', 'qwe', 'erf', 'op1', 'Web'),
+('1', '123', 'what is database management system?', 'as', 'asa', 'asasa', 'asasas', 'op2', 'DBMS');
 
 -- --------------------------------------------------------
 
@@ -202,7 +258,8 @@ CREATE TABLE `quizz` (
 
 INSERT INTO `quizz` (`quizz_id`, `name`, `exam_id`, `duration`, `status`, `subject`, `teacher_id`) VALUES
 (1, 'XYZ', '12345', '12345', 0, 'DBMS', 22),
-(2, 'WEB TECH', 'WEBTECH_123', '20', 0, 'Web', 25);
+(2, 'WEB TECH', 'WEBTECH_123', '20', 1, 'Web', 25),
+(3, 'DBMS', '123', '30', 0, 'DBMS', 22);
 
 -- --------------------------------------------------------
 
@@ -236,7 +293,8 @@ INSERT INTO `qwise_assesment` (`email`, `exam_id`, `question_id`, `uans`, `pt`) 
 ('Srushti@g.com', '123451212', '1', 'op4', 1),
 ('srushti@gmail.com', '12345', '1', 'op1', 0),
 ('srushti@gmail.com', '12345', '2', 'op1', 1),
-('srushti@gmail.com', 'WEBTECH_123', '1', 'op1', 1);
+('srushti@gmail.com', 'WEBTECH_123', '1', 'op1', 1),
+('srushti@gmail.com', '123', '1', 'op2', 1);
 
 -- --------------------------------------------------------
 
@@ -372,7 +430,7 @@ CREATE TABLE `teachers` (
 
 INSERT INTO `teachers` (`teacher_Id`, `email`, `name`, `subject`, `dept_Id`, `Password`) VALUES
 (22, 'shewale@gmail.com', 'Shewale', 'DBMS', 2, '6051f69b0b347'),
-(25, 'krutishilp@gmail.com', 'Krutishil Purkar', 'Web', 2, '6052377c93550');
+(25, 'krutishilp@gmail.com', 'Krutishil Purkar', 'Web', 2, '12345');
 
 -- --------------------------------------------------------
 
@@ -458,6 +516,18 @@ ALTER TABLE `admin`
   ADD UNIQUE KEY `admin_email` (`email`);
 
 --
+-- Indexes for table `assignment`
+--
+ALTER TABLE `assignment`
+  ADD PRIMARY KEY (`Assignment_No`);
+
+--
+-- Indexes for table `assignment_submission`
+--
+ALTER TABLE `assignment_submission`
+  ADD PRIMARY KEY (`submission_Id`);
+
+--
 -- Indexes for table `departments`
 --
 ALTER TABLE `departments`
@@ -500,6 +570,18 @@ ALTER TABLE `admin`
   MODIFY `admin_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `assignment`
+--
+ALTER TABLE `assignment`
+  MODIFY `Assignment_No` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `assignment_submission`
+--
+ALTER TABLE `assignment_submission`
+  MODIFY `submission_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
@@ -509,7 +591,7 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `quizz`
 --
 ALTER TABLE `quizz`
-  MODIFY `quizz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `quizz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `student`
