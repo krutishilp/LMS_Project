@@ -85,7 +85,7 @@
                    echo '<span onclick="tgllist(\''.$quizz.'\')">Quizzes</span>';
                        echo  '<div class="sub" id="'.$quizz.'">';
                              echo '<ul>';
-                                $getquizz="SELECT * FROM quizz WHERE subject='$sub'";
+                                $getquizz="SELECT * FROM quizz WHERE subject='$sub' and status=0";
                                 $rgetquizz=mysqli_query($conn,$getquizz);
                                 while($quizzrow=mysqli_fetch_assoc($rgetquizz))
                                 { 

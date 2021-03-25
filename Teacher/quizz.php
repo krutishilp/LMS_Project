@@ -3,6 +3,7 @@
 $eid=$_GET['eid'];
 $aid=$_GET['qno'];
 $sub=$_GET['qsub'];
+$status=$_GET['qstatus'];
 $email=$_SESSION['teacher_user_email'];
 $name=$_SESSION['teacher_user_name'];
 ?>
@@ -33,6 +34,7 @@ $name=$_SESSION['teacher_user_name'];
    </ul>		
   </nav>
   <div class="container-fluid">
+  <button id="toggleStatus"></button>
     <div class="row pad">
     	<div class="col-lg-12 md-auto sm-auto pad">
         <?php include 'quiz-table.php'; ?> 
@@ -68,13 +70,14 @@ $name=$_SESSION['teacher_user_name'];
         </table>
       </div>
       <br><button onclick="printDiv('results')">Download Result</button>
+      
     </div>
   </div>
   	<br><br><br><br>
 
 
   <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="footer">
-        <a class="navbar-brand mx-auto">Made by Nishad Raisinghani</a>
+        <a class="navbar-brand mx-auto">....</a>
   </div>
 </body>
 </html>
@@ -97,3 +100,48 @@ if (isset($_POST['lgt']))
      document.body.innerHTML = originalContents;
 }
 </script>
+
+<script type="text/javascript"> 
+       $(function(){
+        var status = <?php echo "'$status'" ?> 
+        console.log(status);
+        if(status == '0'){
+          $("#toggleStatus").html('Deactivate');
+        } else if(status=='1'){
+          $("#toggleStatus").html('Activate');
+        }
+         $("#toggleStatus").on('click',function(){
+           var status = <?php echo "'$status'" ?> 
+          if(status == '0' || status == '1'){
+            
+            $.ajax({ 
+             method: "GET", 
+        
+             url: 'toggleStatus.php?'.concat("<?php 
+            echo "eid=".$eid."&qstatus=".$status.""
+           ?>")
+         }).done(function( data ) { 
+           alert("Done");
+           window.history.back();
+         });
+          }
+       }); 
+   }); 
+</script>     
+
+ <?php/*
+if (isset($GET['qstatus'])) 
+ {
+   $query = "";
+  if($GET['qstatus'] == 0){
+    $query = "UPDATE quizz SET status = '$status' WHERE exam_id = '$eid'";
+    if(mysqli_query($conn,$query)){
+      echo "<h2>ddddddddddddddd</h2>";
+    }
+  }else if($GET['qstatus'] == 1){
+    $query = "UPDATE quizz set status = '$status' WHERE exam_id = 0";
+    $rungetr=mysqli_query($conn,$query);
+  }
+ }
+ */
+?> 
