@@ -3,7 +3,7 @@
                $email=$_SESSION['teacher_user_email'];
                $name=$_SESSION['teacher_user_name'];
                $pass=$_SESSION['teacher_user_pass'];
-            ?>
+             ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,12 +95,33 @@
                                 $rgetquizz=mysqli_query($conn,$getquizz);
                                 while($quizzrow=mysqli_fetch_assoc($rgetquizz))
                                 { 
+<<<<<<< HEAD
                                  echo '<li><a href="quizz.php?eid='.$quizzrow['exam_id'].'&qno='.$quizzrow['name'].'&qsub='.$quizzrow['subject'].'&qstatus='.$quizzrow['status'].'">'.$quizzrow['name'].'</a></li>';
+=======
+                                  echo '<li><a href="quizz.php?eid='.$quizzrow['exam_id'].'&qno='.$quizzrow['name'].'&qsub='.$quizzrow['subject'].'&qstatus='.$quizzrow['status'].'">'.$quizzrow['name'].'</a></li>';
+>>>>>>> 8c9bd3b5b136623785b64272f0b78e704ee08049
                                 }
                               echo '</ul>';
 
                        echo  '</div>';
                   echo '</li>';
+                  echo '<li>';
+                  $assign=$row['subject'].'assign';
+                   echo '<span onclick="tgllist(\''.$assign.'\')">Assignment Summary</span>';
+                       echo  '<div class="sub" id="'.$assign.'">';
+                             echo '<ul>';
+                                $getassign="SELECT * FROM assignment WHERE Subject_Name='$sub'";
+                                $rgetassign=mysqli_query($conn,$getassign);
+                                while($assignrow=mysqli_fetch_assoc($rgetassign))
+                                { 
+                                 echo '<li><a href="submitted_ass.php?unit='.$assignrow['Unit'].'&desc='
+                                 .$assignrow['Description'].'&qsub='.$assignrow['Subject_Name'].'">'.$assignrow['Unit'].'</a></li>';                    
+                                }
+                              echo '</ul>';
+
+                       echo  '</div>';
+                  echo '</li>';
+                 
                   
             	echo '</ul>';
             echo '</div>';
@@ -179,3 +200,6 @@ if (isset($_POST['lgt']))
   echo "<script type='text/javascript'>location.replace('../index.php')</script>";
  }
 ?>
+
+
+

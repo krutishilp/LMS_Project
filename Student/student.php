@@ -1,17 +1,32 @@
 <?php session_start()?>
 <?php
+    $Id = $_SESSION['student_Id'];
     $email=$_SESSION['student_user_email'];
-    $name=$_SESSION['student_user_name'];
+    $studname=$_SESSION['student_user_name'];
     $pass=$_SESSION['student_user_pass'];
     $year = $_SESSION['student_user_year'];
     $dept = $_SESSION['student_user_dept'];
+
+
+  
+
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Student</title>
 	<?php include '../links.php' ?>
-	<?php include '../connection.php' ?>
+  <?php include '../connection.php'; 
+  $SubjectsInAssignment = array();
+  $getsubsofstudent="SELECT DISTINCT Subject_Name FROM assignment WHERE Subject_Name in ( SELECT subject FROM subjects where 
+  year='$year' and dept = '$dept')";
+  $runsubsofstudent=mysqli_query($conn,$getsubsofstudent);
+  while($row=mysqli_fetch_assoc($runsubsofstudent))
+  {
+    array_push($SubjectsInAssignment, $row['Subject_Name']);
+  }
+  ?>
   <?php include '../style.php' ?>
 </head>
 <body style="height: 100vh !important;">
@@ -85,7 +100,11 @@
                    echo '<span onclick="tgllist(\''.$quizz.'\')">Quizzes</span>';
                        echo  '<div class="sub" id="'.$quizz.'">';
                              echo '<ul>';
+<<<<<<< HEAD
                                 $getquizz="SELECT * FROM quizz WHERE subject='$sub' and status=0";
+=======
+                             $getquizz="SELECT * FROM quizz WHERE subject='$sub' and status=0";
+>>>>>>> 8c9bd3b5b136623785b64272f0b78e704ee08049
                                 $rgetquizz=mysqli_query($conn,$getquizz);
                                 while($quizzrow=mysqli_fetch_assoc($rgetquizz))
                                 { 
@@ -95,10 +114,27 @@
 
                        echo  '</div>';
                   echo '</li>';
+
+                  echo '<li>';
+                  $assign=$row['subject'].'assign';
+                   echo '<span onclick="tgllist(\''.$assign.'\')">Assignment</span>';
+                       echo  '<div class="sub" id="'.$assign.'">';
+                             echo '<ul>';
+                                $getassign="SELECT * FROM assignment WHERE Subject_Name='$sub'";
+                                $rgetassign=mysqli_query($conn,$getassign);
+                                while($assignrow=mysqli_fetch_assoc($rgetassign))
+                                { 
+                                 echo '<li><a href="../teacher/'.$assignrow['filename'].'">'.$assignrow['Unit'].'</a></li>';                    
+                                }
+                              echo '</ul>';
+
+                       echo  '</div>';
+                  echo '</li>';
             	echo '</ul>';
             echo '</div>';
   		echo '</li>';
-  	    }
+        }
+        
         ?>
   		</ul>
   	<hr>
@@ -135,8 +171,9 @@
         <h3><i class="fa fa-bullhorn" aria-hidden="true"></i></h3><h4> Announcements</h4>
       </div>
  <div class="container-fluid "> 
-  <h3>Uploads</h3>
-         <?php include 'upload-form.php'; ?>
+  <h3>Upload Assignments</h3>
+         <?php include 'upload-form.php'; 
+       ?>
       </div>
     </div>
   </div>

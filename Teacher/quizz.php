@@ -119,6 +119,7 @@ if (isset($_POST['lgt']))
         
              url: 'toggleStatus.php?'.concat("<?php 
             echo "eid=".$eid."&qstatus=".$status.""
+<<<<<<< HEAD
            ?>")
          }).done(function( data ) { 
            alert("Done");
@@ -145,3 +146,6 @@ if (isset($GET['qstatus']))
  }
  */
 ?> 
+=======
+           ?>")}).done(function( data ){ alert("Done");           window.history.back();         });          }       });  });</script>
+>>>>>>> 8c9bd3b5b136623785b64272f0b78e704ee08049
