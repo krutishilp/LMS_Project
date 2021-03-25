@@ -3,6 +3,7 @@
 $eid=$_GET['eid'];
 $aid=$_GET['qno'];
 $sub=$_GET['qsub'];
+$status=$_GET['qstatus'];
 $email=$_SESSION['teacher_user_email'];
 $name=$_SESSION['teacher_user_name'];
 ?>
@@ -33,6 +34,7 @@ $name=$_SESSION['teacher_user_name'];
    </ul>		
   </nav>
   <div class="container-fluid">
+  <button id="toggleStatus"></button>
     <div class="row pad">
     	<div class="col-lg-12 md-auto sm-auto pad">
         <?php include 'quiz-table.php'; ?> 
@@ -97,3 +99,23 @@ if (isset($_POST['lgt']))
      document.body.innerHTML = originalContents;
 }
 </script>
+
+<script type="text/javascript"> 
+       $(function(){
+        var status = <?php echo "'$status'" ?> 
+        console.log(status);
+        if(status == '0'){
+          $("#toggleStatus").html('Deactivate');
+        } else if(status=='1'){
+          $("#toggleStatus").html('Activate');
+        }
+         $("#toggleStatus").on('click',function(){
+           var status = <?php echo "'$status'" ?> 
+          if(status == '0' || status == '1'){
+            
+            $.ajax({ 
+             method: "GET", 
+        
+             url: 'toggleStatus.php?'.concat("<?php 
+            echo "eid=".$eid."&qstatus=".$status.""
+           ?>")}).done(function( data ){ alert("Done");           window.history.back();         });          }       });  });</script>

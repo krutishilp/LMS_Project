@@ -10,7 +10,7 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <h3>prathamesh</h3>
+  <h3><?php echo date('Y-m-d H:i:s');?></h3>
     <a class="navbar-brand mx-auto" href="#">E-Learning</a>
   </nav>
   <div class="container-fluid pad2">
@@ -150,8 +150,10 @@ if (isset($_POST['lg'])) {
         $_SESSION['admin_user_name'] = $row['name'];
         echo "<script type='text/javascript'>location.replace('Admin/admin.php')</script>";
       } else {
+
         $_SESSION['student_user_email'] = $email;
         $_SESSION['student_user_pass'] = $password;
+        $_SESSION['student_Id'] = $row['student_Id'];
         $_SESSION['student_user_name'] = $row['name'];
         $_SESSION['student_user_year'] = $row['year'];
         $_SESSION['student_user_dept'] = $row['dept'];
