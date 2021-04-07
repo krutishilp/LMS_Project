@@ -109,7 +109,7 @@ if(isset($_POST['submit_ans']))
     $qn++;
   }
   $score=($tpt/$totalq)*100;
-   $uprecords="INSERT INTO `assessment_records` values ('$email','$eid','$score',1)";
+   $uprecords="INSERT INTO `assessment_records`(`stud_name`,`email`,`exam_id`,`score`,`status`) values ('$name','$email','$eid','$score',1)";
    if($runup=mysqli_query($conn,$uprecords))
    {
     echo "<script type='text/javascript'>alert('Test Submitted')</script>";

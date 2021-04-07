@@ -8,12 +8,10 @@
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+
+<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
 <!--link rel="stylesheet" type="text/css" href="style.css"-->
-<!--
-Product Name: E-learning (Learning Management System)
-Author: Nishad Raisinghani
-Author URI: http:https://www.linkedin.com/in/justnishad/
-Description:A learning management system for video/ppt/pdf sharing with inbuilt quiz-like-assessments.
-Version: 0.1
-License: Apache License 2.0
--->

@@ -8,13 +8,13 @@ while ($qrow=mysqli_fetch_assoc($runq))
 }
 $tbl_html.="<form method='post'>";
 $tbl_html.="<tr><td><input type='text' name='q_id' placeholder='question-id'></td><td><input type='text' name='q' placeholder='question'></td><td><input type='text' name='op1' placeholder='option 1'></td><td><input type='text' name='op2' placeholder='option 2'></td><td><input type='text' name='op3' placeholder='option 3'></td><td><input type='text' name='op4' placeholder='option 4'></td><td><input type='text' name='ans' placeholder='Answer'></td></tr>";
-$tbl_html.="<tr><td><input type='submit' name='addq' value='add'></td></tr>";
+$tbl_html.="<tr><td><input type='submit' name='addq' value='Add Question'></td></tr>";
 $tbl_html.="</form>";
 
 $del_html="";
 $del_html.="<br><form method='post'>";
 $del_html.="<input type='text' name='q_id' placeholder='question-id'>";
-$del_html.="<tr><td><input type='submit' name='delq' value='delete'></td></tr>";
+$del_html.="<tr><td><input type='submit' name='delq' value='Delete'></td></tr>";
 $del_html.="</form>";
 
 

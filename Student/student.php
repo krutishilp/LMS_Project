@@ -33,7 +33,7 @@
 <!-- Side Bar -->
   <div id="sb">
   	<!-- Teacher Profile  -->
-  	Hi <?php echo $name ;?>
+  	Hi <?php echo $studname ;?>
   	<hr>
   	<ul style="list-style-type: none">
   		<?php
@@ -100,11 +100,7 @@
                    echo '<span onclick="tgllist(\''.$quizz.'\')">Quizzes</span>';
                        echo  '<div class="sub" id="'.$quizz.'">';
                              echo '<ul>';
-<<<<<<< HEAD
                                 $getquizz="SELECT * FROM quizz WHERE subject='$sub' and status=0";
-=======
-                             $getquizz="SELECT * FROM quizz WHERE subject='$sub' and status=0";
->>>>>>> 8c9bd3b5b136623785b64272f0b78e704ee08049
                                 $rgetquizz=mysqli_query($conn,$getquizz);
                                 while($quizzrow=mysqli_fetch_assoc($rgetquizz))
                                 { 

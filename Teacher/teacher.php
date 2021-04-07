@@ -95,11 +95,7 @@
                                 $rgetquizz=mysqli_query($conn,$getquizz);
                                 while($quizzrow=mysqli_fetch_assoc($rgetquizz))
                                 { 
-<<<<<<< HEAD
                                  echo '<li><a href="quizz.php?eid='.$quizzrow['exam_id'].'&qno='.$quizzrow['name'].'&qsub='.$quizzrow['subject'].'&qstatus='.$quizzrow['status'].'">'.$quizzrow['name'].'</a></li>';
-=======
-                                  echo '<li><a href="quizz.php?eid='.$quizzrow['exam_id'].'&qno='.$quizzrow['name'].'&qsub='.$quizzrow['subject'].'&qstatus='.$quizzrow['status'].'">'.$quizzrow['name'].'</a></li>';
->>>>>>> 8c9bd3b5b136623785b64272f0b78e704ee08049
                                 }
                               echo '</ul>';
 
