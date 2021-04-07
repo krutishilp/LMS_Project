@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2021 at 11:33 AM
--- Server version: 10.1.29-MariaDB
--- PHP Version: 7.2.0
+-- Generation Time: Apr 07, 2021 at 05:08 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -50,20 +49,25 @@ INSERT INTO `admin` (`admin_Id`, `name`, `email`, `Password`) VALUES
 --
 
 CREATE TABLE `assessment_records` (
+  `assessment_id` int(11) NOT NULL,
+  `stud_name` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
   `exam_id` varchar(255) NOT NULL,
-  `score` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '0'
+  `score` int(255) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `assessment_records`
 --
 
-INSERT INTO `assessment_records` (`email`, `exam_id`, `score`, `status`) VALUES
-('srushti@gmail.com', '12345', '100', 1),
-('srushti@gmail.com', 'WEBTECH_123', '100', 1),
-('srushti@gmail.com', '123', '100', 1);
+INSERT INTO `assessment_records` (`assessment_id`, `stud_name`, `email`, `exam_id`, `score`, `status`) VALUES
+(1, 'Srushti aaa', 'srushti@gmail.com', '123456', 40, 1),
+(2, 'Srushti', 'srushti@gmail.com', '123456', 50, 1),
+(3, 'Srushti wwww', 'srushti@gmail.com', '123456', 75, 1),
+(4, 'Test', 'test@test.com', '123456', 80, 1),
+(6, 'Srushti Kishor Wajge', 'srushti@gmail.com', '123456', 50, 1),
+(7, 'Srushti Kishor Wajge', 'srushti@gmail.com', '123456', 100, 1);
 
 -- --------------------------------------------------------
 
@@ -234,7 +238,9 @@ CREATE TABLE `questions` (
 INSERT INTO `questions` (`question_id`, `exam_id`, `question`, `op1`, `op2`, `op3`, `op4`, `ans`, `subject`) VALUES
 ('2', '12345', 'What is Python ?', 'SSl', 'ASD', 'AAD', 'ER', 'op1', 'DBMS'),
 ('1', 'WEBTECH_123', 'What is Web?', 'asd', 'ase', 'qwe', 'erf', 'op1', 'Web'),
-('1', '123', 'what is database management system?', 'as', 'asa', 'asasa', 'asasas', 'op2', 'DBMS');
+('1', '123', 'what is database management system?', 'as', 'asa', 'asasa', 'asasas', 'op2', 'DBMS'),
+('1', '123456', 'kkkk', 'k', 'cc', 'l', 'l', 'op1', 'Cloud'),
+('2', '123456', 'ssss', 'a', 'w', 's', 's', 'op2', 'Cloud');
 
 -- --------------------------------------------------------
 
@@ -259,7 +265,8 @@ CREATE TABLE `quizz` (
 INSERT INTO `quizz` (`quizz_id`, `name`, `exam_id`, `duration`, `status`, `subject`, `teacher_id`) VALUES
 (1, 'XYZ', '12345', '12345', 0, 'DBMS', 22),
 (2, 'WEB TECH', 'WEBTECH_123', '20', 1, 'Web', 25),
-(3, 'DBMS', '123', '30', 0, 'DBMS', 22);
+(3, 'DBMS', '123', '30', 0, 'DBMS', 22),
+(4, 'Cloud', '123456', '20', 0, 'Cloud', 25);
 
 -- --------------------------------------------------------
 
@@ -268,6 +275,7 @@ INSERT INTO `quizz` (`quizz_id`, `name`, `exam_id`, `duration`, `status`, `subje
 --
 
 CREATE TABLE `qwise_assesment` (
+  `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `exam_id` varchar(255) NOT NULL,
   `question_id` varchar(255) NOT NULL,
@@ -279,22 +287,26 @@ CREATE TABLE `qwise_assesment` (
 -- Dumping data for table `qwise_assesment`
 --
 
-INSERT INTO `qwise_assesment` (`email`, `exam_id`, `question_id`, `uans`, `pt`) VALUES
-('rajp@gmail.com', 'PY', 'PYQ-1', 'op1', 1),
-('rajp@gmail.com', 'PY', 'PYQ-2', 'op2', 1),
-('rajp@gmail.com', 'PY', 'PYQ-3', 'op3', 1),
-('rajp@gmail.com', 'PY', 'PYQ-4', 'op4', 1),
-('rajp@gmail.com', 'PY', 'PYQ-5', 'op1', 1),
-('d@r', '12', '1', 'op3', 0),
-('d@r', '12', '2', 'op2', 0),
-('d@r', '123', '1', 'op4', 0),
-('d@r', '123', '2', 'op3', 0),
-('Srushti@g.com', '12345', '1', 'op4', 0),
-('Srushti@g.com', '123451212', '1', 'op4', 1),
-('srushti@gmail.com', '12345', '1', 'op1', 0),
-('srushti@gmail.com', '12345', '2', 'op1', 1),
-('srushti@gmail.com', 'WEBTECH_123', '1', 'op1', 1),
-('srushti@gmail.com', '123', '1', 'op2', 1);
+INSERT INTO `qwise_assesment` (`id`, `email`, `exam_id`, `question_id`, `uans`, `pt`) VALUES
+(1, 'rajp@gmail.com', 'PY', 'PYQ-1', 'op1', 1),
+(2, 'rajp@gmail.com', 'PY', 'PYQ-2', 'op2', 1),
+(3, 'rajp@gmail.com', 'PY', 'PYQ-3', 'op3', 1),
+(4, 'rajp@gmail.com', 'PY', 'PYQ-4', 'op4', 1),
+(5, 'rajp@gmail.com', 'PY', 'PYQ-5', 'op1', 1),
+(6, 'd@r', '12', '1', 'op3', 0),
+(7, 'd@r', '12', '2', 'op2', 0),
+(8, 'd@r', '123', '1', 'op4', 0),
+(9, 'd@r', '123', '2', 'op3', 0),
+(10, 'Srushti@g.com', '12345', '1', 'op4', 0),
+(11, 'Srushti@g.com', '123451212', '1', 'op4', 1),
+(12, 'srushti@gmail.com', '12345', '1', 'op1', 0),
+(13, 'srushti@gmail.com', '12345', '2', 'op1', 1),
+(14, 'srushti@gmail.com', 'WEBTECH_123', '1', 'op1', 1),
+(15, 'srushti@gmail.com', '123', '1', 'op2', 1),
+(16, 'test@test.com', '123456', '1', 'op2', 0),
+(17, 'test@test.com', '123456', '2', 'op2', 1),
+(24, 'srushti@gmail.com', '123456', '1', 'op2', 0),
+(25, 'srushti@gmail.com', '123456', '2', 'op2', 1);
 
 -- --------------------------------------------------------
 
@@ -338,7 +350,8 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`student_Id`, `name`, `email`, `prn`, `year`, `dept`, `Password`) VALUES
-(1, 'Srushti Kishor Wajge', 'srushti@gmail.com', '71611203F', 'te', 'comp', '12345');
+(1, 'Srushti Kishor Wajge', 'srushti@gmail.com', '71611203F', 'be', 'comp', '12345'),
+(2, 'Krutishil Purkar', 'test@test.com', '12345', 'be', 'comp', '12345');
 
 -- --------------------------------------------------------
 
@@ -404,8 +417,8 @@ INSERT INTO `subjects` (`subject_Id`, `subject`, `year`, `dept`, `sem`) VALUES
 (1, 'Python', 'TE', 'IT', 3),
 (2, 'DSF', 'SE', 'IT', 4),
 (3, 'DBMS', 'TE', 'COMP', 5),
-(4, 'Cloud Computing', 'BE', 'COMP', 8),
-(5, 'Artificial Intelligence', 'BE', 'COMP', 8),
+(4, 'Cloud', 'BE', 'COMP', 8),
+(5, 'Artificial', 'BE', 'COMP', 8),
 (6, 'Web', 'TE', 'COMP', 6),
 (7, 'TOC', 'TE', 'COMP', 5);
 
@@ -430,7 +443,7 @@ CREATE TABLE `teachers` (
 
 INSERT INTO `teachers` (`teacher_Id`, `email`, `name`, `subject`, `dept_Id`, `Password`) VALUES
 (22, 'shewale@gmail.com', 'Shewale', 'DBMS', 2, '6051f69b0b347'),
-(25, 'krutishilp@gmail.com', 'Krutishil Purkar', 'Web', 2, '12345');
+(25, 'krutishilp@gmail.com', 'Krutishil Purkar', 'Cloud', 2, '12345');
 
 -- --------------------------------------------------------
 
@@ -516,6 +529,12 @@ ALTER TABLE `admin`
   ADD UNIQUE KEY `admin_email` (`email`);
 
 --
+-- Indexes for table `assessment_records`
+--
+ALTER TABLE `assessment_records`
+  ADD PRIMARY KEY (`assessment_id`);
+
+--
 -- Indexes for table `assignment`
 --
 ALTER TABLE `assignment`
@@ -538,6 +557,12 @@ ALTER TABLE `departments`
 --
 ALTER TABLE `quizz`
   ADD PRIMARY KEY (`quizz_id`);
+
+--
+-- Indexes for table `qwise_assesment`
+--
+ALTER TABLE `qwise_assesment`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `student`
@@ -570,6 +595,12 @@ ALTER TABLE `admin`
   MODIFY `admin_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `assessment_records`
+--
+ALTER TABLE `assessment_records`
+  MODIFY `assessment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `assignment`
 --
 ALTER TABLE `assignment`
@@ -591,13 +622,19 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `quizz`
 --
 ALTER TABLE `quizz`
-  MODIFY `quizz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `quizz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `qwise_assesment`
+--
+ALTER TABLE `qwise_assesment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `student_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `subjects`
