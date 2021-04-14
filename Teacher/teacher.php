@@ -179,8 +179,8 @@
 <?php
 if(isset($_POST['publish']))
 {
- $name=$_POST['vidname'];
- $q="UPDATE videos SET status=1 WHERE author='$email' and name='$name'";
+ $vidname=$_POST['vidname'];
+ $q="UPDATE videos SET status=1 WHERE author='$email' and name='$vidname'";
  ($run=mysqli_query($conn,$q));
  {
    echo  '<script type="text/javascript">alert("Video Published")</script>';

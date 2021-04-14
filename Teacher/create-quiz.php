@@ -1,11 +1,41 @@
-<h3>Create Quizz/Assignment </h3>
-      <form action="teacher.php" class="fc" method="post" enctype="multipart/form-data">
-        <input type="radio" id="quiz" name="ass_type" value="quiz"><label for="male" style="width: 75%;">Quiz</label>
-        <input type="radio" id="assign" name="ass_type" value="assign"><label for="female" style="width: 75%;">Assignment</label>
-        <br><br>
-        <input type="text" name="qname" placeholder="Description" style="width: 75%;"><br><br>
+<div style="padding: 45px;">
+<h3>Create Quiz/Assignment</h3>
+<input type="radio" id="quiz" name="ass_type" value="2" checked><label for="quiz" >Quiz</label>
+<input type="radio" id="assign" name="ass_type" value="3" ><label for="assign">Assignment</label>
+</div>
+<div id="Quiz2" class="desc">
+<h3>Create Quiz</h3>
+
+        <form action="teacher.php" class="fc" method="post" enctype="multipart/form-data">     
+        <input type="text" name="qname" placeholder="Quiz Name" style="width: 75%;"><br><br>
         <input type="text" name="qid" placeholder="Quiz/Assignment ID(same as in file uploaded)" style="width: 75%;"><br><br>
         <input type="number" name="duration" placeholder="Duration(minutes) Not mandatory for assignment" style="width: 75%"><br><br>
+        <select name="subs" style="width: 75%">
+        
+    <option value="" disabled selected>Select Subject</option>
+    <?php
+
+   $getsubs="SELECT * FROM teachers WHERE email='$email'";
+   if($rungetsub=mysqli_query($conn,$getsubs))
+   {
+   while ($row=mysqli_fetch_assoc($rungetsub))
+   {
+    echo '<option value="'.$row['subject'].'">'.$row['subject'].'</option>';
+   }
+   }                            
+    ?>   
+   </select><br><br>
+        <input type="submit" name="cq" value="Create"><br><br>
+      </form>
+
+
+  </div>
+<div id="Quiz3" class="desc" style="display: none;" >
+
+<h3>Create Assignment </h3>
+<form action="teacher.php" class="fc" method="post" enctype="multipart/form-data">
+        
+        <input type="text" name="qname" placeholder="Description" style="width: 75%;"><br><br>
         <label for="deadline">Deadline date</label>
         <input type="date" name="deadline" placeholder="Deadline Date" style="width: 75%;"><br><br>
         <select name="subs" style="width: 75%">
@@ -34,24 +64,24 @@
    </select><br><br>
    <label for="upfile">Assinment File</label>
    <input type="file"  name="fl"><br><br>
-        <input type="submit" name="cq" value="Create"><br><br>
+        <input type="submit" name="uploadass" value="Create"><br><br>
       </form>
 
+  </div>
+
+     
+ 
 <?php  
 
 if(isset($_POST['cq']))
 {
-  $selection=$_POST['ass_type'];
   $qnm=$_POST['qname'];
-  $id=$_POST['qid'];
-  $dur=$_POST['duration'];
-  $deadline=$_POST['deadline'];
-  $currenttime=date('Y-m-d');
   $sub=$_POST['subs'];
-  $unit = $_POST['unit'];
- 
-  $status=0;
   $teacher_id = 0;
+
+  $id=$_POST['qid'];
+    $dur=$_POST['duration'];
+    $status=0;
   $getTeacherId="SELECT teacher_Id FROM teachers WHERE email='$email'";
    if($rungetsub=mysqli_query($conn,$getTeacherId))
    {
@@ -60,15 +90,32 @@ if(isset($_POST['cq']))
     $teacher_id = $row['teacher_Id'];
    }
   }
-  if($selection == "quiz"){
-      $ins="INSERT INTO `quizz`(`name`, `exam_id`, `duration`, `status`,`subject`,`teacher_id`) VALUES ('$qnm','$id','$dur','$status','$sub','$teacher_id')";
+    
+      $ins="INSERT INTO `quizz`(`name`, `exam_id`, `duration`, `status`,`subject`,`teacher_id`)
+       VALUES ('$qnm','$id','$dur','$status','$sub','$teacher_id')";
       if($run=mysqli_query($conn,$ins))
       {
           echo '<script type="text/javascript">alert("Done")</script>';
         
-      }
+      } 
+ }
+ 
+ if (isset($_POST['uploadass'])) {
+    $qnm=$_POST['qname'];
+    $sub=$_POST['subs'];
+    $teacher_id = 0;
+  
+    $getTeacherId="SELECT teacher_Id FROM teachers WHERE email='$email'";
+   if($rungetsub=mysqli_query($conn,$getTeacherId))
+   {
+   while ($row=mysqli_fetch_assoc($rungetsub))
+   {
+    $teacher_id = $row['teacher_Id'];
+   }
   }
-  elseif ($selection == "assign") {
+    $deadline=$_POST['deadline'];
+    $unit = $_POST['unit'];
+    $currenttime=date('Y-m-d');
     $filename=$_FILES['fl']['name'];
     $dir="pdfs/";
     $target_file=$dir.$_FILES['fl']['name'];
@@ -88,7 +135,23 @@ if(isset($_POST['cq']))
           echo mysqli_error($conn);
     
   }
-}
+
+
 
 
 ?>      
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("input[name$='ass_type']").click(function() {
+        var test = $(this).val();
+        $("div.desc").hide();
+      
+        $("#Quiz" + test).show();
+
+    //    $("#quiz" + test).css("display","block");
+    });
+});
+</script>

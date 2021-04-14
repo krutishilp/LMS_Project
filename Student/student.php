@@ -2,7 +2,7 @@
 <?php
     $Id = $_SESSION['student_Id'];
     $email=$_SESSION['student_user_email'];
-    $studname=$_SESSION['student_user_name'];
+    $name=$_SESSION['student_user_name'];
     $pass=$_SESSION['student_user_pass'];
     $year = $_SESSION['student_user_year'];
     $dept = $_SESSION['student_user_dept'];
@@ -33,7 +33,7 @@
 <!-- Side Bar -->
   <div id="sb">
   	<!-- Teacher Profile  -->
-  	Hi <?php echo $studname ;?>
+  	Hi <?php echo $name ;?>
   	<hr>
   	<ul style="list-style-type: none">
   		<?php
@@ -162,9 +162,12 @@
       </div>
      </div>
      <br><br>
+     
   	<div class="col-lg-4 sm-auto md-auto pad2">
+    
       <div class="container-fluid fc">
-        <h3><i class="fa fa-bullhorn" aria-hidden="true"></i></h3><h4> Announcements</h4>
+    <?php echo "<a href='../blog.php?name='.$name.'>write a blog</a>"; ?> 
+      <h3><i class="fa fa-bullhorn" aria-hidden="true"></i></h3><h4> Announcements</h4>
       </div>
  <div class="container-fluid "> 
   <h3>Upload Assignments</h3>
