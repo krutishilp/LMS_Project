@@ -3,7 +3,10 @@
 if (isset($_POST['addsub']))
 {
   $nm=$_POST['sub'];
-  $q="INSERT INTO `subjects`(`subject`) VALUES ('$nm')";
+  $dept=$_POST['dept'];
+  $year=$_POST['year'];
+  $sem=$_POST['sem'];
+  $q="INSERT INTO `subjects`(`subject`,`dept`,`year`,`sem`) VALUES ('$nm','$dept','$year','$sem')";
   if($run=mysqli_query($conn,$q))
   {
      echo '<script type="text/javascript">alert("Done")</script>';

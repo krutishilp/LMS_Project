@@ -56,7 +56,7 @@
       <br><br>
       </div>
       <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="footer">
-        <a class="navbar-brand mx-auto">Made by Nishad Raisinghani</a>
+        <a class="navbar-brand mx-auto">...</a>
       </div>
 </body>
 </html>

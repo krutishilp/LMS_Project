@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2021 at 05:08 PM
+-- Generation Time: Apr 15, 2021 at 07:48 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -148,6 +148,30 @@ INSERT INTO `departments` (`dept_Id`, `Name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `final_result`
+--
+
+CREATE TABLE `final_result` (
+  `id` int(11) NOT NULL,
+  `stud_prn` varchar(30) NOT NULL,
+  `subject` varchar(30) NOT NULL,
+  `year` varchar(10) NOT NULL,
+  `dept` varchar(10) NOT NULL,
+  `sem` varchar(10) NOT NULL,
+  `marks` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `final_result`
+--
+
+INSERT INTO `final_result` (`id`, `stud_prn`, `subject`, `year`, `dept`, `sem`, `marks`) VALUES
+(6, '1234544', 'Cloud', 'SE', 'COMP', 'sem2', 100),
+(7, '12345', 'Python', 'SE', 'IT', 'sem1', 50);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pdfs`
 --
 
@@ -170,7 +194,8 @@ INSERT INTO `pdfs` (`name`, `unit`, `subject`, `author`) VALUES
 ('OfferLetter_PrathameshDhobale.pdf', 1, 'DBMS', 'Srushti@g.com'),
 ('Savitribai Phule Pune University, Online Result.pdf', 2, 'DBMS', 'Srushti@g.com'),
 ('Savitribai Phule Pune University, Online Result.pdf', 3, 'DBMS', 'Srushti@g.com'),
-('Savitribai Phule Pune University, Online Result.pdf', 4, 'DBMS', 'Srushti@g.com');
+('Savitribai Phule Pune University, Online Result.pdf', 4, 'DBMS', 'Srushti@g.com'),
+('Spring-Professional-Certification-Study-Guide.pdf', 1, 'Cloud', 'krutishilp@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -266,7 +291,8 @@ INSERT INTO `quizz` (`quizz_id`, `name`, `exam_id`, `duration`, `status`, `subje
 (1, 'XYZ', '12345', '12345', 0, 'DBMS', 22),
 (2, 'WEB TECH', 'WEBTECH_123', '20', 1, 'Web', 25),
 (3, 'DBMS', '123', '30', 0, 'DBMS', 22),
-(4, 'Cloud', '123456', '20', 0, 'Cloud', 25);
+(4, 'Cloud', '123456', '20', 1, 'Cloud', 25),
+(5, 'CLOUD1', '1234', '10', 0, 'Cloud', 25);
 
 -- --------------------------------------------------------
 
@@ -443,7 +469,8 @@ CREATE TABLE `teachers` (
 
 INSERT INTO `teachers` (`teacher_Id`, `email`, `name`, `subject`, `dept_Id`, `Password`) VALUES
 (22, 'shewale@gmail.com', 'Shewale', 'DBMS', 2, '6051f69b0b347'),
-(25, 'krutishilp@gmail.com', 'Krutishil Purkar', 'Cloud', 2, '12345');
+(25, 'krutishilp@gmail.com', 'Krutishil Purkar', 'Cloud', 2, '12345'),
+(26, 'krutishilp@gmail.com', 'Krutishil Purkar', 'Artificial', 2, '60786b0dcdc2e');
 
 -- --------------------------------------------------------
 
@@ -553,6 +580,13 @@ ALTER TABLE `departments`
   ADD PRIMARY KEY (`dept_Id`);
 
 --
+-- Indexes for table `final_result`
+--
+ALTER TABLE `final_result`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `stud_prn` (`stud_prn`);
+
+--
 -- Indexes for table `quizz`
 --
 ALTER TABLE `quizz`
@@ -570,7 +604,8 @@ ALTER TABLE `qwise_assesment`
 ALTER TABLE `student`
   ADD PRIMARY KEY (`student_Id`),
   ADD UNIQUE KEY `student_email` (`email`),
-  ADD UNIQUE KEY `student_prn` (`prn`);
+  ADD UNIQUE KEY `student_prn` (`prn`),
+  ADD UNIQUE KEY `prn` (`prn`);
 
 --
 -- Indexes for table `subjects`
@@ -619,10 +654,16 @@ ALTER TABLE `departments`
   MODIFY `dept_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `final_result`
+--
+ALTER TABLE `final_result`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `quizz`
 --
 ALTER TABLE `quizz`
-  MODIFY `quizz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `quizz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `qwise_assesment`
@@ -640,13 +681,13 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `subject_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `subject_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `teacher_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `teacher_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -8,14 +8,14 @@
                         <input type="text" name="name" placeholder="Name"><br><br>
                         <input type="email" name="email" placeholder="Email"><br><br>
                           <select name="dept" id="dept">
-                  <option value="">Select Department</option>
-                  <option value="MECH" >Mechanical</option>
-                  <option value="COMP" >Computer</option>
-                  <option value="IT" >IT</option>
-                  <option value="E&TC" >Electronics and telecomunication</option>
-                  <option value="CIVIL" >Civil</option>
-                  <option value="INSTRU">Instrumentation & Control</option>
-                </select><br><br>
+                            <option value="">Select Department</option>
+                            <option value="MECH" >Mechanical</option>
+                            <option value="COMP" >Computer</option>
+                            <option value="IT" >IT</option>
+                            <option value="E&TC" >Electronics and telecomunication</option>
+                            <option value="CIVIL" >Civil</option>
+                            <option value="INSTRU">Instrumentation & Control</option>
+                          </select><br><br>
               <div id="getsubjects"></div>
                                     
                         <input type="submit" name="addfaculty" value="Add">&nbsp;&nbsp;&nbsp;
@@ -88,8 +88,40 @@
             <span><h3>Make admin:</h3></span>
             <form class="fc" method="post" action="admin.php"><input type="email" name="email" placeholder="Faculty Email"><br><br><input type="submit" name="mkadmin" value="Make Admin"></form>  </div>
             <div class="col-lg-4 sm-12 md-12 pad">
+            
             <span><h3>Add Subject:</h3></span>
-            <form class="fc" method="post" action="admin.php"><input type="text" name="sub" placeholder="Subject Name"><br><br><input type="submit" name="addsub" value="Add"></form>  </div>
+            <form class="fc" method="post" action="admin.php">
+              <input type="text" name="sub" placeholder="Subject Name">
+              <select name="dept" id="dept">
+                  <option value="">Select Department</option>
+                  <option value="MECH" >Mechanical</option>
+                  <option value="COMP" >Computer</option>
+                  <option value="IT" >IT</option>
+                  <option value="E&TC" >Electronics and telecomunication</option>
+                  <option value="CIVIL" >Civil</option>
+                  <option value="INSTRU">Instrumentation & Control</option>
+              </select>
+              
+              <select name="year" id="year">
+                <option value="" disabled selected>Select Year</option>
+                <option value="FE">FE</option>
+                <option value="SE">SE</option>
+                <option value="SE">TE</option>
+                <option value="SE">BE</option>
+            </select>
+            <select name="sem" id="sem">
+            <option value="" disabled selected>Select Semester</option>
+                <option value="1">SEM 1</option>
+                <option value="2">SEM 2</option>
+                <option value="3">SEM 3</option>
+                <option value="4">SEM 4</option>
+                <option value="5">SEM 5</option>
+                <option value="6">SEM 6</option>
+                <option value="7">SEM 7</option>
+                <option value="8">SEM 8</option>
+            </select>
+              <input type="submit" name="addsub" value="Add">
+            </form>  </div>
             <div class="col-lg-4 sm-12 md-12 pad">
             <span><h3>Delete Subject:</h3></span>
             <form class="fc" method="post" action="admin.php"><input type="text" name="sub" placeholder="Subject Name"><br><br><input type="submit" name="delsub" value="Delete"></form>  </div>

@@ -130,7 +130,9 @@ $name=$_SESSION['teacher_user_name'];
                   $rungetr=mysqli_query($conn,$getrecords);
                   while($rrow=mysqli_fetch_assoc($rungetr))
                   {
-                    $percentage = ($rrow['Passed'] / $rrow['Total'])*100;
+                    if($rrow['Total']!=0){
+                      $percentage = ($rrow['Passed'] / $rrow['Total'])*100;
+                    }
                   }
                   ?>
                 </table>
@@ -147,7 +149,9 @@ $name=$_SESSION['teacher_user_name'];
                   $rungetr=mysqli_query($conn,$getrecords);
                   while($rrow=mysqli_fetch_assoc($rungetr))
                   {
-                    $percentage = ($rrow['Passed'] / $rrow['Total'])*100;
+                    if($rrow['Total']!=0){
+                      $percentage = ($rrow['Passed'] / $rrow['Total'])*100;
+                    }
                   }
                   ?>
                 </table>
