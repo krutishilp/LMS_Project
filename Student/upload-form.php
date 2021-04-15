@@ -25,7 +25,7 @@
   $sub=$_POST['subs'];
  // $type=$_POST['type'];
   $unit=$_POST['units'];
-  $name=$_FILES['fl']['name'];
+  $flname=$_FILES['fl']['name'];
 
   // if($type=='vid')
   // {
@@ -73,7 +73,7 @@
               }
 
               $query = "INSERT INTO assignment_submission(student_Id,student_name,subject_name,unit,submission_date,assignment_no,filepath,submitted
-              ) VALUES('$Id','$studname','$sub','$unit','$currenttime','$assno','$target_file','$status')";
+              ) VALUES('$Id','$name','$sub','$unit','$currenttime','$assno','$target_file','$status')";
               if(mysqli_query($conn,$query))
               {
                     echo '<script type="text/javascript">alert("PDF Uploaded")</script>';
