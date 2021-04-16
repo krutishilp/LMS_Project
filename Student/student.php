@@ -166,7 +166,7 @@
   	<div class="col-lg-4 sm-auto md-auto pad2">
     
       <div class="container-fluid fc">
-    <?php echo "<a href='../blog.php?name='.$name.'>write a blog</a>"; ?> 
+    <?php echo '<a href="../blog.php?name='.$name.'">write a blog</a>'; ?> 
       <h3><i class="fa fa-bullhorn" aria-hidden="true"></i></h3><h4> Announcements</h4>
       </div>
  <div class="container-fluid "> 

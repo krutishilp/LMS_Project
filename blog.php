@@ -20,7 +20,7 @@ echo $name; // session_start()?> -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
    <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-      	<a href="teacher.php"><i id="tg" class='fas fa-arrow-alt-circle-left' style='color:#d5d5d5;font-size: 30px;'></i></a>
+      	<a href="student/student.php"><i id="tg" class='fas fa-arrow-alt-circle-left' style='color:#d5d5d5;font-size: 30px;'></i></a>
         </li>
     </ul>
    <a class="navbar-brand mx-auto" href="#">E-Learning</a>
@@ -33,37 +33,37 @@ echo $name; // session_start()?> -->
    </ul>		
   </nav>
 
-<form action='?' method='POST' enctype='multipart/form-data' class="fc">
+<form action='#' method='POST' enctype='multipart/form-data' class="fc">
 <input type="file" accept=".png, .jpg, .jpeg" name="fl"/><br><br>
 <label for="write">Write Something:</label>
 <textarea id="write" name="write" rows="4" cols="50"></textarea><br><br>
    <input type='submit' value='Post' name='postblog'><br>
 </form>
-</body>
-</html>
+
 <?php
-echo $name;
 if(isset($_POST['postblog'])){
     $text=$_POST['write'];
     $filename=$_FILES['fl']['name'];
     $currenttime=date('Y-m-d');
-    $dir="../blogs/images/";
+    $dir="blogs/images/";
     $target_file=$dir.$_FILES['fl']['name'];
     if(move_uploaded_file($_FILES['fl']['tmp_name'],$target_file)){
-         
-        $query = "INSERT INTO blog(author,submission_date,imagepath,blogtext)
-         VALUES('$name','$currenttime','$target_file','$text')";
-        if(mysqli_query($conn,$query))
+
+        $que = "INSERT INTO blog (author,submission_date,imagepath,blogtext) VALUES
+        ('$name','$currenttime','$target_file','$text')";
+        if(mysqli_query($conn,$que))
         {
               echo '<script type="text/javascript">alert("Blog Posted")</script>';
-              echo '<script type="text/javascript">location.replace("?")</script>';
+              echo '<script type="text/javascript">location.replace("#")</script>';
         }
         else
         {
-              echo '<script type="text/javascript">alert("PDF Not Uploaded")</script>';
+              echo '<script type="text/javascript">alert("Blog Not Uploaded'.$name.''.$currenttime.''.$target_file.''.$text.'")</script>';
 
         }   
     }
    
 }
 ?>
+</body>
+</html>

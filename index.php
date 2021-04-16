@@ -97,7 +97,7 @@
 
 <?php
 include 'connection.php';
-
+include 'showblog.php';
 //-------------------------------------------- Sign-Up ------------------------------------------	
 if (isset($_POST['su'])) {
 
