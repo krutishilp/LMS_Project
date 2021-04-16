@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2021 at 07:48 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.16
+-- Generation Time: Apr 16, 2021 at 11:37 AM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -54,7 +55,7 @@ CREATE TABLE `assessment_records` (
   `email` varchar(255) NOT NULL,
   `exam_id` varchar(255) NOT NULL,
   `score` int(255) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 0
+  `status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -121,6 +122,32 @@ INSERT INTO `assignment_submission` (`submission_Id`, `student_Id`, `student_nam
 (1, 1, 'Srushti Kishor Wajge', 'DBMS', 1, '2021-03-25', 2, '../teacher/Assignment_Submitted/Resume.pdf', 'On Time'),
 (2, 1, 'Srushti Kishor Wajge', 'DBMS', 2, '2021-03-25', 3, '../teacher/Assignment_Submitted/Pd.pdf', 'On Time'),
 (3, 1, 'Srushti Kishor Wajge', 'Web', 1, '2021-03-25', 1, '../teacher/Assignment_Submitted/IJETT-V4I4P283-1 (1).pdf', 'Late');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog`
+--
+
+CREATE TABLE `blog` (
+  `blog_id` int(11) NOT NULL,
+  `author` varchar(50) NOT NULL,
+  `submission_date` date NOT NULL,
+  `imagepath` varchar(500) NOT NULL,
+  `blogtext` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `blog`
+--
+
+INSERT INTO `blog` (`blog_id`, `author`, `submission_date`, `imagepath`, `blogtext`) VALUES
+(1, 'Srushti Kishor Wajge', '2021-04-16', 'blogs/images/ph-10026.jpg', '</body>\r\n</html>'),
+(2, 'Srushti Kishor Wajge', '2021-04-16', 'blogs/images/1CfduBj.jpg', 'my name is sdjklsjdlalfbn nkjsabflkbnsdbbhdflasnl'),
+(3, 'Srushti Kishor Wajge', '2021-04-16', 'blogs/images/46910965-3d-wallpaper-hd.jpg', 'If life were predictable it would cease to be life, and be without flavor.'),
+(4, 'Srushti Kishor Wajge', '2021-04-16', 'blogs/images/taylorig1440_900.png', 'Life throws curveballs And while there might be blockers to success its imperative to keep pushing with the knowledge mistakes will be made and failure is inevitable'),
+(5, 'Srushti Kishor Wajge', '2021-04-16', 'blogs/images/46910965-3d-wallpaper-hd.jpg', 'Life throws curveballs. And while there might be blockers to success, its imperative to keep pushing with the knowledge mistakes will be made and failure is inevitable.'),
+(6, 'Krutishil Purkar', '2021-04-16', 'blogs/images/ph-10042.jpg', 'hi hello');
 
 -- --------------------------------------------------------
 
@@ -574,6 +601,12 @@ ALTER TABLE `assignment_submission`
   ADD PRIMARY KEY (`submission_Id`);
 
 --
+-- Indexes for table `blog`
+--
+ALTER TABLE `blog`
+  ADD PRIMARY KEY (`blog_id`);
+
+--
 -- Indexes for table `departments`
 --
 ALTER TABLE `departments`
@@ -646,6 +679,12 @@ ALTER TABLE `assignment`
 --
 ALTER TABLE `assignment_submission`
   MODIFY `submission_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `blog`
+--
+ALTER TABLE `blog`
+  MODIFY `blog_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `departments`
