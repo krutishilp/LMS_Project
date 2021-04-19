@@ -159,6 +159,7 @@
   <br><br>
     <div class="col-lg-6 sm-auto md-auto">
        <div class="container-fluid">
+       <?php echo '<a href="../blog.php?name='.$name.'">write a blog</a>'; ?> 
        <h3>Uploads</h3>
          <?php include 'upload-form.php'; ?>
       </div>
