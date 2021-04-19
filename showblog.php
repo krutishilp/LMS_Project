@@ -26,7 +26,7 @@ echo $name; // session_start()?> -->
             ?>
             
             <dl>
-            <dt><?php echo "<img src='".$run['imagepath']."'/>\t".$run['author']."\t".$run['submission_date']."\t";?></dt>
+            <dt><?php echo "<img src='".$run['imagepath']."' width='200' height='100'/>\t".$run['author']."\t".$run['submission_date']."\t";?></dt>
             <dd>- <?php echo $run['blogtext'];?></dd>
             </dl>
 

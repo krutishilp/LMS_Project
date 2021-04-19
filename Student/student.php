@@ -168,6 +168,7 @@
       <div class="container-fluid fc">
     <?php echo '<a href="../blog.php?name='.$name.'">write a blog</a>'; ?> 
       <h3><i class="fa fa-bullhorn" aria-hidden="true"></i></h3><h4> Announcements</h4>
+      <?php include '../Announcement.php'?>
       </div>
  <div class="container-fluid "> 
   <h3>Upload Assignments</h3>

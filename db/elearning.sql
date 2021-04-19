@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2021 at 11:37 AM
+-- Generation Time: Apr 19, 2021 at 04:01 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -171,6 +171,26 @@ INSERT INTO `departments` (`dept_Id`, `Name`) VALUES
 (4, 'INSTRU'),
 (5, 'MECH'),
 (6, 'CIVIL');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `feedback_Id` int(11) NOT NULL,
+  `title` varchar(500) NOT NULL,
+  `link` varchar(100) NOT NULL,
+  `feedback_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`feedback_Id`, `title`, `link`, `feedback_date`) VALUES
+(1, 'CC Seminar on 2021-04-30', 'https://docs.google.com/forms/d/e/1FAIpQLSeI8_vYyaJgM7SJM4Y9AWfLq-tglWZh6yt7bEXEOJr_L-hV1A/viewform?', '2021-05-01');
 
 -- --------------------------------------------------------
 
@@ -381,6 +401,26 @@ CREATE TABLE `ratings` (
 INSERT INTO `ratings` (`subject`, `vname`, `uemail`, `rating`) VALUES
 ('TOC', 'amaze.mp4', 'n@r', 'dl'),
 ('TOC', 'amaze.mp4', 'a@k', 'dl');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seminar`
+--
+
+CREATE TABLE `seminar` (
+  `seminar_id` int(11) NOT NULL,
+  `title` varchar(500) NOT NULL,
+  `notice` varchar(500) DEFAULT NULL,
+  `seminar_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `seminar`
+--
+
+INSERT INTO `seminar` (`seminar_id`, `title`, `notice`, `seminar_date`) VALUES
+(3, 'Seminar on CC by AMAZON', '../seminar/CC QB.pdf', '2021-04-30');
 
 -- --------------------------------------------------------
 
@@ -613,6 +653,12 @@ ALTER TABLE `departments`
   ADD PRIMARY KEY (`dept_Id`);
 
 --
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`feedback_Id`);
+
+--
 -- Indexes for table `final_result`
 --
 ALTER TABLE `final_result`
@@ -630,6 +676,12 @@ ALTER TABLE `quizz`
 --
 ALTER TABLE `qwise_assesment`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `seminar`
+--
+ALTER TABLE `seminar`
+  ADD PRIMARY KEY (`seminar_id`);
 
 --
 -- Indexes for table `student`
@@ -693,6 +745,12 @@ ALTER TABLE `departments`
   MODIFY `dept_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `feedback_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `final_result`
 --
 ALTER TABLE `final_result`
@@ -711,6 +769,12 @@ ALTER TABLE `qwise_assesment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
+-- AUTO_INCREMENT for table `seminar`
+--
+ALTER TABLE `seminar`
+  MODIFY `seminar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
@@ -720,7 +784,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `subject_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `subject_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `teachers`

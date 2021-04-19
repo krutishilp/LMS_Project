@@ -172,6 +172,9 @@
     <div class="col-lg-6 sm-auto md-auto">
       <?php include 'addMarks.php'?>
     </div>
+    <div class="col-lg-6 sm-auto md-auto">
+      <?php include 'addActivity.php'?>
+    </div>
   </div>
   </div>
   <br><br><br>
