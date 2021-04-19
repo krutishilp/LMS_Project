@@ -22,6 +22,7 @@
 
       <li id="fac" onclick="show('faculty','fac')">Faculty</li><br>
       <li id="stu" onclick="show('student','stu')">Students</li><br>
+      <a href="resultAnalysis.php" style="color:black;text-decoration:none">Result Analysis</a>
     </ul>
   </div>
 
@@ -48,11 +49,12 @@
         <div class="col-lg-12 sm-auto md-12 pad2" id="body">
             <?php include 'adminFaculty.php'; ?>
             <?php include 'adminStudent.php';?>
-              
+
             </div>  
 
         </div>    
        </div> 
+       
       <br><br>
       </div>
       <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="footer">

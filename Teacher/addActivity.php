@@ -3,7 +3,7 @@
 <input type="radio" id="seminar" name="act" value="2" checked><label for="seminar" >Seminar</label>
 <input type="radio" id="feedback" name="act" value="3" ><label for="feedback">Feedback</label>
 </div>
-<div id="Act2" class="desc">
+<div id="Act2" class="desc1">
 <h3>Seminar Notice</h3>
 <form action='#' method='POST' enctype='multipart/form-data' class="fc">
 <label for="seminar_title">Seminar Title</label>
@@ -14,7 +14,7 @@
 <input type="date" id="seminar_date" name="seminar_date" placeholder="Seminar Date" style="width: 75%;"><br><br>
 <input type='submit' value='Post' name='postSeminar'><br>
 </form></div>
-<div id="Act3" class="desc" style="display: none;">
+<div id="Act3" class="desc1" style="display: none;">
 <h3>Feedback Form</h3>
 <form action='#' method='POST' enctype='multipart/form-data' class="fc">
 <label for="feedback_title">Feedback form Title</label>
@@ -66,7 +66,7 @@ else
 $(document).ready(function() {
     $("input[name$='act']").click(function() {
         var t = $(this).val();
-        $("div.desc").hide();
+        $("div.desc1").hide();
       
         $("#Act" + t).show();
 
