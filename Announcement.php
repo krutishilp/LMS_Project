@@ -1,0 +1,26 @@
+<?php include 'links.php' ?>
+  <?php include 'connection.php'; ?>
+  <?php include 'style.php' ?>
+<?php
+    $currenttime=date('Y-m-d');
+    $query = "SELECT * FROM assignment WHERE Assignment_Deadline <= '".$currenttime."'";
+    $query1 = "SELECT * FROM seminar WHERE seminar_date > '".$currenttime."'";
+    $query2 = "SELECT * FROM feedback WHERE feedback_date > '".$currenttime."'";
+    $ass=mysqli_query($conn,$query);
+    $sem=mysqli_query($conn,$query1);
+    $feed=mysqli_query($conn,$query2);
+    echo '<marquee direction = "up" onmouseover="this.stop();" onmouseout="this.start();"><ul>';
+    while($row=mysqli_fetch_assoc($ass)){
+        echo '<li><a href="">'.$row['Description'].'     Deadline on '.$row['Assignment_Deadline'].'</a></li><br>';
+       
+    }
+    while( $row1 =mysqli_fetch_assoc($sem)){
+            echo '<li><a href="'.$row1['notice'].'">'.$row1['title'].'  on '.$row1['seminar_date'].'</a></li><br>'; 
+    }
+    while( $row2 =mysqli_fetch_assoc($feed)){
+        echo '<li><a href="'.$row2['link'].'"> Fill Feedback form for '.$row2['title'].'  before '.$row1['feedback_date'].'</a></li><br>'; 
+}
+    echo '</ul></marquee>';
+
+?>
+
