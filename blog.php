@@ -20,7 +20,7 @@ echo $name; // session_start()?> -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
    <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-      	<a href="student/student.php"><i id="tg" class='fas fa-arrow-alt-circle-left' style='color:#d5d5d5;font-size: 30px;'></i></a>
+      	<a href="javascript:javascript:history.go(-1)"><i id="tg" class='fas fa-arrow-alt-circle-left' style='color:#d5d5d5;font-size: 30px;'></i></a>
         </li>
     </ul>
    <a class="navbar-brand mx-auto" href="#">E-Learning</a>

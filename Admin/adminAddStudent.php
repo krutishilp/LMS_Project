@@ -4,12 +4,16 @@ if (isset($_POST['addstud']))
  {
   $uname=$_POST['name'];
   $email=$_POST['email'];
-  $password=uniqid();
+
   $prn = $_POST['prn'];
   $year = $_POST['year'];
   $dept = $_POST['dept'];
 
-  $signup="INSERT INTO student (name, email, prn, year,dept, password) VALUES ('$uname','$email','$prn','$year','$dept','$password')";
+  $fullname = explode(" ", $uname);
+
+ $fname = $fullname[0].'123';
+
+  $signup="INSERT INTO student (name, email, prn, year,dept, password) VALUES ('$uname','$email','$prn','$year','$dept','$fname')";
   if($run=mysqli_query($conn,$signup))
   {
 
