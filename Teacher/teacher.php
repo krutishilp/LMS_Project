@@ -175,8 +175,14 @@
     <div class="col-lg-6 sm-auto md-auto">
       <?php include 'addActivity.php'?>
     </div>
+   
   </div>
-  </div>
+  <div class="col-lg sm-auto md-auto pad2">
+        <div class="container-fluid fc">
+              <?php include 'yourblog.php'?>
+        </div>
+      </div>  
+</div>
   <br><br><br>
   <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="footer">
         <a class="navbar-brand mx-auto">.....</a>

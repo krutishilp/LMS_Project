@@ -18,7 +18,7 @@
             echo '<li><a href="'.$row1['notice'].'">'.$row1['title'].'  on '.$row1['seminar_date'].'</a></li><br>'; 
     }
     while( $row2 =mysqli_fetch_assoc($feed)){
-        echo '<li><a href="'.$row2['link'].'"> Fill Feedback form for '.$row2['title'].'  before '.$row1['feedback_date'].'</a></li><br>'; 
+        echo '<li><a href="'.$row2['link'].'"> Fill Feedback form for '.$row2['title'].'  before '.$row2['feedback_date'].'</a></li><br>'; 
 }
     echo '</ul></marquee>';
 

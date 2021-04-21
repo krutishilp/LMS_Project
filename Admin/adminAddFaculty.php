@@ -4,7 +4,7 @@ if (isset($_POST['addfaculty']))
  {
   $uname=$_POST['name'];
   $email=$_POST['email'];
-  $password=uniqid();
+ 
   $sub=$_POST['tsub'];
   $deptName = $_POST['dept'];
   $dept = "select dept_Id from departments where name='$deptName'";
@@ -17,7 +17,11 @@ if (isset($_POST['addfaculty']))
           }
        }
 
-  $signup="INSERT INTO teachers (name, email, subject, dept_Id,password) VALUES ('$uname','$email','$sub','$deptId','$password')";
+ $fullname = explode(" ", $uname);
+
+ $fname = $fullname[0].'123';
+
+  $signup="INSERT INTO teachers (name, email, subject, dept_Id,password) VALUES ('$uname','$email','$sub','$deptId','$fname')";
   if($run=mysqli_query($conn,$signup))
   {
 

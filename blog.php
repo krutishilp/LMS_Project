@@ -1,13 +1,4 @@
-<!-- <?php $name=$_GET['name'];
-echo $name; // session_start()?> -->
-<?php
-    // $Id = $_SESSION['student_Id'];
-    // $email=$_SESSION['student_user_email'];
-    // $studname=$_SESSION['student_user_name'];
-    // $pass=$_SESSION['student_user_pass'];
-    // $year = $_SESSION['student_user_year'];
-    // $dept = $_SESSION['student_user_dept'];
-?>
+
 <html>
 <head>
 <title>Post Blog</title>
@@ -20,7 +11,7 @@ echo $name; // session_start()?> -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
    <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-      	<a href="student/student.php"><i id="tg" class='fas fa-arrow-alt-circle-left' style='color:#d5d5d5;font-size: 30px;'></i></a>
+      	<a href="javascript:javascript:history.go(-1)"><i id="tg" class='fas fa-arrow-alt-circle-left' style='color:#d5d5d5;font-size: 30px;'></i></a>
         </li>
     </ul>
    <a class="navbar-brand mx-auto" href="#">E-Learning</a>
@@ -32,38 +23,76 @@ echo $name; // session_start()?> -->
       </li>
    </ul>		
   </nav>
-
+ 
 <form action='#' method='POST' enctype='multipart/form-data' class="fc">
 <input type="file" accept=".png, .jpg, .jpeg" name="fl"/><br><br>
 <label for="write">Write Something:</label>
-<textarea id="write" name="write" rows="4" cols="50"></textarea><br><br>
+<textarea id="write" name="write"  rows="4" cols="50"><?php if(isset($_GET['blogtxt'])){echo $_GET['blogtxt'];} ?></textarea><br><br>
    <input type='submit' value='Post' name='postblog'><br>
 </form>
-
 <?php
-if(isset($_POST['postblog'])){
+if(isset($_GET['blogid'])){
+  $name = $_GET['name'];
+  $email =$_GET['email'];
+  
+  $blogdate = $_GET['subdate'];
+                $path =  $_GET['imgpath'];
+                $path1 =explode("/",$path);
+  $imgpath = $path1[2] ;
+  $blogid = $_GET['blogid'];
+  $currenttime=date('Y-m-d');
+  if(isset($_POST['postblog'])){
+    $blogtxt = $_GET['blogtxt'];  
     $text=$_POST['write'];
     $filename=$_FILES['fl']['name'];
     $currenttime=date('Y-m-d');
     $dir="blogs/images/";
     $target_file=$dir.$_FILES['fl']['name'];
-    if(move_uploaded_file($_FILES['fl']['tmp_name'],$target_file)){
-
-        $que = "INSERT INTO blog (author,submission_date,imagepath,blogtext) VALUES
-        ('$name','$currenttime','$target_file','$text')";
-        if(mysqli_query($conn,$que))
-        {
-              echo '<script type="text/javascript">alert("Blog Posted")</script>';
-              echo '<script type="text/javascript">location.replace("#")</script>';
-        }
-        else
-        {
-              echo '<script type="text/javascript">alert("Blog Not Uploaded'.$name.''.$currenttime.''.$target_file.''.$text.'")</script>';
-
-        }   
-    }
    
-}
+    if($target_file === null){
+      $target_file = $path;
+    }
+
+    if(move_uploaded_file($_FILES['fl']['tmp_name'],$target_file)){
+      $query = 'UPDATE blog SET submission_date = "'.$currenttime.'" ,imagepath = "'.$target_file.'" ,blogtext = "'.$text.'"
+      WHERE blog_id = '.(int)$blogid.'';
+      if (mysqli_query($conn, $query)) {
+      
+        echo '<script type="text/javascript">alert("Blog Updated Successfully")</script>';
+        echo '<script type="text/javascript">location.replace("blog.php?name='.$name.'")</script>';
+      } else {
+        echo '<script type="text/javascript">alert("Blog Not Updated '.$target_file.'")</script>';
+      }
+    }
+
+  }}
+  else{
+    if(isset($_POST['postblog'])){
+    $email =$_GET['email'];
+    $name = $_GET['name'];
+      $text=$_POST['write'];
+      $filename=$_FILES['fl']['name'];
+      $currenttime=date('Y-m-d');
+      $dir="blogs/images/";
+      $target_file=$dir.$_FILES['fl']['name'];
+      if(move_uploaded_file($_FILES['fl']['tmp_name'],$target_file)){
+  
+          $que = "INSERT INTO blog (email,author,submission_date,imagepath,blogtext) VALUES
+          ('$name','$currenttime','$target_file','$text')";
+          if(mysqli_query($conn,$que))
+          {
+                echo '<script type="text/javascript">alert("Blog Posted")</script>';
+                echo '<script type="text/javascript">location.replace("#")</script>';
+          }
+          else
+          {
+                echo '<script type="text/javascript">alert("Blog Not Uploaded")</script>';
+  
+          }   
+      }
+     
+  }
+  }
 ?>
 </body>
 </html>
