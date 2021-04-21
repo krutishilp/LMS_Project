@@ -156,17 +156,23 @@
   		<div class="col-lg-8 sm-auto md-auto pad2">
         <div id='viddiv' class="fc">
           <h3 id="title"></h3><br>
-  	<video id='vidshow' style="width: 100%;" controls>
-  		<source id="srcvid" type="video/mp4">
-    </video>
+          <video id='vidshow' style="width: 100%;" controls>
+            <source id="srcvid" type="video/mp4">
+          </video>
       </div>
+  		<div class="col-lg sm-auto md-auto pad2">
+        <div class="container-fluid fc">
+              <?php include 'yourblog.php'?>
+        </div>
+      </div>
+      
      </div>
      <br><br>
      
   	<div class="col-lg-4 sm-auto md-auto pad2">
     
       <div class="container-fluid fc">
-    <?php echo '<a href="../blog.php?name='.$name.'">write a blog</a>'; ?> 
+    <?php echo '<a href="../blog.php?name='.$name.'&email='.$email.'">write a blog</a>'; ?> 
       <h3><i class="fa fa-bullhorn" aria-hidden="true"></i></h3><h4> Announcements</h4>
       <?php include '../Announcement.php'?>
       </div>
@@ -180,7 +186,7 @@
   
 </body>
       <div class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-bottom" id="footer">
-        <a class="navbar-brand mx-auto">Made by Srushti</a>
+        <a class="navbar-brand mx-auto">.</a>
       </div>
   </div>
 </html>

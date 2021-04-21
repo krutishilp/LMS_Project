@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2021 at 04:01 PM
+-- Generation Time: Apr 21, 2021 at 05:44 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -131,6 +131,7 @@ INSERT INTO `assignment_submission` (`submission_Id`, `student_Id`, `student_nam
 
 CREATE TABLE `blog` (
   `blog_id` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `author` varchar(50) NOT NULL,
   `submission_date` date NOT NULL,
   `imagepath` varchar(500) NOT NULL,
@@ -141,13 +142,10 @@ CREATE TABLE `blog` (
 -- Dumping data for table `blog`
 --
 
-INSERT INTO `blog` (`blog_id`, `author`, `submission_date`, `imagepath`, `blogtext`) VALUES
-(1, 'Srushti Kishor Wajge', '2021-04-16', 'blogs/images/ph-10026.jpg', '</body>\r\n</html>'),
-(2, 'Srushti Kishor Wajge', '2021-04-16', 'blogs/images/1CfduBj.jpg', 'my name is sdjklsjdlalfbn nkjsabflkbnsdbbhdflasnl'),
-(3, 'Srushti Kishor Wajge', '2021-04-16', 'blogs/images/46910965-3d-wallpaper-hd.jpg', 'If life were predictable it would cease to be life, and be without flavor.'),
-(4, 'Srushti Kishor Wajge', '2021-04-16', 'blogs/images/taylorig1440_900.png', 'Life throws curveballs And while there might be blockers to success its imperative to keep pushing with the knowledge mistakes will be made and failure is inevitable'),
-(5, 'Srushti Kishor Wajge', '2021-04-16', 'blogs/images/46910965-3d-wallpaper-hd.jpg', 'Life throws curveballs. And while there might be blockers to success, its imperative to keep pushing with the knowledge mistakes will be made and failure is inevitable.'),
-(6, 'Krutishil Purkar', '2021-04-16', 'blogs/images/ph-10042.jpg', 'hi hello');
+INSERT INTO `blog` (`blog_id`, `email`, `author`, `submission_date`, `imagepath`, `blogtext`) VALUES
+(2, 'srushti@gmail.com', 'Srushti Kishor Wajge', '2021-04-20', 'blogs/images/1CfduBj.jpg', 'my name is srushti wajge.'),
+(4, 'srushti@gmail.com', 'Srushti Kishor Wajge', '2021-04-16', 'blogs/images/taylorig1440_900.png', 'Life throws curveballs And while there might be blockers to success its imperative to keep pushing with the knowledge mistakes will be made and failure is inevitable'),
+(5, 'srushti@gmail.com', 'Srushti Kishor Wajge', '2021-04-16', 'blogs/images/46910965-3d-wallpaper-hd.jpg', 'Life throws curveballs. And while there might be blockers to success, its imperative to keep pushing with the knowledge mistakes will be made and failure is inevitable.');
 
 -- --------------------------------------------------------
 
@@ -200,7 +198,7 @@ INSERT INTO `feedback` (`feedback_Id`, `title`, `link`, `feedback_date`) VALUES
 
 CREATE TABLE `final_result` (
   `id` int(11) NOT NULL,
-  `stud_prn` varchar(30) NOT NULL,
+  `stud_prn` varchar(20) NOT NULL,
   `subject` varchar(30) NOT NULL,
   `year` varchar(10) NOT NULL,
   `dept` varchar(10) NOT NULL,
@@ -213,8 +211,15 @@ CREATE TABLE `final_result` (
 --
 
 INSERT INTO `final_result` (`id`, `stud_prn`, `subject`, `year`, `dept`, `sem`, `marks`) VALUES
-(6, '1234544', 'Cloud', 'SE', 'COMP', 'sem2', 100),
-(7, '12345', 'Python', 'SE', 'IT', 'sem1', 50);
+(6, '12345', 'Cloud', 'BE', 'COMP', 'sem2', 100),
+(7, '123456', 'Python', 'SE', 'IT', 'sem1', 50),
+(10, '12345', 'Web', 'BE', 'COMP', 'sem2', 60),
+(11, '71785633F', 'Cloud', 'BE', 'COMP', 'sem1', 80),
+(12, '71785633F', 'Artificial', 'BE', 'COMP', 'sem1', 70),
+(13, '71611203F', 'Cloud', 'BE', 'COMP', 'sem1', 90),
+(14, '71611203F', 'Artificial', 'BE', 'COMP', 'sem1', 80),
+(15, '71985633F', 'Python', 'SE', 'IT', 'sem1', 90),
+(16, '71611222F', 'DELD', 'SE', 'COMP', 'sem1', 80);
 
 -- --------------------------------------------------------
 
@@ -443,8 +448,15 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`student_Id`, `name`, `email`, `prn`, `year`, `dept`, `Password`) VALUES
-(1, 'Srushti Kishor Wajge', 'srushti@gmail.com', '71611203F', 'be', 'comp', '12345'),
-(2, 'Krutishil Purkar', 'test@test.com', '12345', 'be', 'comp', '12345');
+(1, 'Srushti Kishor Wajge', 'srushti@gmail.com', '71611203F', 'BE', 'comp', '12345'),
+(2, 'Krutishil Purkar', 'test@test.com', '12345', 'BE', 'comp', '12345'),
+(3, 'Nidhi Goda', 'nidhi@gmail.com', '71785633F', 'BE', 'COMP', 'Nidhi123'),
+(4, 'Ram', 'ram@gmail.com', '123456', 'SE', 'IT', 'ram@123'),
+(7, 'Lokesh Bhavsar', 'lokesh@gmail.com', '71785602F', 'BE', 'COMP', 'Lokesh123'),
+(8, 'Sunil Datir', 'sunil@gmail.com', '71785613F', 'BE', 'COMP', 'Sunil123'),
+(9, 'Student XYZ', 'student@gmail.com', '71785623F', 'BE', 'COMP', 'Student123'),
+(10, 'Prasad Kasar', 'prasad@gmail.com', '71985633F', 'SE', 'IT', 'Prasad123'),
+(11, 'Jatin Dalal', 'jatin@gmail.com', '71611222F', 'SE', 'COMP', 'Jatin123');
 
 -- --------------------------------------------------------
 
@@ -513,7 +525,8 @@ INSERT INTO `subjects` (`subject_Id`, `subject`, `year`, `dept`, `sem`) VALUES
 (4, 'Cloud', 'BE', 'COMP', 8),
 (5, 'Artificial', 'BE', 'COMP', 8),
 (6, 'Web', 'TE', 'COMP', 6),
-(7, 'TOC', 'TE', 'COMP', 5);
+(7, 'TOC', 'TE', 'COMP', 5),
+(8, 'DELD', 'SE', 'COMP', 3);
 
 -- --------------------------------------------------------
 
@@ -537,7 +550,8 @@ CREATE TABLE `teachers` (
 INSERT INTO `teachers` (`teacher_Id`, `email`, `name`, `subject`, `dept_Id`, `Password`) VALUES
 (22, 'shewale@gmail.com', 'Shewale', 'DBMS', 2, '6051f69b0b347'),
 (25, 'krutishilp@gmail.com', 'Krutishil Purkar', 'Cloud', 2, '12345'),
-(26, 'krutishilp@gmail.com', 'Krutishil Purkar', 'Artificial', 2, '60786b0dcdc2e');
+(26, 'krutishilp@gmail.com', 'Krutishil Purkar', 'Artificial', 2, '60786b0dcdc2e'),
+(27, 'bhushan@kbtcoe.org', 'Bhushan Gholap', 'Web', 2, 'Bhushan123');
 
 -- --------------------------------------------------------
 
@@ -662,8 +676,7 @@ ALTER TABLE `feedback`
 -- Indexes for table `final_result`
 --
 ALTER TABLE `final_result`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `stud_prn` (`stud_prn`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `quizz`
@@ -754,7 +767,7 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `final_result`
 --
 ALTER TABLE `final_result`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `quizz`
@@ -778,19 +791,19 @@ ALTER TABLE `seminar`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `student_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `subject_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `subject_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `teacher_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `teacher_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

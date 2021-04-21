@@ -6,8 +6,8 @@ if (isset($_POST['addstud']))
   $email=$_POST['email'];
 
   $prn = $_POST['prn'];
-  $year = $_POST['year'];
-  $dept = $_POST['dept'];
+  $year = strtoupper($_POST['year']);
+  $dept = strtoupper($_POST['dept']);
 
   $fullname = explode(" ", $uname);
 
