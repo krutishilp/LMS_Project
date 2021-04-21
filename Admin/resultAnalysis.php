@@ -42,6 +42,15 @@ $pass = $_SESSION['admin_user_pass'];
 
   <div class="container-fluid">
     <h2 style="text-align:center; ">Result Analysis</h2>
+    <select style="text-align:center;" name="dept" id="dept">
+                  <option value="">Select Department</option>
+                  <option value="MECH" >Mechanical</option>
+                  <option value="COMP" >Computer</option>
+                  <option value="IT" >IT</option>
+                  <option value="E&TC" >Electronics and telecomunication</option>
+                  <option value="CIVIL" >Civil</option>
+                  <option value="INSTRU">Instrumentation & Control</option>
+                </select><br><br>
     <div class="row pad">
       <div class="col-lg-6 sm-auto md-auto">
         <div class="table-responsive">
@@ -58,24 +67,68 @@ $pass = $_SESSION['admin_user_pass'];
               </tr>
               <?php
               $prn = "";
+              $row=array();
               $query = "SELECT DISTINCT student.name,student.prn FROM student
               RIGHT JOIN final_result ON student.prn = final_result.stud_prn
-              WHERE student.    year = 'FE'  ";
+              WHERE student.year = 'FE'";
               $run = mysqli_query($conn, $query);
               while ($rrow = mysqli_fetch_assoc($run)) {
                 $prn = $rrow['prn'];
-              //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
-                $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem = 'sem1'
-               AND dept = 'IT'  ORDER BY marks DESC";    
+                //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
+                $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem ='sem1'
+               AND dept = 'IT' ORDER BY mark DESC";
                 $run1 = mysqli_query($conn, $getrecords);
                 if ($rrrow = mysqli_fetch_assoc($run1)) {
-                  if(! $rrrow['mark']==null){
-                    echo "<tr><td>" . $rrow['name'] . "</td><td>" . $rrrow['mark'] . "</td></tr>";
-                 }
+                  if (!$rrrow['mark'] == null) {
+                    $row[$rrow['name']] = $rrrow['mark'];
+                  }
                 }
+              }
+              arsort($row);
+              foreach ($row as $name => $marks) {
+                echo "<tr><td>" . $name . "</td><td>" . $marks . "</td></tr>";
               }
               ?>
             </table>
+            <h2>Top Five</h2>
+            <table class="table table-striped table-bordered">
+              <tr>
+                <th>Name</th>
+                <th>Score</th>
+              </tr>
+              <?php
+              // $prn = "";
+              // $row=array();
+              // $query = "SELECT DISTINCT student.name,student.prn FROM student
+              // RIGHT JOIN final_result ON student.prn = final_result.stud_prn
+              // WHERE student.year = 'SE'";
+              // $run = mysqli_query($conn, $query);
+              // while ($rrow = mysqli_fetch_assoc($run)) {
+              //   $prn = $rrow['prn'];
+              //   //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
+              //   $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem ='sem1'
+              //  AND dept = 'IT' ORDER BY mark DESC";
+              //   $run1 = mysqli_query($conn, $getrecords);
+              //   if ($rrrow = mysqli_fetch_assoc($run1)) {
+              //     if (!$rrrow['mark'] == null) {
+              //       $row[$rrow['name']] = $rrrow['mark'];
+              //     }
+              //   }
+              // }
+              arsort($row);
+              $cnt=0;
+              foreach ($row as $name => $marks) {
+                if($cnt==2){
+                  break;
+                }
+                echo "<tr><td>" . $name . "</td><td>" . $marks . "</td></tr>";
+                $cnt++;
+              }
+              ?>
+            </table>
+            
+
+
           </div>
           <div id="semfe2" class="desc1" style="display: none;">
             <table class="table table-striped table-bordered">
@@ -85,21 +138,63 @@ $pass = $_SESSION['admin_user_pass'];
               </tr>
               <?php
               $prn = "";
+              $row=array();
               $query = "SELECT DISTINCT student.name,student.prn FROM student
               RIGHT JOIN final_result ON student.prn = final_result.stud_prn
-              WHERE student.    year = 'FE'  ";
+              WHERE student.year = 'FE'";
               $run = mysqli_query($conn, $query);
               while ($rrow = mysqli_fetch_assoc($run)) {
                 $prn = $rrow['prn'];
-              //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
-                $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem = 'sem2'
-               AND dept = 'IT'  ORDER BY marks DESC";    
+                //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
+                $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem ='sem2'
+               AND dept = 'IT' ORDER BY mark DESC";
                 $run1 = mysqli_query($conn, $getrecords);
                 if ($rrrow = mysqli_fetch_assoc($run1)) {
-                  if(! $rrrow['mark']==null){
-                    echo "<tr><td>" . $rrow['name'] . "</td><td>" . $rrrow['mark'] . "</td></tr>";
-                 }
+                  if (!$rrrow['mark'] == null) {
+                    $row[$rrow['name']] = $rrrow['mark'];
+                  }
                 }
+              }
+              arsort($row);
+              foreach ($row as $name => $marks) {
+
+                echo "<tr><td>" . $name . "</td><td>" . $marks . "</td></tr>";
+              }
+              ?>
+            </table>
+            <h2>Top Five</h2>
+            <table class="table table-striped table-bordered">
+              <tr>
+                <th>Name</th>
+                <th>Score</th>
+              </tr>
+              <?php
+              // $prn = "";
+              // $row=array();
+              // $query = "SELECT DISTINCT student.name,student.prn FROM student
+              // RIGHT JOIN final_result ON student.prn = final_result.stud_prn
+              // WHERE student.year = 'SE'";
+              // $run = mysqli_query($conn, $query);
+              // while ($rrow = mysqli_fetch_assoc($run)) {
+              //   $prn = $rrow['prn'];
+              //   //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
+              //   $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem ='sem1'
+              //  AND dept = 'IT' ORDER BY mark DESC";
+              //   $run1 = mysqli_query($conn, $getrecords);
+              //   if ($rrrow = mysqli_fetch_assoc($run1)) {
+              //     if (!$rrrow['mark'] == null) {
+              //       $row[$rrow['name']] = $rrrow['mark'];
+              //     }
+              //   }
+              // }
+              arsort($row);
+              $cnt=0;
+              foreach ($row as $name => $marks) {
+                if($cnt==2){
+                  break;
+                }
+                echo "<tr><td>" . $name . "</td><td>" . $marks . "</td></tr>";
+                $cnt++;
               }
               ?>
             </table>
@@ -110,7 +205,7 @@ $pass = $_SESSION['admin_user_pass'];
         <div class="table-responsive">
           <h5><b>Second Year </b></h5>
           <div>
-         
+
             <input type="radio" id="sems3" name="semse" value="1" checked><label for="sems3">SEM 1</label>
             <input type="radio" id="sems4" name="semse" value="2"><label for="sems4">SEM 2</label>
           </div>
@@ -122,22 +217,63 @@ $pass = $_SESSION['admin_user_pass'];
               </tr>
               <?php
               $prn = "";
-
+              $row=array();
               $query = "SELECT DISTINCT student.name,student.prn FROM student
               RIGHT JOIN final_result ON student.prn = final_result.stud_prn
-              WHERE student.    year = 'SE'  ";
+              WHERE student.year = 'SE'";
               $run = mysqli_query($conn, $query);
               while ($rrow = mysqli_fetch_assoc($run)) {
                 $prn = $rrow['prn'];
-              //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
-                $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem = 'sem1'
-               AND dept = 'IT'  ORDER BY marks DESC";    
+                //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
+                $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem ='sem1'
+               AND dept = 'IT' ORDER BY mark DESC";
                 $run1 = mysqli_query($conn, $getrecords);
                 if ($rrrow = mysqli_fetch_assoc($run1)) {
-                  if(! $rrrow['mark']==null){
-                    echo "<tr><td>" . $rrow['name'] . "</td><td>" . $rrrow['mark'] . "</td></tr>";
-                 }
+                  if (!$rrrow['mark'] == null) {
+                    $row[$rrow['name']] = $rrrow['mark'];
+                  }
                 }
+              }
+              arsort($row);
+              foreach ($row as $name => $marks) {
+                echo "<tr><td>" . $name . "</td><td>" . $marks . "</td></tr>";
+              }
+              ?>
+            </table>
+
+            <h2>Top Five</h2>
+            <table class="table table-striped table-bordered">
+              <tr>
+                <th>Name</th>
+                <th>Score</th>
+              </tr>
+              <?php
+              // $prn = "";
+              // $row=array();
+              // $query = "SELECT DISTINCT student.name,student.prn FROM student
+              // RIGHT JOIN final_result ON student.prn = final_result.stud_prn
+              // WHERE student.year = 'SE'";
+              // $run = mysqli_query($conn, $query);
+              // while ($rrow = mysqli_fetch_assoc($run)) {
+              //   $prn = $rrow['prn'];
+              //   //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
+              //   $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem ='sem1'
+              //  AND dept = 'IT' ORDER BY mark DESC";
+              //   $run1 = mysqli_query($conn, $getrecords);
+              //   if ($rrrow = mysqli_fetch_assoc($run1)) {
+              //     if (!$rrrow['mark'] == null) {
+              //       $row[$rrow['name']] = $rrrow['mark'];
+              //     }
+              //   }
+              // }
+              arsort($row);
+              $cnt=0;
+              foreach ($row as $name => $marks) {
+                if($cnt==2){
+                  break;
+                }
+                echo "<tr><td>" . $name . "</td><td>" . $marks . "</td></tr>";
+                $cnt++;
               }
               ?>
             </table>
@@ -150,29 +286,69 @@ $pass = $_SESSION['admin_user_pass'];
               </tr>
               <?php
               $prn = "";
+              $row=array();
               $query = "SELECT DISTINCT student.name,student.prn FROM student
               RIGHT JOIN final_result ON student.prn = final_result.stud_prn
               WHERE student.year = 'SE'";
               $run = mysqli_query($conn, $query);
               while ($rrow = mysqli_fetch_assoc($run)) {
                 $prn = $rrow['prn'];
-              //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
-                $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '".$prn."' AND sem = 'sem2'
-               AND dept = 'IT'
-                ORDER BY marks DESC";    
+                //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
+                $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem ='sem2'
+               AND dept = 'IT' ORDER BY mark DESC";
                 $run1 = mysqli_query($conn, $getrecords);
                 if ($rrrow = mysqli_fetch_assoc($run1)) {
-                  if(! $rrrow['mark']==null){
-                   echo "<tr><td>" . $rrow['name'] . "</td><td>" . $rrrow['mark'] . "</td></tr>";
+                  if (!$rrrow['mark'] == null) {
+                    $row[$rrow['name']] = $rrrow['mark'];
+                  }
                 }
+              }
+              arsort($row);
+              foreach ($row as $name => $marks) {
+                echo "<tr><td>" . $name . "</td><td>" . $marks . "</td></tr>";
+              }
+              ?>
+            </table>
+            <h2>Top Five</h2>
+            <table class="table table-striped table-bordered">
+              <tr>
+                <th>Name</th>
+                <th>Score</th>
+              </tr>
+              <?php
+              // $prn = "";
+              // $row=array();
+              // $query = "SELECT DISTINCT student.name,student.prn FROM student
+              // RIGHT JOIN final_result ON student.prn = final_result.stud_prn
+              // WHERE student.year = 'SE'";
+              // $run = mysqli_query($conn, $query);
+              // while ($rrow = mysqli_fetch_assoc($run)) {
+              //   $prn = $rrow['prn'];
+              //   //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
+              //   $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem ='sem1'
+              //  AND dept = 'IT' ORDER BY mark DESC";
+              //   $run1 = mysqli_query($conn, $getrecords);
+              //   if ($rrrow = mysqli_fetch_assoc($run1)) {
+              //     if (!$rrrow['mark'] == null) {
+              //       $row[$rrow['name']] = $rrrow['mark'];
+              //     }
+              //   }
+              // }
+              arsort($row);
+              $cnt=0;
+              foreach ($row as $name => $marks) {
+                if($cnt==2){
+                  break;
                 }
+                echo "<tr><td>" . $name . "</td><td>" . $marks . "</td></tr>";
+                $cnt++;
               }
               ?>
             </table>
           </div>
         </div>
       </div>
-      
+
       <div class="col-lg-6 sm-auto md-auto">
         <div class="table-responsive">
           <h5><b>Third Year </b></h5>
@@ -188,21 +364,62 @@ $pass = $_SESSION['admin_user_pass'];
               </tr>
               <?php
               $prn = "";
+              $row=array();
               $query = "SELECT DISTINCT student.name,student.prn FROM student
               RIGHT JOIN final_result ON student.prn = final_result.stud_prn
-              WHERE student.    year = 'TE'  ";
+              WHERE student.year = 'TE'";
               $run = mysqli_query($conn, $query);
               while ($rrow = mysqli_fetch_assoc($run)) {
                 $prn = $rrow['prn'];
-              //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
-                $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem = 'sem1'
-               AND dept = 'IT'  ORDER BY marks DESC";    
+                //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
+                $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem ='sem1'
+               AND dept = 'IT' ORDER BY mark DESC";
                 $run1 = mysqli_query($conn, $getrecords);
                 if ($rrrow = mysqli_fetch_assoc($run1)) {
-                  if(! $rrrow['mark']==null){
-                    echo "<tr><td>" . $rrow['name'] . "</td><td>" . $rrrow['mark'] . "</td></tr>";
-                 }
+                  if (!$rrrow['mark'] == null) {
+                    $row[$rrow['name']] = $rrrow['mark'];
+                  }
                 }
+              }
+              arsort($row);
+              foreach ($row as $name => $marks) {
+                echo "<tr><td>" . $name . "</td><td>" . $marks . "</td></tr>";
+              }
+              ?>
+            </table>
+            <h2>Top Five</h2>
+            <table class="table table-striped table-bordered">
+              <tr>
+                <th>Name</th>
+                <th>Score</th>
+              </tr>
+              <?php
+              // $prn = "";
+              // $row=array();
+              // $query = "SELECT DISTINCT student.name,student.prn FROM student
+              // RIGHT JOIN final_result ON student.prn = final_result.stud_prn
+              // WHERE student.year = 'SE'";
+              // $run = mysqli_query($conn, $query);
+              // while ($rrow = mysqli_fetch_assoc($run)) {
+              //   $prn = $rrow['prn'];
+              //   //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
+              //   $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem ='sem1'
+              //  AND dept = 'IT' ORDER BY mark DESC";
+              //   $run1 = mysqli_query($conn, $getrecords);
+              //   if ($rrrow = mysqli_fetch_assoc($run1)) {
+              //     if (!$rrrow['mark'] == null) {
+              //       $row[$rrow['name']] = $rrrow['mark'];
+              //     }
+              //   }
+              // }
+              arsort($row);
+              $cnt=0;
+              foreach ($row as $name => $marks) {
+                if($cnt==2){
+                  break;
+                }
+                echo "<tr><td>" . $name . "</td><td>" . $marks . "</td></tr>";
+                $cnt++;
               }
               ?>
             </table>
@@ -215,21 +432,62 @@ $pass = $_SESSION['admin_user_pass'];
               </tr>
               <?php
               $prn = "";
+              $row=array();
               $query = "SELECT DISTINCT student.name,student.prn FROM student
               RIGHT JOIN final_result ON student.prn = final_result.stud_prn
-              WHERE student.    year = 'TE'  ";
+              WHERE student.year = 'TE'";
               $run = mysqli_query($conn, $query);
               while ($rrow = mysqli_fetch_assoc($run)) {
                 $prn = $rrow['prn'];
-              //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
-                $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem = 'sem2'
-               AND dept = 'IT'  ORDER BY marks DESC";    
+                //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
+                $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem ='sem2'
+               AND dept = 'IT' ORDER BY mark DESC";
                 $run1 = mysqli_query($conn, $getrecords);
                 if ($rrrow = mysqli_fetch_assoc($run1)) {
-                  if(! $rrrow['mark']==null){
-                    echo "<tr><td>" . $rrow['name'] . "</td><td>" . $rrrow['mark'] . "</td></tr>";
-                 }
+                  if (!$rrrow['mark'] == null) {
+                    $row[$rrow['name']] = $rrrow['mark'];
+                  }
                 }
+              }
+              arsort($row);
+              foreach ($row as $name => $marks) {
+                echo "<tr><td>" . $name . "</td><td>" . $marks . "</td></tr>";
+              }
+              ?>
+            </table>
+            <h2>Top Five</h2>
+            <table class="table table-striped table-bordered">
+              <tr>
+                <th>Name</th>
+                <th>Score</th>
+              </tr>
+              <?php
+              // $prn = "";
+              // $row=array();
+              // $query = "SELECT DISTINCT student.name,student.prn FROM student
+              // RIGHT JOIN final_result ON student.prn = final_result.stud_prn
+              // WHERE student.year = 'SE'";
+              // $run = mysqli_query($conn, $query);
+              // while ($rrow = mysqli_fetch_assoc($run)) {
+              //   $prn = $rrow['prn'];
+              //   //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
+              //   $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem ='sem1'
+              //  AND dept = 'IT' ORDER BY mark DESC";
+              //   $run1 = mysqli_query($conn, $getrecords);
+              //   if ($rrrow = mysqli_fetch_assoc($run1)) {
+              //     if (!$rrrow['mark'] == null) {
+              //       $row[$rrow['name']] = $rrrow['mark'];
+              //     }
+              //   }
+              // }
+              arsort($row);
+              $cnt=0;
+              foreach ($row as $name => $marks) {
+                if($cnt==2){
+                  break;
+                }
+                echo "<tr><td>" . $name . "</td><td>" . $marks . "</td></tr>";
+                $cnt++;
               }
               ?>
             </table>
@@ -255,21 +513,62 @@ $pass = $_SESSION['admin_user_pass'];
               </tr>
               <?php
               $prn = "";
+              $row=array();
               $query = "SELECT DISTINCT student.name,student.prn FROM student
               RIGHT JOIN final_result ON student.prn = final_result.stud_prn
-              WHERE student.    year = 'BE'  ";
+              WHERE student.year = 'BE'";
               $run = mysqli_query($conn, $query);
               while ($rrow = mysqli_fetch_assoc($run)) {
                 $prn = $rrow['prn'];
-              //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
-                $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem = 'sem1'
-               AND dept = 'IT'  ORDER BY marks DESC";    
+                //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
+                $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem ='sem1'
+               AND dept = 'COMP' ORDER BY mark DESC";
                 $run1 = mysqli_query($conn, $getrecords);
                 if ($rrrow = mysqli_fetch_assoc($run1)) {
-                  if(! $rrrow['mark']==null){
-                    echo "<tr><td>" . $rrow['name'] . "</td><td>" . $rrrow['mark'] . "</td></tr>";
-                 }
+                  if (!$rrrow['mark'] == null) {
+                    $row[$rrow['name']] = $rrrow['mark'];
+                  }
                 }
+              }
+              arsort($row);
+              foreach ($row as $name => $marks) {
+                echo "<tr><td>" . $name . "</td><td>" . $marks . "</td></tr>";
+              }
+              ?>
+            </table>
+            <h2>Top Five</h2>
+            <table class="table table-striped table-bordered">
+              <tr>
+                <th>Name</th>
+                <th>Score</th>
+              </tr>
+              <?php
+              // $prn = "";
+              // $row=array();
+              // $query = "SELECT DISTINCT student.name,student.prn FROM student
+              // RIGHT JOIN final_result ON student.prn = final_result.stud_prn
+              // WHERE student.year = 'SE'";
+              // $run = mysqli_query($conn, $query);
+              // while ($rrow = mysqli_fetch_assoc($run)) {
+              //   $prn = $rrow['prn'];
+              //   //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
+              //   $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem ='sem1'
+              //  AND dept = 'IT' ORDER BY mark DESC";
+              //   $run1 = mysqli_query($conn, $getrecords);
+              //   if ($rrrow = mysqli_fetch_assoc($run1)) {
+              //     if (!$rrrow['mark'] == null) {
+              //       $row[$rrow['name']] = $rrrow['mark'];
+              //     }
+              //   }
+              // }
+              arsort($row);
+              $cnt=0;
+              foreach ($row as $name => $marks) {
+                if($cnt==2){
+                  break;
+                }
+                echo "<tr><td>" . $name . "</td><td>" . $marks . "</td></tr>";
+                $cnt++;
               }
               ?>
             </table>
@@ -282,21 +581,62 @@ $pass = $_SESSION['admin_user_pass'];
               </tr>
               <?php
               $prn = "";
+              $row=array();
               $query = "SELECT DISTINCT student.name,student.prn FROM student
               RIGHT JOIN final_result ON student.prn = final_result.stud_prn
-              WHERE student.    year = 'BE'  ";
+              WHERE student.year = 'BE'";
               $run = mysqli_query($conn, $query);
               while ($rrow = mysqli_fetch_assoc($run)) {
                 $prn = $rrow['prn'];
-              //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
-                $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem = 'sem2'
-               AND dept = 'IT'  ORDER BY marks DESC";    
+                //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
+                $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem ='sem2'
+               AND dept = 'COMP' ORDER BY mark DESC";
                 $run1 = mysqli_query($conn, $getrecords);
                 if ($rrrow = mysqli_fetch_assoc($run1)) {
-                  if(! $rrrow['mark']==null){
-                    echo "<tr><td>" . $rrow['name'] . "</td><td>" . $rrrow['mark'] . "</td></tr>";
-                 }
+                  if (!$rrrow['mark'] == null) {
+                    $row[$rrow['name']] = $rrrow['mark'];
+                  }
                 }
+              }
+              arsort($row);
+              foreach ($row as $name => $marks) {
+                echo "<tr><td>" . $name . "</td><td>" . $marks . "</td></tr>";
+              }
+              ?>
+            </table>
+            <h2>Top Five</h2>
+            <table class="table table-striped table-bordered">
+              <tr>
+                <th>Name</th>
+                <th>Score</th>
+              </tr>
+              <?php
+              // $prn = "";
+              // $row=array();
+              // $query = "SELECT DISTINCT student.name,student.prn FROM student
+              // RIGHT JOIN final_result ON student.prn = final_result.stud_prn
+              // WHERE student.year = 'SE'";
+              // $run = mysqli_query($conn, $query);
+              // while ($rrow = mysqli_fetch_assoc($run)) {
+              //   $prn = $rrow['prn'];
+              //   //  echo '<script type="text/javascript">alert("hi = '.$prn.'")</script>';
+              //   $getrecords = "SELECT stud_prn,AVG(marks) as mark FROM `final_result` WHERE stud_prn = '$prn' AND sem ='sem1'
+              //  AND dept = 'IT' ORDER BY mark DESC";
+              //   $run1 = mysqli_query($conn, $getrecords);
+              //   if ($rrrow = mysqli_fetch_assoc($run1)) {
+              //     if (!$rrrow['mark'] == null) {
+              //       $row[$rrow['name']] = $rrrow['mark'];
+              //     }
+              //   }
+              // }
+              arsort($row);
+              $cnt=0;
+              foreach ($row as $name => $marks) {
+                if($cnt==2){
+                  break;
+                }
+                echo "<tr><td>" . $name . "</td><td>" . $marks . "</td></tr>";
+                $cnt++;
               }
               ?>
             </table>
@@ -323,7 +663,7 @@ $pass = $_SESSION['admin_user_pass'];
 
 
     </div>
-  </div>
+  </div><br><br><br><br>
   <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="footer">
     <a class="navbar-brand mx-auto">...</a>
   </div>
