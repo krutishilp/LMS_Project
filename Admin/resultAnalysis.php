@@ -79,10 +79,6 @@ $row = array();
                 <th>Score</th>
               </tr>
               <?php
-
-
-
-
               $prn = "";
           
               $query = "SELECT DISTINCT student.name,student.prn FROM student

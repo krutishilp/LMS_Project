@@ -9,14 +9,19 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand mx-auto" href="#">E-Learning</a>
+  <nav class="navbar navbar-expand-lg navbar-info bg-info">
+    <a class="navbar-brand mx-auto text-white" href="#">Learning Management System</a>
+    <ul>
+      <li style="text-decoration: none;"><a href="#" id="about">About Us</a><a href="#" id="signup">Sign Up</a>
+  <a href="#" id="login">Login</a></li>
+    </ul>
   </nav>
   <div class="container-fluid pad2">
     <div class="row pad">
       <div class="col-lg-6 offset-lg-3 sm-auto md-auto">
         <div class="row">
-          <div class="col abtpad">
+          <div class="col abtpad messagepop " id="pop1">
+          <a id="close1" href="#"><i id="tg" class='fas fa-times' style='color:#d5d5d5;font-size: 30px;'></i></a>
             <form action="index.php" method="POST" class="fc">
               <h3>Sign-up</h3>
               <hr>
@@ -42,7 +47,8 @@
               <input type="submit" name="su" value="Sign-Up">
             </form>
           </div>
-          <div class="col abtpad">
+          <div class="col abtpad messagepop " id="pop2">
+          <a id="close2" href="#"><i id="tg" class='fas fa-times' style='color:#d5d5d5;font-size: 30px;'></i></a>
             <form action="index.php" method="POST" class="fc">
               <h3>Login</h3>
               <hr>
@@ -60,7 +66,8 @@
           </div>
         </div>
         <div class="abtpad">
-          <div class=" fc">
+          <div class="fc messagepop" id="pop3">
+          <a id="close3" href="#"><i id="tg" class='fas fa-times' style='color:#d5d5d5;font-size: 30px;'></i></a>
             <h3>About</h3>
             <hr>
             <P>To create quality information technology professionals through superior academic environment.<br>
@@ -88,9 +95,9 @@
       </div>
     </div>
   </div>
-  <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="footer">
-    <a class="navbar-brand mx-auto">...</a>
-  </div>
+  <nav class="navbar navbar-expand-lg navbar-info bg-info" id="footer">
+    <a class="navbar-brand mx-auto text-white" href="#">...</a>
+  </nav>
 </body>
 
 </html>
@@ -167,3 +174,101 @@ if (isset($_POST['lg'])) {
 }
 
 ?>
+
+<script>
+
+function deselect1(e) {
+  $('#pop1').slideFadeToggle(function() {
+    e.removeClass('selected');
+  });    
+}
+
+$(function() {
+  $('#signup').on('click', function() {
+
+    if($(this).hasClass('selected')) {
+      deselect1($(this));
+                     
+    } else {
+      $(this).addClass('selected');
+      $('#pop1').slideFadeToggle();
+    }
+    return false;
+  });
+
+  $('#close1').on('click', function() {
+    deselect1($('#signup'));
+    $(".row").css("filter", "none");
+    return false;
+  });
+});
+
+$.fn.slideFadeToggle = function(easing, callback) {
+  return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+};
+
+</script>
+
+<script>
+
+function deselect2(e) {
+  $('#pop2').slideFadeToggle(function() {
+    e.removeClass('selected');
+  });    
+}
+
+$(function() {
+  $('#login').on('click', function() {
+    
+    if($(this).hasClass('selected')) {
+      deselect2($(this));               
+    } else {
+      $(this).addClass('selected');
+      $('#pop2').slideFadeToggle();
+    }
+    return false;
+  });
+
+  $('#close2').on('click', function() {
+    deselect2($('#login'));
+    return false;
+  });
+});
+
+$.fn.slideFadeToggle = function(easing, callback) {
+  return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+};
+
+</script>
+
+<script>
+
+function deselect3(e) {
+  $('#pop3').slideFadeToggle(function() {
+    e.removeClass('selected');
+  });    
+}
+
+$(function() {
+  $('#about').on('click', function() {
+    
+    if($(this).hasClass('selected')) {
+      deselect3($(this));               
+    } else {
+      $(this).addClass('selected');
+      $('#pop3').slideFadeToggle();
+    }
+    return false;
+  });
+
+  $('#close3').on('click', function() {
+    deselect3($('#about'));
+    return false;
+  });
+});
+
+$.fn.slideFadeToggle = function(easing, callback) {
+  return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+};
+
+</script>

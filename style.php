@@ -1,6 +1,7 @@
    <style type="text/css">
-    	body
+body
 {
+  background-color: #121212;
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
    -webkit-user-select: none;  /* Chrome all / Safari all */
@@ -70,45 +71,45 @@
 {
   outline:none;
   border:none;
-  border-bottom:2px solid #ffcc00;
+  border-bottom:2px solid #5bc0de;
   background-color:#f5f5f5;
 }
 .fc input[type=submit]
 {
-  background-color:#ffcc00  !important;
-  border:1px solid #ffcc00 !important;
-  color: black !important;
+  background-color:#5bc0de ;
+  border:1px solid #5bc0de ;
+  color: black ;
   padding: 10px;
   border-radius: 5px;
   width: 150px;
 }
 .fc button
 {
-  background-color:#ffcc00  !important;
-  border:1px solid #ffcc00 !important;
-  color: black !important;
+  background-color:#5bc0de  ;
+  border:1px solid #5bc0de ;
+  color: black ;
   padding: 10px;
   border-radius: 5px;
   width: 150px;
 }
 .fc button:disabled
 {
-  background-color:#d5d5d5  !important;
-  border:1px solid #d5d5d5 !important;
-  color: black !important;
+  background-color:#d5d5d5  ;
+  border:1px solid #d5d5d5 ;
+  color: black ;
 }
 .fc input[type=file]
 {
-  background-color:#f5f5f5  !important;
-  border:1px solid #121212 !important;
-  color: black !important;
+  background-color:#f5f5f5  ;
+  border:1px solid #121212 ;
+  color: black ;
   padding: 10px;
   border-radius: 5px;
 }
 
 .fc input[type=file]:focus
 {
-  border:1px solid #ffcc00 !important;
+  border:1px solid #5bc0de ;
 }
 
 #subdiv
@@ -130,7 +131,7 @@
 }
 .tbform input
 {
- background: transparent!important;color: black !important; border: none!important;
+ background: transparent;color: black ; border: none;
 }
 
 
@@ -166,16 +167,16 @@
         top: -8px;
         left: -2px;
         position: relative;
-        background-color: #ffcc00;
+        background-color: #5bc0de;
         content: '';
         display: inline-block;
         visibility: visible;
-        border: 2px solid #ffcc00;
+        border: 2px solid #5bc0de;
     }
 
 .qdiv input[type='radio']:checked + label {
         
-        color: #ffcc00;
+        color: #5bc0de;
     }
 
 .qdiv input[type='radio']:hover + label {
@@ -188,24 +189,24 @@
   background-color: #f5f5f5;
   padding-left:10px;
   padding-right: 10px;
-  border:1px solid #ffcc00;
+  border:1px solid #5bc0de;
   border-radius:5px;
-  color: #ffcc00;
+  color: #5bc0de;
   font-weight: bolder;
   font-size:25px;
 }
 .qdiv a:hover
 {
-  background-color: #ffcc00;
-  border:1px solid #ffcc00;
+  background-color: #5bc0de;
+  border:1px solid #5bc0de;
   border-radius:5px;
   color: black;
 }
 
 .qdiv a:visited
 {
-  background-color: #ffcc00;
-  border:1px solid #ffcc00;
+  background-color: #5bc0de;
+  border:1px solid #5bc0de;
   border-radius:5px;
   color: #e3f2fd;
 }
@@ -214,24 +215,24 @@
  background-color: #f5f5f5;
   padding-left:10px;
   padding-right: 10px;
-  border:1px solid #ffcc00;
+  border:1px solid #5bc0de;
   border-radius:5px;
-  color: #ffcc00; 
+  color: #5bc0de; 
   font-size: 20px;
   font-weight: bolder;
 }
 .qdiv input[type='submit']:hover
 {
-  background-color: #ffcc00;
-  border:1px solid #ffcc00;
+  background-color: #5bc0de;
+  border:1px solid #5bc0de;
   border-radius:5px;
   color: black; 
 }
 .qdiv button
 {
   background-color: transparent;
-  color: #ffcc00;
-  border: 2px solid #ffcc00;
+  color: #5bc0de;
+  border: 2px solid #5bc0de;
   border-radius: 45%;
   font-size: 25px;
   font-weight: bolder;
@@ -242,9 +243,9 @@
 }
 .qdiv button:hover
 {
-  background-color: #ffcc00;
+  background-color: #5bc0de;
   color: black;
-  border: 2px solid #ffcc00;
+  border: 2px solid #5bc0de;
 }
 /* Chrome, Safari and Opera syntax */
 :-webkit-full-screen {
@@ -283,12 +284,44 @@
  
 /* Handle */
 ::-webkit-scrollbar-thumb{
-  background: #ffcc00;
+  background: #5bc0de;
 
-  border: 1px solid #ffcc00;
+  border: 1px solid #5bc0de;
 }
 
 
+a.selected {
+  background-color:#1F75CC;
+  color:white;
+  z-index:100;
+}
+
+.messagepop {
+  background-color: #f5f5f5;
+  border:1px solid #999999;
+  border-radius: 3px;
+  cursor:default;
+  display:none;
+  margin-top: 15px;
+  position:absolute;
+  text-align:left;
+  width:700px;
+  z-index:50;
+  padding: 25px 25px 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 3px;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+
+.messagepop p, .messagepop.div {
+  border-bottom: 1px solid #EFEFEF;
+  margin: 8px 0;
+  padding-bottom: 8px;
+}
 
 
 
