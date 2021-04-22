@@ -5,7 +5,8 @@ $result_array = array();
 if(isset($_GET['dept'])){
    
     $deptName = $_GET['dept'];
-     $getsubs="SELECT subject FROM subjects where dept='$deptName'";
+    $sem = $_GET['sem'];
+     $getsubs="SELECT subject FROM subjects where dept='$deptName' AND sem='$sem'";
       if($run3=mysqli_query($conn,$getsubs))
       {
         while ($row=mysqli_fetch_assoc($run3))

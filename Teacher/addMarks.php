@@ -22,8 +22,14 @@
         </select>
         <select name="sem" id="sem">
         <option value="" disabled selected>Select Semester</option>
-            <option value="sem1">SEM 1</option>
-            <option value="sem2">SEM 2</option>
+            <option value="1">SEM 1</option>
+            <option value="2">SEM 2</option>
+            <option value="3">SEM 3</option>
+            <option value="4">SEM 4</option>
+            <option value="5">SEM 5</option>
+            <option value="6">SEM 6</option>
+            <option value="7">SEM 7</option>
+            <option value="8">SEM 8</option>
         </select>
         <div id="getsubjects"></div>
         <input type="number" name="marks" placeholder="Enter Marks">
@@ -32,11 +38,12 @@
 </div>
 <script type="text/javascript"> 
        $(function(){ 
-         $("#dept").on('change',function(){ 
+         $("#sem").on('change',function(){ 
+           alert("getSubject.php?dept="+ $("#dept").val()+"&sem="+$("#sem").val())
          $.ajax({ 
            method: "GET", 
         
-           url: "getSubject.php?dept="+ $("#dept").val(),
+           url: "getSubject.php?dept="+ $("#dept").val()+"&sem="+$("#sem").val(),
          }).done(function( data ) { 
            var result =data; 
            var string=`<select name='sub'>
