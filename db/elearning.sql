@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2021 at 05:44 PM
+-- Generation Time: Apr 22, 2021 at 07:46 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -212,14 +212,15 @@ CREATE TABLE `final_result` (
 
 INSERT INTO `final_result` (`id`, `stud_prn`, `subject`, `year`, `dept`, `sem`, `marks`) VALUES
 (6, '12345', 'Cloud', 'BE', 'COMP', 'sem2', 100),
-(7, '123456', 'Python', 'SE', 'IT', 'sem1', 50),
+(7, '123456', 'Python', 'SE', 'IT', 'sem1', 25),
 (10, '12345', 'Web', 'BE', 'COMP', 'sem2', 60),
 (11, '71785633F', 'Cloud', 'BE', 'COMP', 'sem1', 80),
 (12, '71785633F', 'Artificial', 'BE', 'COMP', 'sem1', 70),
 (13, '71611203F', 'Cloud', 'BE', 'COMP', 'sem1', 90),
 (14, '71611203F', 'Artificial', 'BE', 'COMP', 'sem1', 80),
 (15, '71985633F', 'Python', 'SE', 'IT', 'sem1', 90),
-(16, '71611222F', 'DELD', 'SE', 'COMP', 'sem1', 80);
+(16, '71611222F', 'DELD', 'SE', 'COMP', 'sem1', 80),
+(17, '71784633F', 'Python', 'SE', 'IT', 'sem1', 60);
 
 -- --------------------------------------------------------
 
@@ -456,7 +457,8 @@ INSERT INTO `student` (`student_Id`, `name`, `email`, `prn`, `year`, `dept`, `Pa
 (8, 'Sunil Datir', 'sunil@gmail.com', '71785613F', 'BE', 'COMP', 'Sunil123'),
 (9, 'Student XYZ', 'student@gmail.com', '71785623F', 'BE', 'COMP', 'Student123'),
 (10, 'Prasad Kasar', 'prasad@gmail.com', '71985633F', 'SE', 'IT', 'Prasad123'),
-(11, 'Jatin Dalal', 'jatin@gmail.com', '71611222F', 'SE', 'COMP', 'Jatin123');
+(11, 'Jatin Dalal', 'jatin@gmail.com', '71611222F', 'SE', 'COMP', 'Jatin123'),
+(12, 'Rohit Dhurjad', 'rohit@gmail.com', '71784633F', 'SE', 'IT', 'Rohit123');
 
 -- --------------------------------------------------------
 
@@ -749,7 +751,7 @@ ALTER TABLE `assignment_submission`
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `blog_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `blog_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -767,7 +769,7 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `final_result`
 --
 ALTER TABLE `final_result`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `quizz`
@@ -791,7 +793,7 @@ ALTER TABLE `seminar`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `student_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `subjects`
