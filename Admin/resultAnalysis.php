@@ -160,10 +160,50 @@ $row = array();
                   $percentagefe1 = ($count / $srow['Total']) * 100;
                 }
               }
-              $row=array();
+             
               ?>
             </table>
           </div>
+          <div>
+              <h5><b>Analysis of Grades: </b></h5>
+             <div id="chartdivclassfe1"></div>
+              <table class="table table-striped table-bordered" style="width:100%">
+              <?php
+              $distinctionfe1 = 0;
+              $firstclassfe1 = 0;
+              $secondclassfe1 = 0;
+              $failfe1 =0;
+              $totalstud = "SELECT COUNT(*) AS Total FROM student WHERE dept = '$deptval' AND year = 'BE'";      
+              $countdistfe1 = 0;
+              $countfcfe1 = 0;
+              $countscfe1 = 0;
+              $countfailedfe1 = 0;
+              foreach ($row as $name => $marks) {
+               if($marks>=80.00)
+               {  //echo '<script type="text/javascript">console.log("hi BE  = '.$name.' '.$marks.'")</script>';  
+                $countdistfe1++;
+               }elseif($marks>=65.00 && $marks < 80.00){
+                 $countfcfe1++;
+               }elseif($marks>=35.00 && $marks < 65.00){
+                 $countscfe1++;
+               }else{
+                  $countfailedfe1++;
+               }
+              }      
+             // echo '<script type="text/javascript">alert("hi = '.$count..'")</script>';  
+              $tstud = mysqli_query($conn, $totalstud);
+              while ($srow = mysqli_fetch_assoc($tstud)) {
+                if ($srow['Total'] != 0 ){
+                  $distinctionfe1 = ($countdistfe1 / $srow['Total']) * 100;
+                  $firstclassfe1 = ($countfcfe1 / $srow['Total']) * 100;
+                  $secondclassfe1 = ($countscfe1 / $srow['Total']) * 100;
+                  $failfe1 = ($countfailedfe1 / $srow['Total']) * 100;
+                }
+              }
+              $row = array();
+              ?>
+              </table>
+            </div>
 
 
           </div>
@@ -256,10 +296,50 @@ $row = array();
                   $percentagefe2 = ($count / $srow['Total']) * 100;
                 }
               }
-              $row=array();
+             
               ?>
             </table>
           </div>
+          <div>
+              <h5><b>Analysis of Grades: </b></h5>
+             <div id="chartdivclassfe2"></div>
+              <table class="table table-striped table-bordered" style="width:100%">
+              <?php
+              $distinctionfe2 = 0;
+              $firstclassfe2 = 0;
+              $secondclassfe2 = 0;
+              $failfe2 =0;
+              $totalstud = "SELECT COUNT(*) AS Total FROM student WHERE dept = '$deptval' AND year = 'BE'";      
+              $countdistfe2 = 0;
+              $countfcfe2 = 0;
+              $countscfe2 = 0;
+              $countfailedfe2 = 0;
+              foreach ($row as $name => $marks) {
+               if($marks>=80.00)
+               {  //echo '<script type="text/javascript">console.log("hi BE  = '.$name.' '.$marks.'")</script>';  
+                $countdistfe2++;
+               }elseif($marks>=65.00 && $marks < 80.00){
+                 $countfcfe2++;
+               }elseif($marks>=35.00 && $marks < 65.00){
+                 $countscfe2++;
+               }else{
+                  $countfailedfe2++;
+               }
+              }      
+             // echo '<script type="text/javascript">alert("hi = '.$count..'")</script>';  
+              $tstud = mysqli_query($conn, $totalstud);
+              while ($srow = mysqli_fetch_assoc($tstud)) {
+                if ($srow['Total'] != 0 ){
+                  $distinctionfe2 = ($countdistfe2 / $srow['Total']) * 100;
+                  $firstclassfe2 = ($countfcfe2 / $srow['Total']) * 100;
+                  $secondclassfe2 = ($countscfe2 / $srow['Total']) * 100;
+                  $failfe2 = ($countfailedfe2 / $srow['Total']) * 100;
+                }
+              }
+              $row = array();
+              ?>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -360,10 +440,51 @@ $row = array();
                   $percentagese1 = ($count / $srow['Total']) * 100;
                 }
               }
-              $row = array();
               ?>
             </table>
           </div>
+          <div>
+              <h5><b>Analysis of Grades: </b></h5>
+             <div id="chartdivclassse1"></div>
+              <table class="table table-striped table-bordered" style="width:100%">
+              <?php
+              $distinctionse1 = 0;
+              $firstclassse1 = 0;
+              $secondclassse1 = 0;
+              $failse1 =0;
+              $totalstud = "SELECT COUNT(*) AS Total FROM student WHERE dept = '$deptval' AND year = 'BE'";      
+              $countdistse1 = 0;
+              $countfcse1 = 0;
+              $countscse1 = 0;
+              $countfailedse1 = 0;
+              foreach ($row as $name => $marks) {
+               if($marks>=80.00)
+               {  //echo '<script type="text/javascript">console.log("hi BE  = '.$name.' '.$marks.'")</script>';  
+                $countdistse1++;
+               }elseif($marks>=65.00 && $marks < 80.00){
+                 $countfcse1++;
+               }elseif($marks>=35.00 && $marks < 65.00){
+                 $countscse1++;
+               }else{
+                  $countfailedse1++;
+               }
+              }      
+             // echo '<script type="text/javascript">alert("hi = '.$count..'")</script>';  
+              $tstud = mysqli_query($conn, $totalstud);
+              while ($srow = mysqli_fetch_assoc($tstud)) {
+                if ($srow['Total'] != 0 ){
+                  $distinctionse1 = ($countdistse1 / $srow['Total']) * 100;
+                  $firstclassse1 = ($countfcse1 / $srow['Total']) * 100;
+                  $secondclassse1 = ($countscse1 / $srow['Total']) * 100;
+                  $failse1 = ($countfailedse1 / $srow['Total']) * 100;
+                }
+              }
+              $row = array();
+              ?>
+              </table>
+            </div>
+
+
           </div>
           <div id="semse2" class="desc2" style="display: none;">
             <table class="table table-striped table-bordered">
@@ -436,10 +557,52 @@ $row = array();
                   $percentagese2 = ($count / $srow['Total']) * 100;
                 }
               }
-              $row = array();
+              
               ?>
             </table>
           </div>
+
+          <div>
+              <h5><b>Analysis of Grades: </b></h5>
+             <div id="chartdivclassse2"></div>
+              <table class="table table-striped table-bordered" style="width:100%">
+              <?php
+              $distinctionse2 = 0;
+              $firstclassse2 = 0;
+              $secondclassse2 = 0;
+              $failse2 =0;
+              $totalstud = "SELECT COUNT(*) AS Total FROM student WHERE dept = '$deptval' AND year = 'BE'";      
+              $countdistse2 = 0;
+              $countfcse2 = 0;
+              $countscse2 = 0;
+              $countfailedse2 = 0;
+              foreach ($row as $name => $marks) {
+               if($marks>=80.00)
+               {  //echo '<script type="text/javascript">console.log("hi BE  = '.$name.' '.$marks.'")</script>';  
+                $countdistse2++;
+               }elseif($marks>=65.00 && $marks < 80.00){
+                 $countfcse2++;
+               }elseif($marks>=35.00 && $marks < 65.00){
+                 $countscse2++;
+               }else{
+                  $countfailedse2++;
+               }
+              }      
+             // echo '<script type="text/javascript">alert("hi = '.$count..'")</script>';  
+              $tstud = mysqli_query($conn, $totalstud);
+              while ($srow = mysqli_fetch_assoc($tstud)) {
+                if ($srow['Total'] != 0 ){
+                  $distinctionse2 = ($countdistse2 / $srow['Total']) * 100;
+                  $firstclassse2 = ($countfcse2 / $srow['Total']) * 100;
+                  $secondclassse2 = ($countscse2 / $srow['Total']) * 100;
+                  $failse2 = ($countfailedse2 / $srow['Total']) * 100;
+                }
+              }
+              $row = array();
+              ?>
+              </table>
+            </div>
+
           </div>
           
         </div>
@@ -540,10 +703,51 @@ $row = array();
                   $percentagete1 = ($count / $srow['Total']) * 100;
                 }
               }
-              $row=array();
+          
               ?>
             </table>
           </div>
+          <div>
+              <h5><b>Analysis of Grades: </b></h5>
+             <div id="chartdivclasste1"></div>
+              <table class="table table-striped table-bordered" style="width:100%">
+              <?php
+              $distinctionte1 = 0;
+              $firstclasste1 = 0;
+              $secondclasste1 = 0;
+              $failte1 =0;
+              $totalstud = "SELECT COUNT(*) AS Total FROM student WHERE dept = '$deptval' AND year = 'BE'";      
+              $countdistte1 = 0;
+              $countfcte1 = 0;
+              $countscte1 = 0;
+              $countfailedte1 = 0;
+              foreach ($row as $name => $marks) {
+               if($marks>=80.00)
+               {  //echo '<script type="text/javascript">console.log("hi BE  = '.$name.' '.$marks.'")</script>';  
+                $countdistte1++;
+               }elseif($marks>=65.00 && $marks < 80.00){
+                 $countfcte1++;
+               }elseif($marks>=35.00 && $marks < 65.00){
+                 $countscte1++;
+               }else{
+                  $countfailedte1++;
+               }
+              }      
+             // echo '<script type="text/javascript">alert("hi = '.$count..'")</script>';  
+              $tstud = mysqli_query($conn, $totalstud);
+              while ($srow = mysqli_fetch_assoc($tstud)) {
+                if ($srow['Total'] != 0 ){
+                  $distinctionte1 = ($countdistte1 / $srow['Total']) * 100;
+                  $firstclasste1 = ($countfcte1 / $srow['Total']) * 100;
+                  $secondclasste1 = ($countscte1 / $srow['Total']) * 100;
+                  $failte1 = ($countfailedte1 / $srow['Total']) * 100;
+                }
+              }
+              $row = array();
+              ?>
+              </table>
+            </div>
+
           </div>
           <div id="semte2" class="desc3" style="display: none;">
             <table class="table table-striped table-bordered">
@@ -633,10 +837,49 @@ $row = array();
                   $percentagete2 = ($count / $srow['Total']) * 100;
                 }
               }
-              $row=array();
               ?>
             </table>
           </div>
+          <div>
+              <h5><b>Analysis of Grades: </b></h5>
+             <div id="chartdivclasste2"></div>
+              <table class="table table-striped table-bordered" style="width:100%">
+              <?php
+              $distinctionte2 = 0;
+              $firstclasste2 = 0;
+              $secondclasste2 = 0;
+              $failte2 =0;
+              $totalstud = "SELECT COUNT(*) AS Total FROM student WHERE dept = '$deptval' AND year = 'BE'";      
+              $countdistte2 = 0;
+              $countfcte2 = 0;
+              $countscte2 = 0;
+              $countfailedte2 = 0;
+              foreach ($row as $name => $marks) {
+               if($marks>=80.00)
+               {  //echo '<script type="text/javascript">console.log("hi BE  = '.$name.' '.$marks.'")</script>';  
+                $countdistte2++;
+               }elseif($marks>=65.00 && $marks < 80.00){
+                 $countfcte2++;
+               }elseif($marks>=35.00 && $marks < 65.00){
+                 $countscte2++;
+               }else{
+                  $countfailedte2++;
+               }
+              }      
+             // echo '<script type="text/javascript">alert("hi = '.$count..'")</script>';  
+              $tstud = mysqli_query($conn, $totalstud);
+              while ($srow = mysqli_fetch_assoc($tstud)) {
+                if ($srow['Total'] != 0 ){
+                  $distinctionte2 = ($countdistte2 / $srow['Total']) * 100;
+                  $firstclasste2 = ($countfcte2 / $srow['Total']) * 100;
+                  $secondclasste2 = ($countscte2 / $srow['Total']) * 100;
+                  $failte2 = ($countfailedte2 / $srow['Total']) * 100;
+                }
+              }
+              $row = array();
+              ?>
+              </table>
+            </div>
           </div>
         </div>
 
@@ -719,9 +962,9 @@ $row = array();
               ?>
             </table>
             <div>
-            <h5><b>Analysis: </b></h5>
-            <div id="chartdivbe1"></div>
-            <table class="table table-striped table-bordered" style="width:100%">
+              <h5><b>Analysis: </b></h5>
+             <div id="chartdivbe1"></div>
+              <table class="table table-striped table-bordered" style="width:100%">
               <?php
               $percentagebe1 = 0;
               $totalstud = "SELECT COUNT(*) AS Total FROM student WHERE dept = '$deptval' AND year = 'BE'";      
@@ -739,10 +982,51 @@ $row = array();
                   $percentagebe1 = ($count / $srow['Total']) * 100;
                 }
               }
+              ?>
+              </table>
+            </div>
+
+            <div>
+              <h5><b>Analysis of Grades: </b></h5>
+             <div id="chartdivclassbe1"></div>
+              <table class="table table-striped table-bordered" style="width:100%">
+              <?php
+              $distinctionbe1 = 0;
+              $firstclassbe1 = 0;
+              $secondclassbe1 = 0;
+              $failbe1 =0;
+              $totalstud = "SELECT COUNT(*) AS Total FROM student WHERE dept = '$deptval' AND year = 'BE'";      
+              $countdistbe1 = 0;
+              $countfcbe1 = 0;
+              $countscbe1 = 0;
+              $countfailedbe1 = 0;
+              foreach ($row as $name => $marks) {
+               if($marks>=80.00)
+               {  //echo '<script type="text/javascript">console.log("hi BE  = '.$name.' '.$marks.'")</script>';  
+                $countdistbe1++;
+               }elseif($marks>=65.00 && $marks < 80.00){
+                 $countfcbe1++;
+               }elseif($marks>=35.00 && $marks < 65.00){
+                 $countscbe1++;
+               }else{
+                  $countfailedbe1++;
+               }
+              }      
+             // echo '<script type="text/javascript">alert("hi = '.$count..'")</script>';  
+              $tstud = mysqli_query($conn, $totalstud);
+              while ($srow = mysqli_fetch_assoc($tstud)) {
+                if ($srow['Total'] != 0 ){
+                  $distinctionbe1 = ($countdistbe1 / $srow['Total']) * 100;
+                  $firstclassbe1 = ($countfcbe1 / $srow['Total']) * 100;
+                  $secondclassbe1 = ($countscbe1 / $srow['Total']) * 100;
+                  $failbe1 = ($countfailedbe1 / $srow['Total']) * 100;
+                }
+              }
               $row = array();
               ?>
-            </table>
-          </div>
+              </table>
+            </div>
+
           </div>
           <div id="sembe2" class="desc4" style="display: none;">
             <table class="table table-striped table-bordered">
@@ -832,10 +1116,50 @@ $row = array();
                   $percentagebe2 = ($count / $srow['Total']) * 100;
                 }
               }
-              $row=array();
+             
               ?>
             </table>
           </div>
+          <div>
+              <h5><b>Analysis of Grades: </b></h5>
+             <div id="chartdivclassbe2"></div>
+              <table class="table table-striped table-bordered" style="width:100%">
+              <?php
+              $distinctionbe2 = 0;
+              $firstclassbe2 = 0;
+              $secondclassbe2 = 0;
+              $failbe2 =0;
+              $totalstud = "SELECT COUNT(*) AS Total FROM student WHERE dept = '$deptval' AND year = 'BE'";      
+              $countdistbe2 = 0;
+              $countfcbe2 = 0;
+              $countscbe2 = 0;
+              $countfailedbe2 = 0;
+              foreach ($row as $name => $marks) {
+               if($marks>=80.00)
+               {  //echo '<script type="text/javascript">console.log("hi BE  = '.$name.' '.$marks.'")</script>';  
+                $countdistbe2++;
+               }elseif($marks>=65.00 && $marks < 80.00){
+                 $countfcbe2++;
+               }elseif($marks>=35.00 && $marks < 65.00){
+                 $countscbe2++;
+               }else{
+                  $countfailedbe2++;
+               }
+              }      
+             // echo '<script type="text/javascript">alert("hi = '.$count..'")</script>';  
+              $tstud = mysqli_query($conn, $totalstud);
+              while ($srow = mysqli_fetch_assoc($tstud)) {
+                if ($srow['Total'] != 0 ){
+                  $distinctionbe2 = ($countdistbe2 / $srow['Total']) * 100;
+                  $firstclassbe2 = ($countfcbe2 / $srow['Total']) * 100;
+                  $secondclassbe2 = ($countscbe2 / $srow['Total']) * 100;
+                  $failbe2 = ($countfailedbe2 / $srow['Total']) * 100;
+                }
+              }
+              $row = array();
+              ?>
+              </table>
+            </div>
           </div>
         </div>
         
@@ -1184,6 +1508,334 @@ chart.data = [ {
 }, {
   "Result": "Failed",
   "val": <?php echo 100 - $percentagefe1?>
+}];
+
+// Add and configure Series
+var pieSeries = chart.series.push(new am4charts.PieSeries());
+pieSeries.dataFields.value = "val";
+pieSeries.dataFields.category = "Result";
+pieSeries.slices.template.stroke = am4core.color("#fff");
+pieSeries.slices.template.strokeWidth = 2;
+pieSeries.slices.template.strokeOpacity = 1;
+
+// This creates initial animation
+pieSeries.hiddenState.properties.opacity = 1;
+pieSeries.hiddenState.properties.endAngle = -90;
+pieSeries.hiddenState.properties.startAngle = -90;
+
+}); // end am4core.ready()
+</script>
+
+
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdivclassbe1", am4charts.PieChart);
+
+// Add data
+chart.data = [ {
+  "Result": "Distinction",
+  "val": <?php echo $distinctionbe1 ?>
+}, {
+  "Result": "First Class",
+  "val": <?php echo $firstclassbe1 ?>
+},{
+  "Result": "Second Class",
+  "val": <?php echo $secondclassbe1 ?>
+}, {
+  "Result": "Failed",
+  "val": <?php echo $failbe1 ?>
+}];
+
+// Add and configure Series
+var pieSeries = chart.series.push(new am4charts.PieSeries());
+pieSeries.dataFields.value = "val";
+pieSeries.dataFields.category = "Result";
+pieSeries.slices.template.stroke = am4core.color("#fff");
+pieSeries.slices.template.strokeWidth = 2;
+pieSeries.slices.template.strokeOpacity = 1;
+
+// This creates initial animation
+pieSeries.hiddenState.properties.opacity = 1;
+pieSeries.hiddenState.properties.endAngle = -90;
+pieSeries.hiddenState.properties.startAngle = -90;
+
+}); // end am4core.ready()
+</script>
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdivclassbe2", am4charts.PieChart);
+
+// Add data
+chart.data = [ {
+  "Result": "Distinction",
+  "val": <?php echo $distinctionbe2 ?>
+}, {
+  "Result": "First Class",
+  "val": <?php echo $firstclassbe2 ?>
+},{
+  "Result": "Second Class",
+  "val": <?php echo $secondclassbe2 ?>
+}, {
+  "Result": "Failed",
+  "val": <?php echo $failbe2 ?>
+}];
+
+// Add and configure Series
+var pieSeries = chart.series.push(new am4charts.PieSeries());
+pieSeries.dataFields.value = "val";
+pieSeries.dataFields.category = "Result";
+pieSeries.slices.template.stroke = am4core.color("#fff");
+pieSeries.slices.template.strokeWidth = 2;
+pieSeries.slices.template.strokeOpacity = 1;
+
+// This creates initial animation
+pieSeries.hiddenState.properties.opacity = 1;
+pieSeries.hiddenState.properties.endAngle = -90;
+pieSeries.hiddenState.properties.startAngle = -90;
+
+}); // end am4core.ready()
+</script>
+
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdivclassse1", am4charts.PieChart);
+
+// Add data
+chart.data = [ {
+  "Result": "Distinction",
+  "val": <?php echo $distinctionse1 ?>
+}, {
+  "Result": "First Class",
+  "val": <?php echo $firstclassse1 ?>
+},{
+  "Result": "Second Class",
+  "val": <?php echo $secondclassse1 ?>
+}, {
+  "Result": "Failed",
+  "val": <?php echo $failse1 ?>
+}];
+
+// Add and configure Series
+var pieSeries = chart.series.push(new am4charts.PieSeries());
+pieSeries.dataFields.value = "val";
+pieSeries.dataFields.category = "Result";
+pieSeries.slices.template.stroke = am4core.color("#fff");
+pieSeries.slices.template.strokeWidth = 2;
+pieSeries.slices.template.strokeOpacity = 1;
+
+// This creates initial animation
+pieSeries.hiddenState.properties.opacity = 1;
+pieSeries.hiddenState.properties.endAngle = -90;
+pieSeries.hiddenState.properties.startAngle = -90;
+
+}); // end am4core.ready()
+</script>
+
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdivclassse2", am4charts.PieChart);
+
+// Add data
+chart.data = [ {
+  "Result": "Distinction",
+  "val": <?php echo $distinctionse2 ?>
+}, {
+  "Result": "First Class",
+  "val": <?php echo $firstclassse2 ?>
+},{
+  "Result": "Second Class",
+  "val": <?php echo $secondclassse2 ?>
+}, {
+  "Result": "Failed",
+  "val": <?php echo $failse2 ?>
+}];
+
+// Add and configure Series
+var pieSeries = chart.series.push(new am4charts.PieSeries());
+pieSeries.dataFields.value = "val";
+pieSeries.dataFields.category = "Result";
+pieSeries.slices.template.stroke = am4core.color("#fff");
+pieSeries.slices.template.strokeWidth = 2;
+pieSeries.slices.template.strokeOpacity = 1;
+
+// This creates initial animation
+pieSeries.hiddenState.properties.opacity = 1;
+pieSeries.hiddenState.properties.endAngle = -90;
+pieSeries.hiddenState.properties.startAngle = -90;
+
+}); // end am4core.ready()
+</script>
+
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdivclasste2", am4charts.PieChart);
+
+// Add data
+chart.data = [ {
+  "Result": "Distinction",
+  "val": <?php echo $distinctionte2 ?>
+}, {
+  "Result": "First Class",
+  "val": <?php echo $firstclasste2 ?>
+},{
+  "Result": "Second Class",
+  "val": <?php echo $secondclasste2 ?>
+}, {
+  "Result": "Failed",
+  "val": <?php echo $failte2 ?>
+}];
+
+// Add and configure Series
+var pieSeries = chart.series.push(new am4charts.PieSeries());
+pieSeries.dataFields.value = "val";
+pieSeries.dataFields.category = "Result";
+pieSeries.slices.template.stroke = am4core.color("#fff");
+pieSeries.slices.template.strokeWidth = 2;
+pieSeries.slices.template.strokeOpacity = 1;
+
+// This creates initial animation
+pieSeries.hiddenState.properties.opacity = 1;
+pieSeries.hiddenState.properties.endAngle = -90;
+pieSeries.hiddenState.properties.startAngle = -90;
+
+}); // end am4core.ready()
+</script>
+
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdivclasste1", am4charts.PieChart);
+
+// Add data
+chart.data = [ {
+  "Result": "Distinction",
+  "val": <?php echo $distinctionte1 ?>
+}, {
+  "Result": "First Class",
+  "val": <?php echo $firstclasste1 ?>
+},{
+  "Result": "Second Class",
+  "val": <?php echo $secondclasste1 ?>
+}, {
+  "Result": "Failed",
+  "val": <?php echo $failte1 ?>
+}];
+
+// Add and configure Series
+var pieSeries = chart.series.push(new am4charts.PieSeries());
+pieSeries.dataFields.value = "val";
+pieSeries.dataFields.category = "Result";
+pieSeries.slices.template.stroke = am4core.color("#fff");
+pieSeries.slices.template.strokeWidth = 2;
+pieSeries.slices.template.strokeOpacity = 1;
+
+// This creates initial animation
+pieSeries.hiddenState.properties.opacity = 1;
+pieSeries.hiddenState.properties.endAngle = -90;
+pieSeries.hiddenState.properties.startAngle = -90;
+
+}); // end am4core.ready()
+</script>
+
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdivclassfe2", am4charts.PieChart);
+
+// Add data
+chart.data = [ {
+  "Result": "Distinction",
+  "val": <?php echo $distinctionfe2 ?>
+}, {
+  "Result": "First Class",
+  "val": <?php echo $firstclassfe2 ?>
+},{
+  "Result": "Second Class",
+  "val": <?php echo $secondclassfe2 ?>
+}, {
+  "Result": "Failed",
+  "val": <?php echo $failfe2 ?>
+}];
+
+// Add and configure Series
+var pieSeries = chart.series.push(new am4charts.PieSeries());
+pieSeries.dataFields.value = "val";
+pieSeries.dataFields.category = "Result";
+pieSeries.slices.template.stroke = am4core.color("#fff");
+pieSeries.slices.template.strokeWidth = 2;
+pieSeries.slices.template.strokeOpacity = 1;
+
+// This creates initial animation
+pieSeries.hiddenState.properties.opacity = 1;
+pieSeries.hiddenState.properties.endAngle = -90;
+pieSeries.hiddenState.properties.startAngle = -90;
+
+}); // end am4core.ready()
+</script>
+
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdivclassfe1", am4charts.PieChart);
+
+// Add data
+chart.data = [ {
+  "Result": "Distinction",
+  "val": <?php echo $distinctionfe1 ?>
+}, {
+  "Result": "First Class",
+  "val": <?php echo $firstclassfe1 ?>
+},{
+  "Result": "Second Class",
+  "val": <?php echo $secondclassfe1 ?>
+}, {
+  "Result": "Failed",
+  "val": <?php echo $failfe1 ?>
 }];
 
 // Add and configure Series
