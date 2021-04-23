@@ -26,13 +26,13 @@ $row = array();
   </div>
 
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-    <ul class="navbar-nav mr-auto">
+  <nav class="navbar navbar-expand-lg navbar-info bg-info sticky-top">
+    <ul class="navbar-nav mr-auto text-white">
       <li class="nav-item active">
         <a href="admin.php"><i id="tg" class='fas fa-arrow-alt-circle-left' style='color:#d5d5d5;font-size: 30px;'></i></a>
       </li>
     </ul>
-    <a class="navbar-brand mx-auto" href="#">E-Learning</a>
+    <a class="navbar-brand mx-auto" href="#">Learning Management System</a>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
         <form method="post">
@@ -1171,8 +1171,8 @@ $row = array();
 
     </div>
   </div><br><br><br><br>
-  <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="footer">
-    <a class="navbar-brand mx-auto">...</a>
+  <div class="navbar navbar-expand-lg navbar-info bg-info" id="footer">
+    <a class="navbar-brand mx-auto text-white">...</a>
   </div>
 </body>
 

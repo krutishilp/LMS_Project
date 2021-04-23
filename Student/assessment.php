@@ -32,13 +32,14 @@ if($rungtinfo=mysqli_query($conn,$getinfo))
 </head>
 <body id="bod">
 <!-- Side Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-   <ul class="navbar-nav mr-auto">
+  <nav class="navbar navbar-expand-lg navbar-info bg-info">
+    <ul class="navbar-nav mr-auto text-white">
       <li class="nav-item active">
-      	<a href="student.php"><i id="tg" class='fas fa-arrow-alt-circle-left' style='color:#d5d5d5;font-size: 30px;'></i></a>
-        </li>
+        <a href="student.php"><i id="tg" class='fas fa-arrow-alt-circle-left' style='color:#d5d5d5;font-size: 30px;'></i></a>
+      </li>
     </ul>
-   <a class="navbar-brand mx-auto" href="#">RSCOE</a>
+    <a class="navbar-brand mx-auto text-white" style="font-size: x-large;" href="#">Learning Management System</a>
+  
    <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
         <form method="post">
@@ -65,10 +66,10 @@ if($rungtinfo=mysqli_query($conn,$getinfo))
     </div>
   </div>
   	
+<br><br>
 
-
-  <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="footer">
-        <a class="navbar-brand mx-auto">Made by Srushti</a>
+  <div class="navbar navbar-expand-lg navbar-info bg-info" id="footer">
+        <a class="navbar-brand mx-auto text-white">...</a>
   </div>
 </body>
 </html>

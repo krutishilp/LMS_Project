@@ -39,7 +39,6 @@
 <script type="text/javascript"> 
        $(function(){ 
          $("#sem").on('change',function(){ 
-           alert("getSubject.php?dept="+ $("#dept").val()+"&sem="+$("#sem").val())
          $.ajax({ 
            method: "GET", 
         
@@ -70,10 +69,17 @@ if (isset($_POST['addMarks']))
   $nm=$_POST['sub'];
   $dept=$_POST['dept'];
   $year=$_POST['year'];
-  $sem=$_POST['sem'];
+  $sem=(int)$_POST['sem'];
+$sem1="";
+  if($sem % 2==0){
+    $sem1 = "sem2";
+  }else{
+    $sem1 = "sem1";
+  }
+
   $prn=$_POST['prn'];
   $marks=$_POST['marks'];
-  $q="INSERT INTO `final_result`(`stud_prn`,`subject`,`dept`,`year`,`sem`,`marks`) VALUES ('$prn','$nm','$dept','$year','$sem','$marks')";
+  $q="INSERT INTO `final_result`(`stud_prn`,`subject`,`dept`,`year`,`sem`,`marks`) VALUES ('$prn','$nm','$dept','$year','$sem1','$marks')";
   if($run=mysqli_query($conn,$q))
   {
      echo '<script type="text/javascript">alert("Done")</script>';

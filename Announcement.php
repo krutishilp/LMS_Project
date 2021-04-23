@@ -9,7 +9,7 @@
     $ass=mysqli_query($conn,$query);
     $sem=mysqli_query($conn,$query1);
     $feed=mysqli_query($conn,$query2);
-    echo '<marquee direction = "up" onmouseover="this.stop();" onmouseout="this.start();"><ul>';
+    echo '<marquee height="150px" direction = "up" onmouseover="this.stop();" onmouseout="this.start();"><ul>';
     while($row=mysqli_fetch_assoc($ass)){
         echo '<li><a href="">'.$row['Description'].'     Deadline on '.$row['Assignment_Deadline'].'</a></li><br>';
        

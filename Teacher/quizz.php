@@ -26,13 +26,13 @@ $name=$_SESSION['teacher_user_name'];
 </head>
 <body>
 <!-- Side Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-info bg-info">
    <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
       	<a href="teacher.php"><i id="tg" class='fas fa-arrow-alt-circle-left' style='color:#d5d5d5;font-size: 30px;'></i></a>
         </li>
     </ul>
-   <a class="navbar-brand mx-auto" href="#">E-Learning</a>
+   <a class="navbar-brand mx-auto text-white" href="#">Learning Management System</a>
    <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
         <form method="post">
@@ -54,7 +54,7 @@ $name=$_SESSION['teacher_user_name'];
         <?php include 'quiz-table.php'; ?> 
         	<div class="table-responsive" >
           <h5><b>Add Questions: </b></h5>
-        		<table class="table table-striped table-bordered" style="width:50%">
+        		<table class="table table-striped table-bordered" style="">
         			<tr><th>Q-ID</th><th>Question</th><th>Option 1</th><th>Option 2</th><th>Option 3</th><th>Option 4</th><th>Answer</th></tr>
         			<?php echo $tbl_html; ?>
         		</table>
@@ -122,6 +122,7 @@ $name=$_SESSION['teacher_user_name'];
           <div class="col">
             <div class="table-responsive" >
               <h5><b>Analysis: </b></h5>
+              <br><button onclick="printDiv('results')">Download Result</button>
               <div id="chartdiv"></div>
                 <table class="table table-striped table-bordered" style="width:100%">
                   <?php
@@ -139,32 +140,12 @@ $name=$_SESSION['teacher_user_name'];
             </div>
           </div>
           
-          <div class="col">
-            <div class="table-responsive" >
-              <h5><b>Analysis: </b></h5>
-                <table class="table table-striped table-bordered" style="width:100%">
-                  <?php
-                  $percentage = 0;
-                  $getrecords="select COUNT(score) as Passed,(select COUNT(*) from assessment_records WHERE exam_id= 123456) as Total from assessment_records WHERE score>=50 and exam_id= '$eid'";
-                  $rungetr=mysqli_query($conn,$getrecords);
-                  while($rrow=mysqli_fetch_assoc($rungetr))
-                  {
-                    if($rrow['Total']!=0){
-                      $percentage = ($rrow['Passed'] / $rrow['Total'])*100;
-                    }
-                  }
-                  ?>
-                </table>
-            </div>
-          </div>
-        </div></div>
-          <br><button onclick="printDiv('results')">Download Result</button>
-      </div>
+        </div>
   	<br><br><br><br>
 
 
-  <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="footer">
-        <a class="navbar-brand mx-auto">....</a>
+  <div class="navbar navbar-expand-lg navbar-info bg-info" id="footer">
+        <a class="navbar-brand mx-auto text-white">....</a>
   </div>
 </body>
 </html>

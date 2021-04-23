@@ -8,13 +8,13 @@
   </head>
   <body>
 <!-- Side Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-info bg-info ">
    <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
       	<a href="javascript:javascript:history.go(-1)"><i id="tg" class='fas fa-arrow-alt-circle-left' style='color:#d5d5d5;font-size: 30px;'></i></a>
         </li>
     </ul>
-   <a class="navbar-brand mx-auto" href="#">E-Learning</a>
+   <a class="navbar-brand mx-auto text-white" href="#">Learning Management System</a>
    <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
         <form method="post">
@@ -94,5 +94,9 @@ if(isset($_GET['blogid'])){
   }
   }
 ?>
+ <br><br><br>
+  <nav class="navbar navbar-expand-lg navbar-info bg-info" id="footer">
+    <a class="navbar-brand mx-auto text-white" href="#">...</a>
+  </nav>
 </body>
 </html>

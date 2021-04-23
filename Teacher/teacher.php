@@ -127,14 +127,15 @@
   		</ul>
   	<hr>
   </div>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-   <ul class="navbar-nav mr-auto">
+  <nav class="navbar navbar-expand-lg navbar-info bg-info">
+   <ul class="navbar-nav mr-auto ">
       <li class="nav-item active">
         <i id="tg" class='fas fa-arrow-alt-circle-right' style='color:#d5d5d5;font-size: 30px;'></i>
       </li>
    </ul>		
-   <a class="navbar-brand" href="#">E-Learning</a>
+   <a class="navbar-brand text-white" href="#">Learning Management System</a>
    <ul class="navbar-nav ml-auto">
+   <li class="nav-item active"><?php echo '<a class="text-white" href="../blog.php?name='.$name.'">Write a blog</a>'; ?></li>
       <li class="nav-item active">
         <form method="post">
         <button  type="submit" name='lgt' style="border:2px solid #d5d5d5; background-color: transparent;color: #d5d5d5;"><i class="fas fa-sign-out-alt"></i></button>
@@ -158,8 +159,7 @@
   </div>
   <br><br>
     <div class="col-lg-6 sm-auto md-auto">
-       <div class="container-fluid">
-       <?php echo '<a href="../blog.php?name='.$name.'">write a blog</a>'; ?> 
+       <div class="container-fluid"> 
        <h3>Uploads</h3>
          <?php include 'upload-form.php'; ?>
       </div>
@@ -184,8 +184,8 @@
       </div>  
 </div>
   <br><br><br>
-  <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="footer">
-        <a class="navbar-brand mx-auto">.....</a>
+  <div class="navbar navbar-expand-lg navbar-info bg-info" id="footer">
+        <a class="navbar-brand mx-auto text-white">.....</a>
       </div>
 </body>
 </html>

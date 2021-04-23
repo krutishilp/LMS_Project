@@ -1,27 +1,39 @@
 <?php session_start() ?>
 <!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <html>
 
 <head>
   <title>Home</title>
   <?php include 'links.php'; ?>
   <?php include 'style.php'; ?>
+
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-info bg-info">
-    <a class="navbar-brand mx-auto text-white" href="#">Learning Management System</a>
-    <ul>
-      <li style="text-decoration: none;"><a href="#" id="about">About Us</a><a href="#" id="signup">Sign Up</a>
-  <a href="#" id="login">Login</a></li>
-    </ul>
+<body> 
+  <nav class="navbar navbar-expand-lg navbar-info bg-info " >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand text-white" style="font-size: x-large;" href="#">Learning Management System</a>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active"><a class="nav-link text-white" href="#" id="about">About Us</a></li>
+        <li class="nav-item active"><a class="nav-link text-white" href="#" id="blog">Blogs</a></li>
+        <li class="nav-item active"><a class="nav-link text-white" href="#" id="signup">Sign Up</a></li>
+        <li class="nav-item active"><a class="nav-link text-white" href="#" id="login">Login</a></li>
+      </ul>
+    </div>
   </nav>
-  <div class="container-fluid pad2">
+  <div style="margin-top: 90px ; position: fixed;">
+    <h1 class="text-white" style="font-family: Georgia, 'Times New Roman', Times, serif; "><i> Welcome to,</i><i><br></i></h1><h1 class="text-white" style="font-size: 75px; font-family: Georgia, 'Times New Roman', Times, serif; "><strong> Learning <i><br></i>Management <i><br></i>System.</strong></h1>
+  </div>
+  <div class="container-fluid pad2" >
     <div class="row pad">
       <div class="col-lg-6 offset-lg-3 sm-auto md-auto">
         <div class="row">
           <div class="col abtpad messagepop " id="pop1">
-          <a id="close1" href="#"><i id="tg" class='fas fa-times' style='color:#d5d5d5;font-size: 30px;'></i></a>
+            <a id="close1" href="#"><i id="tg" class='fas fa-times' style='color:#d5d5d5;font-size: 30px;'></i></a>
             <form action="index.php" method="POST" class="fc">
               <h3>Sign-up</h3>
               <hr>
@@ -48,14 +60,14 @@
             </form>
           </div>
           <div class="col abtpad messagepop " id="pop2">
-          <a id="close2" href="#"><i id="tg" class='fas fa-times' style='color:#d5d5d5;font-size: 30px;'></i></a>
+            <a id="close2" href="#"><i id="tg" class='fas fa-times' style='color:#d5d5d5;font-size: 30px;'></i></a>
             <form action="index.php" method="POST" class="fc">
               <h3>Login</h3>
               <hr>
               <input type="email" name="uemail" placeholder="Email"><br><br>
               <input type="password" name="upassword" placeholder="Password"><br><br>
               <select name="role" id="role">
-              <option value="">Select</option>
+                <option value="">Select</option>
                 <option value="admin">Admin</option>
                 <option value="teachers">Teacher</option>
                 <option value="student">Student</option>
@@ -64,10 +76,13 @@
 
             </form>
           </div>
+          <div class="messagepop" id="pop4">
+          <?php include 'showblog.php'; ?>
+        </div>
         </div>
         <div class="abtpad">
           <div class="fc messagepop" id="pop3">
-          <a id="close3" href="#"><i id="tg" class='fas fa-times' style='color:#d5d5d5;font-size: 30px;'></i></a>
+            <a id="close3" href="#"><i id="tg" class='fas fa-times' style='color:#d5d5d5;font-size: 30px;'></i></a>
             <h3>About</h3>
             <hr>
             <P>To create quality information technology professionals through superior academic environment.<br>
@@ -83,18 +98,20 @@
               2)<b>What will you get?</b><br>
               Helping students re-visit the lecture to revise and understand concepts aswell as provide necessary resources for exam prep.
               <br>Unit Wise:<br>
-              <ul>
-                <li>Video Lectures</li>
-                <li>PDF Notes</li>
-                <li>PPT's</li>
-                <li>Quizzes</li>
-              </ul>
+            <ul>
+              <li>Video Lectures</li>
+              <li>PDF Notes</li>
+              <li>PPT's</li>
+              <li>Quizzes</li>
+            </ul>
             </p>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <br><br><br>
   <nav class="navbar navbar-expand-lg navbar-info bg-info" id="footer">
     <a class="navbar-brand mx-auto text-white" href="#">...</a>
   </nav>
@@ -104,7 +121,7 @@
 
 <?php
 include 'connection.php';
-include 'showblog.php';
+
 //-------------------------------------------- Sign-Up ------------------------------------------	
 if (isset($_POST['su'])) {
 
@@ -127,7 +144,7 @@ if (isset($_POST['su'])) {
 
 //------------------------------------------------------------------------------------------------------
 if (isset($_POST['lg'])) {
-  
+
   $email = $_POST['uemail'];
   $password = $_POST['upassword'];
   $role = $_POST['role'];
@@ -166,109 +183,145 @@ if (isset($_POST['lg'])) {
         echo "<script type='text/javascript'>location.replace('Student/student.php')</script>";
       }
     } else {
-      echo '<script type="text/javascript">alert("Email Or Password is wrong check again or contact admin.'.$login.'");</script>;';
+      echo '<script type="text/javascript">alert("Email Or Password is wrong check again or contact admin.' . $login . '");</script>;';
     }
   } else {
-    echo '<script type="text/javascript">alert("Email Or Password is wrong check again or contact admin.'.$login.'");</script>';
+    echo '<script type="text/javascript">alert("Email Or Password is wrong check again or contact admin.' . $login . '");</script>';
   }
 }
 
 ?>
 
 <script>
+  function deselect1(e) {
+    $('#pop1').slideFadeToggle(function() {
+      e.removeClass('selected');
+    });
+  }
 
-function deselect1(e) {
-  $('#pop1').slideFadeToggle(function() {
-    e.removeClass('selected');
-  });    
-}
+  $(function() {
+    $('#signup').on('click', function() {
 
-$(function() {
-  $('#signup').on('click', function() {
+      if ($(this).hasClass('selected')) {
+        deselect1($(this));
 
-    if($(this).hasClass('selected')) {
-      deselect1($(this));
-                     
-    } else {
-      $(this).addClass('selected');
-      $('#pop1').slideFadeToggle();
-    }
-    return false;
+      } else {
+        $(this).addClass('selected');
+        $('#pop1').slideFadeToggle();
+      }
+      return false;
+    });
+
+    $('#close1').on('click', function() {
+      deselect1($('#signup'));
+      $(".row").css("filter", "none");
+      return false;
+    });
   });
 
-  $('#close1').on('click', function() {
-    deselect1($('#signup'));
-    $(".row").css("filter", "none");
-    return false;
-  });
-});
-
-$.fn.slideFadeToggle = function(easing, callback) {
-  return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
-};
-
+  $.fn.slideFadeToggle = function(easing, callback) {
+    return this.animate({
+      opacity: 'toggle',
+      height: 'toggle'
+    }, 'fast', easing, callback);
+  };
 </script>
 
 <script>
+  function deselect2(e) {
+    $('#pop2').slideFadeToggle(function() {
+      e.removeClass('selected');
+    });
+  }
 
-function deselect2(e) {
-  $('#pop2').slideFadeToggle(function() {
-    e.removeClass('selected');
-  });    
-}
+  $(function() {
+    $('#login').on('click', function() {
 
-$(function() {
-  $('#login').on('click', function() {
-    
-    if($(this).hasClass('selected')) {
-      deselect2($(this));               
-    } else {
-      $(this).addClass('selected');
-      $('#pop2').slideFadeToggle();
-    }
-    return false;
+      if ($(this).hasClass('selected')) {
+        deselect2($(this));
+      } else {
+        $(this).addClass('selected');
+        $('#pop2').slideFadeToggle();
+      }
+      return false;
+    });
+
+    $('#close2').on('click', function() {
+      deselect2($('#login'));
+      return false;
+    });
   });
 
-  $('#close2').on('click', function() {
-    deselect2($('#login'));
-    return false;
-  });
-});
-
-$.fn.slideFadeToggle = function(easing, callback) {
-  return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
-};
-
+  $.fn.slideFadeToggle = function(easing, callback) {
+    return this.animate({
+      opacity: 'toggle',
+      height: 'toggle'
+    }, 'fast', easing, callback);
+  };
 </script>
 
 <script>
+  function deselect3(e) {
+    $('#pop3').slideFadeToggle(function() {
+      e.removeClass('selected');
+    });
+  }
 
-function deselect3(e) {
-  $('#pop3').slideFadeToggle(function() {
-    e.removeClass('selected');
-  });    
-}
+  $(function() {
+    $('#about').on('click', function() {
 
-$(function() {
-  $('#about').on('click', function() {
-    
-    if($(this).hasClass('selected')) {
-      deselect3($(this));               
-    } else {
-      $(this).addClass('selected');
-      $('#pop3').slideFadeToggle();
-    }
-    return false;
+      if ($(this).hasClass('selected')) {
+        deselect3($(this));
+      } else {
+        $(this).addClass('selected');
+        $('#pop3').slideFadeToggle();
+      }
+      return false;
+    });
+
+    $('#close3').on('click', function() {
+      deselect3($('#about'));
+      return false;
+    });
   });
 
-  $('#close3').on('click', function() {
-    deselect3($('#about'));
-    return false;
+  $.fn.slideFadeToggle = function(easing, callback) {
+    return this.animate({
+      opacity: 'toggle',
+      height: 'toggle'
+    }, 'fast', easing, callback);
+  };
+</script>
+
+<script>
+  function deselect4(e) {
+    $('#pop4').slideFadeToggle(function() {
+      e.removeClass('selected');
+    });
+  }
+
+  $(function() {
+    $('#blog').on('click', function() {
+
+      if ($(this).hasClass('selected')) {
+        deselect4($(this));
+      } else {
+        $(this).addClass('selected');
+        $('#pop4').slideFadeToggle();
+      }
+      return false;
+    });
+
+    $('#close4').on('click', function() {
+      deselect4($('#blog'));
+      return false;
+    });
   });
-});
 
-$.fn.slideFadeToggle = function(easing, callback) {
-  return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
-};
-
+  $.fn.slideFadeToggle = function(easing, callback) {
+    return this.animate({
+      opacity: 'toggle',
+      height: 'toggle'
+    }, 'fast', easing, callback);
+  };
 </script>

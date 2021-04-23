@@ -27,13 +27,13 @@
   </div>
 
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-         <ul class="navbar-nav mr-auto">
+    <nav class="navbar navbar-expand-lg navbar-info bg-info sticky-top">
+         <ul class="navbar-nav mr-auto ">
       <li class="nav-item active">
         <i id="tg" class='fas fa-arrow-alt-circle-right' style='color:#d5d5d5;font-size: 30px;'></i>
       </li>
     </ul> 
-      <a class="navbar-brand mx-auto" href="#">E-Learning</a>
+      <a class="navbar-brand mx-auto text-white" href="#">Learning Management System</a>
       <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
         <form method="post">
@@ -57,8 +57,8 @@
        
       <br><br>
       </div>
-      <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="footer">
-        <a class="navbar-brand mx-auto">...</a>
+      <div class="navbar navbar-expand-lg navbar-info bg-info" id="footer">
+        <a class="navbar-brand mx-auto text-white">...</a>
       </div>
 </body>
 </html>

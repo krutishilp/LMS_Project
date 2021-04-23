@@ -1,8 +1,12 @@
    <style type="text/css">
 body
 {
-  background-color: #121212;
-  font-family: 'Poppins', sans-serif;
+  align-items: center;
+  background-image: url('background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: 100% 100%;
+  font-family: 'Trebuchet MS', sans-serif;
   font-size: 20px;
    -webkit-user-select: none;  /* Chrome all / Safari all */
   -moz-user-select: none;     /* Firefox all */
@@ -12,6 +16,7 @@ body
 .pad2
 {
   padding:30px;
+  align-items: center;
 }
 .abtpad
 {
@@ -305,7 +310,7 @@ a.selected {
   margin-top: 15px;
   position:absolute;
   text-align:left;
-  width:700px;
+  width:800px;
   z-index:50;
   padding: 25px 25px 20px;
 }
@@ -322,7 +327,9 @@ label {
   margin: 8px 0;
   padding-bottom: 8px;
 }
-
-
+.navbar-toggler-icon {
+background-image: url("https://www.pngfind.com/pngs/m/5-55817_education-icon-png-photo-free-education-icon-png.png");
+}
 
     </style>
+
