@@ -55,6 +55,3 @@ if (isset($_POST['delq']))
 		echo mysqli_error($conn);
 	}
  }
-
-
-?>

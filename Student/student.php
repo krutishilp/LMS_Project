@@ -138,7 +138,7 @@ $dept = $_SESSION['student_user_dept'];
     <a class="navbar-brand text-white" href="#">Learning Management System</a>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-      <?php echo '<a class="nav-link text-white"  href="../blog.php?name=' . $name . '&email=' . $email . '">Write a Blog</a>'; ?>
+      <?php echo '<a class="nav-link text-white mr-3"  href="../blog.php?name=' . $name . '&email=' . $email . '">Write a Blog</a>'; ?>
       </li>
       <li class="nav-item active">
         <form method="post">
@@ -152,7 +152,7 @@ $dept = $_SESSION['student_user_dept'];
       <div class="row pad">
         <div class="col-lg-6 sm-auto md-auto pad2">
           <div id='viddiv' class="fc">
-            <h3 id="title"></h3><br>
+            <h3 id="title">Video</h3><br>
             <video id='vidshow' style="width: 100%;" controls>
               <source id="srcvid" type="video/mp4">
             </video>
@@ -168,15 +168,15 @@ $dept = $_SESSION['student_user_dept'];
       <div class="row pad">
         <div class="col-lg-6 sm-auto md-auto pad2 ">
           <div class="fc">
-            <h3>Your Blogs</h3>
-            <?php include 'yourblog.php' ?>
+            <h3>Upload Assignments</h3>
+            <?php include 'upload-form.php';
+            ?>
           </div>
         </div>
         <div class="col-lg-6 sm-auto md-auto pad2 ">
           <div class="fc">
-            <h3>Upload Assignments</h3>
-            <?php include 'upload-form.php';
-            ?>
+            <h3>Your Blogs</h3>
+            <?php include 'yourblog.php' ?>
           </div>
 
         </div>

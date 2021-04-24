@@ -25,4 +25,3 @@ else
    echo '<script type="text/javascript">alert("Password is wrong. Please Try Again. ")</script>';
 }
 }
- ?>

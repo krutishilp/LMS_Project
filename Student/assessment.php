@@ -1,21 +1,19 @@
-<?php session_start()?>
+<?php session_start() ?>
 <?php
-$eid=$_GET['eid'];
-$aid=$_GET['qno'];
-$sub=$_GET['qsub'];
-$duration=$_GET['duration'];
-$_SESSION['eid']=$eid;
-$email=$_SESSION['student_user_email'];
-$name=$_SESSION['student_user_name'];
-$pass=$_SESSION['student_user_pass'];
+$eid = $_GET['eid'];
+$aid = $_GET['qno'];
+$sub = $_GET['qsub'];
+$duration = $_GET['duration'];
+$_SESSION['eid'] = $eid;
+$email = $_SESSION['student_user_email'];
+$name = $_SESSION['student_user_name'];
+$pass = $_SESSION['student_user_pass'];
 include '../connection.php';
-$getinfo="SELECT * FROM assessment_records WHERE email='$email' and exam_id='$eid' and status=1";
-if($rungtinfo=mysqli_query($conn,$getinfo))
-{
-  if(mysqli_num_rows($rungtinfo)==1)
-  {
-      echo "<script type='text/javascript'>alert('Test Already Submitted')</script>";
-          echo "<script type='text/javascript'>location.replace('result.php')</script>";
+$getinfo = "SELECT * FROM assessment_records WHERE email='$email' and exam_id='$eid' and status=1";
+if ($rungtinfo = mysqli_query($conn, $getinfo)) {
+  if (mysqli_num_rows($rungtinfo) == 1) {
+    echo "<script type='text/javascript'>alert('Test Already Submitted')</script>";
+    echo "<script type='text/javascript'>location.replace('result.php')</script>";
   }
 }
 
@@ -24,14 +22,16 @@ if($rungtinfo=mysqli_query($conn,$getinfo))
 
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Student Assessment</title>
-	<?php include '../links.php' ?>
-	<?php ?>
+  <title>Student Assessment</title>
+  <?php include '../links.php' ?>
+  <?php ?>
   <?php include '../style.php' ?>
 </head>
+
 <body id="bod">
-<!-- Side Bar -->
+  <!-- Side Bar -->
   <nav class="navbar navbar-expand-lg navbar-info bg-info">
     <ul class="navbar-nav mr-auto text-white">
       <li class="nav-item active">
@@ -39,123 +39,116 @@ if($rungtinfo=mysqli_query($conn,$getinfo))
       </li>
     </ul>
     <a class="navbar-brand mx-auto text-white" style="font-size: x-large;" href="#">Learning Management System</a>
-  
-   <ul class="navbar-nav ml-auto">
+
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
         <form method="post">
-        <button  type="submit" name='lgt' style="border:2px solid #d5d5d5; background-color: transparent;color: #d5d5d5;"><i class="fas fa-sign-out-alt"></i></button>
+          <button type="submit" name='lgt' style="border:2px solid #d5d5d5; background-color: transparent;color: #d5d5d5;"><i class="fas fa-sign-out-alt"></i></button>
         </form>
       </li>
-   </ul>		
+    </ul>
   </nav>
   <div class="container-fluid">
     <div class="row pad">
-    	<div class="col-lg-12 md-auto sm-auto pad">
-        <?php include 'quizz-data-get.php'; ?> 
-          <form class="qdiv" method="post">
+      <div class="col-lg-12 md-auto sm-auto pad">
+        <?php include 'quizz-data-get.php'; ?>
+        <form class="qdiv" method="post">
           <h2><span id='quiz-time-left'></span></h2>
-        	<ul class="nav nav-tabs" style="border-bottom:0px">
-            <?php echo $tab_html ;?>
+          <ul class="nav nav-tabs" style="border-bottom:0px">
+            <?php echo $tab_html; ?>
           </ul>
           <div class="tab-content">
-            <?php echo $question_html ;?>
+            <?php echo $question_html; ?>
           </div>
-         </form>
-    	</div>
-  	
+        </form>
+      </div>
+
     </div>
   </div>
-  	
-<br><br>
+
+  <br><br>
 
   <div class="navbar navbar-expand-lg navbar-info bg-info" id="footer">
-        <a class="navbar-brand mx-auto text-white">...</a>
+    <a class="navbar-brand mx-auto text-white">...</a>
   </div>
 </body>
+
 </html>
 <?php
-if (isset($_POST['lgt'])) 
- {
+if (isset($_POST['lgt'])) {
   session_destroy();
   echo "<script type='text/javascript'>location.replace('../index.php')</script>";
- }
+}
 ?>
 <?php
-if(isset($_POST['submit_ans']))
-{
-  $qn=1;
-  $tpt=0;
-  $totalq=$_POST['totalq'];
-  $sid=$email;
-  while($qn<=$totalq)
-  {
-    $val="q".$qn;
-    $ansval="a".$qn;
-    $ans=$_POST[$ansval];
-    $qid=$_POST[$val];
-    $uans=$_POST[$qn];
-    $pt=0;
-    if(strcmp($ans,$uans)==0)
-    {
-      $pt=1;
+if (isset($_POST['submit_ans'])) {
+  $qn = 1;
+  $tpt = 0;
+  $totalq = $_POST['totalq'];
+  $sid = $email;
+  while ($qn <= $totalq) {
+    $val = "q" . $qn;
+    $ansval = "a" . $qn;
+    $ans = $_POST[$ansval];
+    $qid = $_POST[$val];
+    $uans = $_POST[$qn];
+    $pt = 0;
+    if (strcmp($ans, $uans) == 0) {
+      $pt = 1;
       $tpt++;
     }
-    $ins="INSERT INTO `qwise_assesment`(`email`, `exam_id`, `question_id`, `uans`, `pt`) VALUES ('$sid','$eid','$qid','$uans','$pt')";
-    if($runins=mysqli_query($conn,$ins))
-    {}
-    else
-    {
+    $ins = "INSERT INTO `qwise_assesment`(`email`, `exam_id`, `question_id`, `uans`, `pt`) VALUES ('$sid','$eid','$qid','$uans','$pt')";
+    if ($runins = mysqli_query($conn, $ins)) {
+    } else {
       echo mysqli_error($conn);
     }
     $qn++;
   }
-  $score=($tpt/$totalq)*100;
-   $uprecords="INSERT INTO `assessment_records`(`stud_name`,`email`,`exam_id`,`score`,`status`) values ('$name','$email','$eid','$score',1)";
-   if($runup=mysqli_query($conn,$uprecords))
-   {
+  $score = ($tpt / $totalq) * 100;
+  $uprecords = "INSERT INTO `assessment_records`(`stud_name`,`email`,`exam_id`,`score`,`status`) values ('$name','$email','$eid','$score',1)";
+  if ($runup = mysqli_query($conn, $uprecords)) {
     echo "<script type='text/javascript'>alert('Test Submitted')</script>";
-   echo "<script type='text/javascript'>location.replace('result.php')</script>";    
-   }
-   else
-   {
-       echo mysqli_error($conn);
-       echo "<script type='text/javascript'>alert('Test Not Submitted')</script>";
- 
-   }
+    echo "<script type='text/javascript'>location.replace('result.php')</script>";
+  } else {
+    echo mysqli_error($conn);
+    echo "<script type='text/javascript'>alert('Test Not Submitted')</script>";
+  }
 }
 ?>
 
 <script type="text/javascript">
-var max_time = <?php echo "$duration" ?>;
-var c_seconds  = 0;
-var total_seconds =60*max_time;
-max_time = parseInt(total_seconds/60);
-c_seconds = parseInt(total_seconds%60);
-document.getElementById("quiz-time-left").innerHTML='' + max_time + ':' + c_seconds + 'Min';
-function init(){
-document.getElementById("quiz-time-left").innerHTML='' + max_time + ':' + c_seconds + ' Min';
-setTimeout("CheckTime()",999);
-}
-function CheckTime(){
-document.getElementById("quiz-time-left").innerHTML='' + max_time + ':' + c_seconds + ' Min' ;
-if(total_seconds <=0){
-setTimeout('document.getElementById("fintest").click()',1);
-    
-    } else
-    {
-total_seconds = total_seconds -1;
-max_time = parseInt(total_seconds/60);$
-c_seconds = parseInt(total_seconds%60);
-setTimeout("CheckTime()",999);
-}
+  var max_time = <?php echo "$duration" ?>;
+  var c_seconds = 0;
+  var total_seconds = 60 * max_time;
+  max_time = parseInt(total_seconds / 60);
+  c_seconds = parseInt(total_seconds % 60);
+  document.getElementById("quiz-time-left").innerHTML = '' + max_time + ':' + c_seconds + 'Min';
 
-}
-init();
-document.addEventListener('contextmenu', event => event.preventDefault());
-$(document).keydown(function(e){
-    if(e.which === 17 || e.which === 16 || e.which ===73 || e.which==123 || e.which==67){
-      alert('Action Prohibited.You Will Be Disqualified');
-       return false;
+  function init() {
+    document.getElementById("quiz-time-left").innerHTML = '' + max_time + ':' + c_seconds + ' Min';
+    setTimeout("CheckTime()", 999);
+  }
+
+  function CheckTime() {
+    document.getElementById("quiz-time-left").innerHTML = '' + max_time + ':' + c_seconds + ' Min';
+    if (total_seconds <= 0) {
+      setTimeout('document.getElementById("fintest").click()', 1);
+
+    } else {
+      total_seconds = total_seconds - 1;
+      max_time = parseInt(total_seconds / 60);
+      $
+      c_seconds = parseInt(total_seconds % 60);
+      setTimeout("CheckTime()", 999);
     }
-});
+
+  }
+  init();
+  document.addEventListener('contextmenu', event => event.preventDefault());
+  $(document).keydown(function(e) {
+    if (e.which === 17 || e.which === 16 || e.which === 73 || e.which == 123 || e.which == 67) {
+      alert('Action Prohibited.You Will Be Disqualified');
+      return false;
+    }
+  });
 </script>
