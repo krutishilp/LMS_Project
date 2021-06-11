@@ -25,7 +25,7 @@
       </ul>
     </div>
   </nav>
-  <div style="margin-top: 90px ; position: fixed;">
+  <div style="margin-top: 145px ; margin-left:20px ; position: fixed;">
     <h1 class="text-white" style="font-family: Georgia, 'Times New Roman', Times, serif; "><i> Welcome to,</i><i><br></i></h1><h1 class="text-white" style="font-size: 75px; font-family: Georgia, 'Times New Roman', Times, serif; "><strong> Learning <i><br></i>Management <i><br></i>System.</strong></h1>
   </div>
   <div class="container-fluid pad2" >

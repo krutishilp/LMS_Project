@@ -86,9 +86,14 @@ $pass = $_SESSION['teacher_user_pass'];
         echo  '<div class="sub" id="' . $quizz . '">';
         echo '<ul>';
         $getquizz = "SELECT * FROM quizz WHERE subject='$sub'";
+        
+       
+        
         $rgetquizz = mysqli_query($conn, $getquizz);
         while ($quizzrow = mysqli_fetch_assoc($rgetquizz)) {
-          echo '<li><a href="quizz.php?eid=' . $quizzrow['exam_id'] . '&qno=' . $quizzrow['name'] . '&qsub=' . $quizzrow['subject'] . '&qstatus=' . $quizzrow['status'] . '">' . $quizzrow['name'] . '</a></li>';
+              echo '<li><a href="quizz.php?eid=' . $quizzrow['exam_id'] . '&qno=' . $quizzrow['name'] . '&qsub=' . $quizzrow['subject'] . '&qstatus=' . $quizzrow['status'] . '">' . $quizzrow['name'] . '</a></li>';     
+          }
+          
         }
         echo '</ul>';
 
@@ -103,7 +108,7 @@ $pass = $_SESSION['teacher_user_pass'];
         $rgetassign = mysqli_query($conn, $getassign);
         while ($assignrow = mysqli_fetch_assoc($rgetassign)) {
           echo '<li><a href="submitted_ass.php?unit=' . $assignrow['Unit'] . '&desc='
-            . $assignrow['Description'] . '&qsub=' . $assignrow['Subject_Name'] . '">' . $assignrow['Unit'] . '</a></li>';
+            . $assignrow['Description'] . '&qsub=' . $assignrow['Subject_Name'] . '">' . $assignrow['Description'] . '</a></li>';
         }
         echo '</ul>';
 
