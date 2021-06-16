@@ -51,11 +51,16 @@
     if (isset($_POST['findstud'])) {
       $email = $_POST['semail'];
 
-      $query = "SELECT * from student where email= '$email'";
+      $query = "SELECT * from student where email like '$email'";
       $run = mysqli_query($conn, $query);
       if ($row = mysqli_fetch_assoc($run)) {
+        echo '<script type="text/javascript">alert("Student Found- Id: '.$row['student_Id'].' Email: '.$row['email'].' Name: '.$row['name'].' PRN: '.$row['prn'].' Year: '.$row['year'].' Department: '.$row['dept'].'")</script>';
+        // echo '<script type="text/javascript"> alert(" Student Found'.$row['student_Id'].'
+        // '.$row['email'].' '.$row['name'].' '.$row['prn'].' '.$row['year'].' '.$row['dept'].'
+        // ")</script>';
+
         // echo '"Student found '.$row['student_Id'].' 
-        // '.$row['email'].' '.$row['name'].' '.$row['prn'].' '.$row['year'].' '.$row['dept'].'"';
+        // "';
       }
     }
     ?>

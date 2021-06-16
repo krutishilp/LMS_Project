@@ -99,8 +99,14 @@ $dept = $_SESSION['student_user_dept'];
         $getquizz = "SELECT * FROM quizz WHERE subject='$sub' and status=0";
         $rgetquizz = mysqli_query($conn, $getquizz);
         while ($quizzrow = mysqli_fetch_assoc($rgetquizz)) {
+          $checkquizz = 'SELECT * FROM assessment_records WHERE email="'.$email.'" and exam_id = "'.$quizzrow['exam_id'].'"';
+          $rcheckquizz = mysqli_query($conn, $checkquizz);
+          if($cquizzrow = mysqli_fetch_assoc($rcheckquizz)){
+            if(!(int) $cquizzrow['status'] === 1){
           echo '<li><a href="assessment.php?eid=' . $quizzrow['exam_id'] . '&qno=' . $quizzrow['name'] . '&qsub=' . $quizzrow['subject'] . '&duration=' . $quizzrow['duration'] . '">' . $quizzrow['name'] . '</a></li>';
         }
+      }
+    } 
         echo '</ul>';
 
         echo  '</div>';

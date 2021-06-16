@@ -51,10 +51,17 @@
                   $query = "SELECT * from teachers where email= '$email'";
                   $run = mysqli_query($conn, $query);
                   if ($row = mysqli_fetch_assoc($run)) {
+                   $deptid= $row['dept_Id'];
+                    $query1 = "SELECT * from departments where dept_Id= '$deptid'";
+                    $run1 = mysqli_query($conn, $query1);
+                  if ($row1 = mysqli_fetch_assoc($run1)) {
+                   
+                    echo '<script type="text/javascript">alert("Staff Found- Id: '.$row['teacher_Id'].' Email: '.$row['email'].' Name: '.$row['name'].' Department: '.$row1['Name'].'")</script>';
                     // echo '"Faculty found '.$row['teacher_Id'].' 
                     // '.$row['email'].' '.$row['name'].' '.$row['dept_Id'].'"';
                   }
                 }
+              }
                 ?>
                <div class="col adminpad">
                  <h3>Bulk Add Faculty</h3>
