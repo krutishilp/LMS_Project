@@ -7,7 +7,6 @@ $status = $_GET['qstatus'];
 $email = $_SESSION['teacher_user_email'];
 $name = $_SESSION['teacher_user_name'];
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -54,7 +53,7 @@ $name = $_SESSION['teacher_user_name'];
         <?php include 'quiz-table.php'; ?>
         <div class="table-responsive">
           <h5><b>Add Questions: </b></h5>
-          <table class="table table-striped table-bordered" style="">
+          <table class="table table-striped table-bordered">
             <tr>
               <th>Q-ID</th>
               <th>Question</th>
@@ -158,15 +157,7 @@ $name = $_SESSION['teacher_user_name'];
       <div class="navbar navbar-expand-lg navbar-info bg-info" id="footer">
         <a class="navbar-brand mx-auto text-white">....</a>
       </div>
-</body>
 
-</html>
-<?php
-if (isset($_POST['lgt'])) {
-  session_destroy();
-  echo "<script type='text/javascript'>location.replace('../index.php')</script>";
-}
-?>
 <script type="text/javascript">
   function printDiv(divName) {
     var printContents = document.getElementById(divName).innerHTML;
@@ -180,33 +171,6 @@ if (isset($_POST['lgt'])) {
   }
 </script>
 
-<script type="text/javascript">
-  $(function() {
-    var status = <?php echo "'$status'" ?>
-    console.log(status);
-    if (status == '0') {
-      $("#toggleStatus").html('Deactivate');
-    } else if (status == '1') {
-      $("#toggleStatus").html('Activate');
-    }
-    $("#toggleStatus").on('click', function() {
-      var status = <?php echo "'$status'" ?>
-      if (status == '0' || status == '1') {
-
-        $.ajax({
-          method: "GET",
-
-          url: 'toggleStatus.php?'.concat("<?php
-                                            echo "eid=" . $eid . "&qstatus=" . $status . ""
-                                            ?>")
-        }).done(function(data) {
-          alert("Done");
-          window.history.back();
-        });
-      }
-    });
-  });
-</script>
 
 <script>
   am4core.ready(function() {
@@ -242,3 +206,37 @@ if (isset($_POST['lgt'])) {
 
   }); // end am4core.ready()
 </script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    var status = <?php echo "'$status'" ;?>;
+    console.log(status)
+    if (status == '0') {
+      $("#toggleStatus").html('Deactivate');
+    } else if (status == '1') {
+      $("#toggleStatus").html('Activate');
+    }
+    $("#toggleStatus").on('click', function() {
+      var status = <?php echo "'$status'"; ?>;
+      if (status == '0' || status == '1') {
+
+        $.ajax({
+          method: "GET",
+
+          url: 'toggleStatus.php?'.concat("<?php echo "eid=" . $eid . "&qstatus=" . $status . ""; ?>")
+        }).done(function(data) {
+          alert("Done");
+          window.history.back();
+        });
+      }
+    });
+  });
+</script>
+</body>
+
+</html>
+<?php
+if (isset($_POST['lgt'])) {
+  session_destroy();
+  echo "<script type='text/javascript'>location.replace('../index.php')</script>";
+}
+?>

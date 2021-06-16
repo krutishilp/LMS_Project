@@ -19,13 +19,13 @@ $name = $_SESSION['teacher_user_name'];
 
 <body>
   <!-- Side Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-info bg-info">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a href="teacher.php"><i id="tg" class='fas fa-arrow-alt-circle-left' style='color:#d5d5d5;font-size: 30px;'></i></a>
       </li>
     </ul>
-    <a class="navbar-brand mx-auto" href="#">E-Learning</a>
+    <a class="navbar-brand mx-auto text-white" href="#">Learning Management System</a>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
         <form method="post">
@@ -70,9 +70,9 @@ $name = $_SESSION['teacher_user_name'];
   <br><br><br><br>
 
 
-  <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="footer">
-    <a class="navbar-brand mx-auto">Made by Nishad Raisinghani</a>
-  </div>
+  <div class="navbar navbar-expand-lg navbar-info bg-info navbar-fixed-bottom" id="footer">
+      <a class="navbar-brand mx-auto text-white">.</a>
+    </div>
 </body>
 
 </html>

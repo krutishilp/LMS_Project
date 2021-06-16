@@ -94,7 +94,7 @@ $pass = $_SESSION['teacher_user_pass'];
               echo '<li><a href="quizz.php?eid=' . $quizzrow['exam_id'] . '&qno=' . $quizzrow['name'] . '&qsub=' . $quizzrow['subject'] . '&qstatus=' . $quizzrow['status'] . '">' . $quizzrow['name'] . '</a></li>';     
           }
           
-        }
+        
         echo '</ul>';
 
         echo  '</div>';
@@ -120,6 +120,7 @@ $pass = $_SESSION['teacher_user_pass'];
         echo '</div>';
         echo '</li>';
       }
+    
       ?>
     </ul>
     <hr>

@@ -20,14 +20,17 @@ $exam_id = $_SESSION['eid'];
 
 <body>
   <!-- Side Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <ul class="navbar-nav mr-auto">
+  <nav class="navbar navbar-expand-lg navbar-info bg-info">
+    <ul class="navbar-nav mr-auto ">
       <li class="nav-item active">
-        <a href="student.php"><i id="tg" class='fas fa-arrow-alt-circle-left' style='color:#d5d5d5;font-size: 30px;'></i></a>
+      <a href="student.php"><i id="tg" class='fas fa-arrow-alt-circle-left' style='color:#d5d5d5;font-size: 30px;'></i></a>
       </li>
     </ul>
-    <a class="navbar-brand mx-auto" href="#">E-Learning</a>
+    <a class="navbar-brand text-white" href="#">Learning Management System</a>
     <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+      <?php echo '<a class="nav-link text-white mr-3"  href="../blog.php?name=' . $name . '&email=' . $email . '">Write a Blog</a>'; ?>
+      </li>
       <li class="nav-item active">
         <form method="post">
           <button type="submit" name='lgt' style="border:2px solid #d5d5d5; background-color: transparent;color: #d5d5d5;"><i class="fas fa-sign-out-alt"></i></button>
@@ -71,9 +74,9 @@ $exam_id = $_SESSION['eid'];
 
 
 
-  <div class="navbar navbar-expand-lg navbar-dark bg-dark" id="footer">
-    <a class="navbar-brand mx-auto">Made by Nishad Raisinghani</a>
-  </div>
+  <div class="navbar navbar-expand-lg navbar-info bg-info navbar-fixed-bottom" id="footer">
+      <a class="navbar-brand mx-auto text-white">.</a>
+    </div>
 </body>
 
 </html>
