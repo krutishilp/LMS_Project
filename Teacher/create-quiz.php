@@ -3,8 +3,8 @@
 
   <form action="teacher.php" method="post" enctype="multipart/form-data">
     <input type="text" name="qname" placeholder="Quiz Name" style="width: 75%;" required><br><br>
-    <input type="text" name="qid" placeholder="Quiz/Assignment ID(same as in file uploaded)" style="width: 75%;" required><br><br>
-    <input type="number" name="duration" placeholder="Duration(minutes) Not mandatory for assignment" style="width: 75%" required><br><br>
+    <input type="text" name="qid" placeholder="Quiz" style="width: 75%;" required><br><br>
+    <input type="number" name="duration" placeholder="Duration(minutes)" style="width: 75%" required><br><br>
     <select name="subs" style="width: 75%" required>
 
       <option value="" disabled selected>Select Subject</option>
@@ -29,6 +29,7 @@
   <form action="teacher.php" method="post" enctype="multipart/form-data">
 
     <input type="text" name="qname" placeholder="Description" style="width: 75%;" required><br><br>
+    <span style="color:red;"><strong>Note: </strong>Please change this.</span>
     <label for="deadline">Deadline date</label>
     <input type="date" name="deadline" placeholder="Deadline Date" style="width: 75%;" required><br><br>
     <select name="subs" style="width: 75%" required>

@@ -158,6 +158,8 @@ $pass = $_SESSION['teacher_user_pass'];
         <div class="col-lg-6 sm-auto md-auto">
           <div class="fc">
             <h3>Uploads</h3>
+            <label style="display: inline-block;" for="fileup">File Upload<input type="radio" id="fileup" name="upload_type" value="2" checked></label>
+            <label style="display: inline-block;padding:10px;margin-left: 10px;" for="yVideo">Youtube Video Link<input type="radio" id="yVideo" name="upload_type" value="3"></label>
             <?php include 'upload-form.php'; ?>
           </div>
         </div>
