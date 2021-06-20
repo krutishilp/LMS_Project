@@ -4,7 +4,7 @@
         <label for="seminar_title">Seminar Title</label>
         <input type="text" id="seminar_title" name="seminar_title" required><br><br>
         <label for="file_seminar">Notice</label><br>
-        <input type="file" id="file_seminar" name="fl" / required><br><br>
+        <input type="file" id="file_seminar" name="file" required><br><br>
         <label for="seminar_date">Seminar Date: </label>
         <input type="date" id="seminar_date" name="seminar_date" placeholder="Seminar Date" style="width: 75%;" required><br><br>
         <input type='submit' value='Post' name='postSeminar'><br>
@@ -28,10 +28,10 @@
 if (isset($_POST['postSeminar'])) {
     $dir = "../seminar/";
     $title = $_POST['seminar_title'];
-    $filename = $_POST['fl']['name'];
+    $filename = $_POST['file']['name'];
     $sdate = $_POST['seminar_date'];
-    $target_file = $dir . $_FILES['fl']['name'];
-    if (move_uploaded_file($_FILES['fl']['tmp_name'], $target_file)) {
+    $target_file = $dir . $_FILES['file']['name'];
+    if (move_uploaded_file($_FILES['file']['tmp_name'], $target_file)) {
         $insertSem = "INSERT INTO seminar(title,notice,seminar_date) VALUES('$title','$target_file','$sdate')";
         if ($run = mysqli_query($conn, $insertSem)) {
             echo '<script type="text/javascript">alert("Done")</script>';

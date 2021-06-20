@@ -116,6 +116,14 @@ if (isset($_POST['upldLink'])) {
       $sub = $_POST['subs'];
       $unit = $_POST['unit'];
       $linkName = $_POST['fileName'];
+
+      $query = "INSERT INTO youtube_videos(videolink,unit,subject) VALUES('$linkName','$unit','$sub')";
+      if (mysqli_query($conn, $query)) {
+            echo '<script type="text/javascript">alert("Link Uploaded")</script>';
+            echo '<script type="text/javascript">location.replace("teacher.php")</script>';
+      } else {
+            echo '<script type="text/javascript">alert("Link Not Uploaded")</script>';
+      }
       
 }
 

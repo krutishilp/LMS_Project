@@ -117,7 +117,7 @@ $dept = $_SESSION['student_user_dept'];
         $getassign = "SELECT * FROM assignment WHERE Subject_Name='$sub'";
         $rgetassign = mysqli_query($conn, $getassign);
         while ($assignrow = mysqli_fetch_assoc($rgetassign)) {
-          echo '<li><a href="../teacher/' . $assignrow['filename'] . '">' . $assignrow['Unit'] . '</a></li>';
+          echo '<li><a href="../teacher/' . $assignrow['filename'] . '">' . $assignrow['Description'] . '</a></li>';
         }
         echo '</ul>';
 

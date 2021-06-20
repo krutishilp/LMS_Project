@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2021 at 04:47 PM
+-- Generation Time: Jun 20, 2021 at 12:12 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -68,7 +68,10 @@ INSERT INTO `assessment_records` (`assessment_id`, `stud_name`, `email`, `exam_i
 (3, 'Srushti wwww', 'srushti@gmail.com', '123456', 75, 1),
 (4, 'Test', 'test@test.com', '123456', 80, 1),
 (7, 'Srushti Kishor Wajge', 'srushti@gmail.com', '123456', 100, 1),
-(8, 'Nidhi Goda', 'nidhi@gmail.com', '123456', 50, 1);
+(8, 'Nidhi Goda', 'nidhi@gmail.com', '123456', 50, 1),
+(9, 'Srushti Kishor Wajge', 'Srushti@gmail.com', '01', 0, 1),
+(10, 'Nidhi Goda', 'nidhi@gmail.com', '01', 100, 1),
+(11, 'Sunil Datir', 'sunil@gmail.com', '01', 100, 1);
 
 -- --------------------------------------------------------
 
@@ -95,7 +98,8 @@ INSERT INTO `assignment` (`Assignment_No`, `Description`, `Subject_Name`, `Unit`
 (1, 'This is 1st assignment', 'Web', 1, 25, '2021-03-24', '2021-03-21', 'pdfs/PAYSLIP JUL 2020 (1).pdf'),
 (2, 'This is 1st assignment for dbms', 'DBMS', 1, 22, '2021-03-31', '2021-03-24', 'pdfs/CandidateHallTicket.pdf'),
 (3, 'This is 2nd assignment', 'DBMS', 2, 22, '2021-04-04', '2021-03-24', 'pdfs/HallTicket_REG_Student.pdf'),
-(4, 'Assignment', 'Artificial', 4, 26, '2021-04-26', '2021-04-25', 'pdfs/PAYSLIP MAR 2021.pdf');
+(4, 'Assignment', 'Artificial', 4, 26, '2021-04-26', '2021-04-25', 'pdfs/PAYSLIP MAR 2021.pdf'),
+(5, 'Unit 1 Assignment 1', 'ICS', 1, 29, '2021-06-20', '2021-06-19', 'pdfs/Pd.pdf');
 
 -- --------------------------------------------------------
 
@@ -148,7 +152,10 @@ CREATE TABLE `blog` (
 INSERT INTO `blog` (`blog_id`, `email`, `author`, `submission_date`, `imagepath`, `blogtext`) VALUES
 (4, 'srushti@gmail.com', 'Srushti Kishor Wajge', '2021-04-16', 'blogs/images/taylorig1440_900.png', 'Life throws curveballs And while there might be blockers to success its imperative to keep pushing with the knowledge mistakes will be made and failure is inevitable'),
 (5, 'srushti@gmail.com', 'Srushti Kishor Wajge', '2021-04-16', 'blogs/images/46910965-3d-wallpaper-hd.jpg', 'Life throws curveballs. And while there might be blockers to success, its imperative to keep pushing with the knowledge mistakes will be made and failure is inevitable.'),
-(6, 'nidhi@gmail.com', 'Nidhi Goda', '2021-04-25', 'blogs/images/ph-10008.jpg', 'ASsASDadADadaSDasd');
+(6, 'nidhi@gmail.com', 'Nidhi Goda', '2021-04-25', 'blogs/images/ph-10008.jpg', 'ASsASDadADadaSDasd'),
+(8, 'sunil@gmail.com', 'Sunil Datir', '2021-06-19', 'blogs/images/fibonacci.jpg', 'Hi there I am writing a blog.'),
+(9, 'vsp@gmail.com', 'Vaishali Pawar', '2021-06-19', 'blogs/images/bintodec.jpg', 'Hi I am Vaishali Pawar and I am HOD of Computer Dept.'),
+(10, 'talekar@gmail.com', 'Sopan Talekar', '2021-06-19', 'blogs/images/ph-10030.jpg', 'Hi this is blog.');
 
 -- --------------------------------------------------------
 
@@ -191,7 +198,8 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`feedback_Id`, `title`, `link`, `feedback_date`) VALUES
-(1, 'CC Seminar on 2021-04-30', 'https://docs.google.com/forms/d/e/1FAIpQLSeI8_vYyaJgM7SJM4Y9AWfLq-tglWZh6yt7bEXEOJr_L-hV1A/viewform?', '2021-05-01');
+(1, 'CC Seminar on 2021-04-30', 'https://docs.google.com/forms/d/e/1FAIpQLSeI8_vYyaJgM7SJM4Y9AWfLq-tglWZh6yt7bEXEOJr_L-hV1A/viewform?', '2021-05-01'),
+(2, 'Seminar On ICS', 'https://docs.google.com/forms/d/e/1FAIpQLSeOoPYkcum_jgRTON67U6u5jtG0DcAtNmicjDvaN81io8Qkhw/viewform?', '2021-06-22');
 
 -- --------------------------------------------------------
 
@@ -224,7 +232,10 @@ INSERT INTO `final_result` (`id`, `stud_prn`, `subject`, `year`, `dept`, `sem`, 
 (15, '71985633F', 'Python', 'SE', 'IT', 'sem1', 90),
 (16, '71611222F', 'DELD', 'SE', 'COMP', 'sem1', 80),
 (17, '71784633F', 'Python', 'SE', 'IT', 'sem1', 60),
-(18, '71785613F', '', 'BE', 'COMP', 'sem1', 55);
+(18, '71785613F', '', 'BE', 'COMP', 'sem1', 55),
+(19, '71611203F', 'ICS', 'BE', 'COMP', 'sem2', 70),
+(20, '71785633F', 'ICS', 'BE', 'COMP', 'sem2', 75),
+(21, '71785602F', 'ICS', 'BE', 'COMP', 'sem2', 70);
 
 -- --------------------------------------------------------
 
@@ -252,7 +263,8 @@ INSERT INTO `pdfs` (`name`, `unit`, `subject`, `author`) VALUES
 ('Savitribai Phule Pune University, Online Result.pdf', 2, 'DBMS', 'Srushti@g.com'),
 ('Savitribai Phule Pune University, Online Result.pdf', 3, 'DBMS', 'Srushti@g.com'),
 ('Savitribai Phule Pune University, Online Result.pdf', 4, 'DBMS', 'Srushti@g.com'),
-('Spring-Professional-Certification-Study-Guide.pdf', 1, 'Cloud', 'krutishilp@gmail.com');
+('Spring-Professional-Certification-Study-Guide.pdf', 1, 'Cloud', 'krutishilp@gmail.com'),
+('Pd.pdf', 1, 'ICS', 'vsp@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -273,7 +285,8 @@ CREATE TABLE `ppts` (
 
 INSERT INTO `ppts` (`name`, `unit`, `subject`, `author`) VALUES
 ('Pizza Restaurant PowerPoint Templates.pptx', 1, 'TOC', 'nishd268@gmail.com'),
-('Python by the Creator.ppt', 1, 'Python', 'nishd268@gmail.com');
+('Python by the Creator.ppt', 1, 'Python', 'nishd268@gmail.com'),
+('rev.pptx', 2, 'ICS', 'vsp@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -323,7 +336,8 @@ INSERT INTO `questions` (`question_id`, `exam_id`, `question`, `op1`, `op2`, `op
 ('1', '123', 'what is database management system?', 'as', 'asa', 'asasa', 'asasas', 'op2', 'DBMS'),
 ('1', '123456', 'kkkk', 'k', 'cc', 'l', 'l', 'op1', 'Cloud'),
 ('2', '123456', 'ssss', 'a', 'w', 's', 's', 'op2', 'Cloud'),
-('1', '1234', 'asd', 'dsa', 'sdasd', 'asdsa', 'asas', 'op1', 'Cloud');
+('1', '1234', 'asd', 'dsa', 'sdasd', 'asdsa', 'asas', 'op1', 'Cloud'),
+('1', '01', 'What is ICS?', 'ICS A', 'ICS B', 'ICS C', 'ICS D', 'op4', 'ICS');
 
 -- --------------------------------------------------------
 
@@ -350,7 +364,8 @@ INSERT INTO `quizz` (`quizz_id`, `name`, `exam_id`, `duration`, `status`, `subje
 (2, 'WEB TECH', 'WEBTECH_123', '20', 1, 'Web', 25),
 (3, 'DBMS', '123', '30', 0, 'DBMS', 22),
 (4, 'Cloud', '123456', '20', 0, 'Cloud', 25),
-(5, 'CLOUD1', '1234', '10', 0, 'Cloud', 25);
+(5, 'CLOUD1', '1234', '10', 0, 'Cloud', 25),
+(6, 'Quiz 1 ICS', '01', '1', 0, 'ICS', 29);
 
 -- --------------------------------------------------------
 
@@ -392,7 +407,10 @@ INSERT INTO `qwise_assesment` (`id`, `email`, `exam_id`, `question_id`, `uans`, 
 (24, 'srushti@gmail.com', '123456', '1', 'op2', 0),
 (25, 'srushti@gmail.com', '123456', '2', 'op2', 1),
 (26, 'nidhi@gmail.com', '123456', '1', 'op1', 1),
-(27, 'nidhi@gmail.com', '123456', '2', '', 0);
+(27, 'nidhi@gmail.com', '123456', '2', '', 0),
+(28, 'Srushti@gmail.com', '01', '1', '', 0),
+(29, 'nidhi@gmail.com', '01', '1', 'op4', 1),
+(30, 'sunil@gmail.com', '01', '1', 'op4', 1);
 
 -- --------------------------------------------------------
 
@@ -434,7 +452,8 @@ CREATE TABLE `seminar` (
 
 INSERT INTO `seminar` (`seminar_id`, `title`, `notice`, `seminar_date`) VALUES
 (3, 'Seminar on CC by AMAZON', '../seminar/CC QB.pdf', '2021-04-30'),
-(4, 'xyz', '../seminar/Pd.pdf', '2021-06-30');
+(4, 'xyz', '../seminar/Pd.pdf', '2021-06-30'),
+(5, 'Seminar For ICS', '../seminar/IB Form.pdf', '2021-06-20');
 
 -- --------------------------------------------------------
 
@@ -537,7 +556,8 @@ INSERT INTO `subjects` (`subject_Id`, `subject`, `year`, `dept`, `sem`) VALUES
 (6, 'Web', 'TE', 'COMP', 6),
 (7, 'TOC', 'TE', 'COMP', 5),
 (8, 'DELD', 'SE', 'COMP', 3),
-(9, 'AI', 'SE', 'IT', 8);
+(9, 'AI', 'SE', 'IT', 8),
+(10, 'ICS', 'BE', 'COMP', 8);
 
 -- --------------------------------------------------------
 
@@ -562,7 +582,8 @@ INSERT INTO `teachers` (`teacher_Id`, `email`, `name`, `subject`, `dept_Id`, `Pa
 (22, 'shinde@gmail.com', 'Priti Shinde', 'DBMS', 2, '6051f69b0b347'),
 (25, 'talekar@gmail.com', 'Sopan Talekar', 'Cloud', 2, '12345'),
 (26, 'talekar@gmail.com', 'Sopan Talekar', 'Artificial', 2, '60786b0dcdc2e'),
-(28, 'priti@gmail.com', 'Priti Shinde', 'DSF', 1, 'Priti123');
+(28, 'priti@gmail.com', 'Priti Shinde', 'DSF', 1, 'Priti123'),
+(29, 'vsp@gmail.com', 'Vaishali Pawar', 'ICS', 2, 'Vaishali123');
 
 -- --------------------------------------------------------
 
@@ -588,8 +609,12 @@ INSERT INTO `videos` (`name`, `subject`, `unit`, `views`, `likes`, `author`, `st
 ('Python Introduction.mp4', 'Python', 1, 0, 0, 'agdombe_it@jspmrscoe.edu.in', 1),
 ('Python Introduction.mp4', 'Python', 1, 0, 0, 'agdombe_it@jspmrscoe.edu.in', 0),
 ('VID-20190718-WA0000.mp4', 'DBMS', 3, 0, 0, 'Srushti@g.com', 0),
-('VID-20190718-WA0000.mp4', 'Cloud', 2, 0, 0, 'talekar@gmail.com', 0),
-('VID-20191209-WA0048.mp4', 'Cloud', 2, 0, 0, 'talekar@gmail.com', 0);
+('VID-20190718-WA0000.mp4', 'Cloud', 2, 0, 0, 'talekar@gmail.com', 1),
+('VID-20191209-WA0048.mp4', 'Cloud', 2, 0, 0, 'talekar@gmail.com', 0),
+('VID-20190718-WA0000.mp4', 'Artificial', 3, 0, 0, 'talekar@gmail.com', 1),
+('Grand Theft Auto V 03-12-2017 23_03_59.mp4', 'ICS', 4, 0, 0, 'vsp@gmail.com', 1),
+('Grand Theft Auto V 05-12-2017 15_55_34.mp4', 'ICS', 2, 0, 0, 'vsp@gmail.com', 1),
+('VID-20191209-WA0048.mp4', 'ICS', 2, 0, 0, 'vsp@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -610,6 +635,27 @@ INSERT INTO `year` (`name`) VALUES
 ('SE'),
 ('TE'),
 ('BE');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `youtube_videos`
+--
+
+CREATE TABLE `youtube_videos` (
+  `id` int(11) NOT NULL,
+  `videolink` varchar(200) NOT NULL,
+  `unit` varchar(10) NOT NULL,
+  `subject` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `youtube_videos`
+--
+
+INSERT INTO `youtube_videos` (`id`, `videolink`, `unit`, `subject`) VALUES
+(1, 'https://www.youtube.com/watch?v=BV1vQBxi44E', '1', 'Cloud'),
+(2, 'https://www.youtube.com/watch?v=PlHnamdwGmw', '2', 'ICS');
 
 --
 -- Indexes for dumped tables
@@ -704,6 +750,12 @@ ALTER TABLE `teachers`
   ADD PRIMARY KEY (`teacher_Id`);
 
 --
+-- Indexes for table `youtube_videos`
+--
+ALTER TABLE `youtube_videos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -717,13 +769,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `assessment_records`
 --
 ALTER TABLE `assessment_records`
-  MODIFY `assessment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `assessment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `assignment`
 --
 ALTER TABLE `assignment`
-  MODIFY `Assignment_No` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Assignment_No` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `assignment_submission`
@@ -735,7 +787,7 @@ ALTER TABLE `assignment_submission`
 -- AUTO_INCREMENT for table `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `blog_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `blog_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -747,31 +799,31 @@ ALTER TABLE `departments`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `feedback_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `final_result`
 --
 ALTER TABLE `final_result`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `quizz`
 --
 ALTER TABLE `quizz`
-  MODIFY `quizz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `quizz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `qwise_assesment`
 --
 ALTER TABLE `qwise_assesment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `seminar`
 --
 ALTER TABLE `seminar`
-  MODIFY `seminar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `seminar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `student`
@@ -783,13 +835,19 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `subject_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `subject_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `teachers`
 --
 ALTER TABLE `teachers`
-  MODIFY `teacher_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `teacher_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `youtube_videos`
+--
+ALTER TABLE `youtube_videos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
