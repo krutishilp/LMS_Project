@@ -71,7 +71,7 @@ $dept = $_SESSION['student_user_dept'];
         $getvid = "SELECT * FROM videos WHERE  subject='$sub'";
         $rgetvid = mysqli_query($conn, $getvid);
         while ($vidrow = mysqli_fetch_assoc($rgetvid)) {
-          echo '<li><span onclick="play(\'videos/' . $vidrow['name'] . '\',\'' . $vidrow['views'] . '\')">' . $vidrow['name'] . '</a></li>';
+          echo '<li><span onclick="play(\'../Teacher/videos/' . $vidrow['name'] . '\',\'' . $vidrow['views'] . '\')">' . $vidrow['name'] . '</a></li>';
         }
         echo '</ul>';
         echo  '</div>';

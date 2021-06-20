@@ -59,7 +59,11 @@ $exam_id = $_SESSION['eid'];
               $result2 = $conn->query($sql2);
               while ($row2 = mysqli_fetch_assoc($result2)) {
                 $ans = $row2['uans'];
-                echo "<span style='style='font-weight:bold;'>Your Answer: </span>" . nl2br($row1[$ans]) . "<br><br>";
+                if($ans != ''){
+                  echo "<span style='style='font-weight:bold;'>Your Answer: </span>" . nl2br($row1[$ans]) . "<br><br>";
+                }else{
+                  echo "<span style='style='font-weight:bold;'>Your Answer: </span>" . "<span style='color:red;'>Unattempted</span>" . "<br><br>";
+                }
                 $qno++;
               }
             }
