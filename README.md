@@ -1,5 +1,5 @@
 # Elearning
-A open-source project made using PHP for providing education to people via the internet.
+A project made using PHP for providing education to people via the internet.
 
 The code is totally written in PHP for Backend and HTML/CSS/JavaScript for the front-end.
 
@@ -11,16 +11,6 @@ The code is totally written in PHP for Backend and HTML/CSS/JavaScript for the f
 # As well-as the students can :
 1) Be Assessed Via quizzes
 2) Give Code-Test ie problem solving,language tests etc
-3) Ask questions to teachers
-4) View videos, PDFs & PPTs 
-
-# Salient Features are:
-1) Mobile Responsive
-2) Bulk Insert Features for questions
-3) Dedicated judge system for evaluation.
-4) Video Editing before upload (Trimming, Mute-video, Adding intro slide with text)
-5) Admin Dashboard
-
-# Being open-sourced I wish you to contribute to this project and make it big to help provide education even at problematic times.
+3) View videos, PDFs & PPTs 
 
 
