@@ -9,7 +9,7 @@ function play(path,views)
         document.getElementById('lkbtn').style.display="inline-block";
   	    var source=document.getElementById('srcvid');
         //document.getElementById('trimvid').value=path;
-        var res = path.replace("videos/", "");
+        var res = path.replace("../Teacher/videos/", "");
         res = res.replace(".mp4", "");
 
   	    title.innerHTML=res;
